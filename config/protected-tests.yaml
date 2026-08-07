@@ -1,0 +1,130 @@
+# Protected Test Registry - tests that may NEVER be pruned by traffic signal.
+#
+# Phase 5's obsolescence detector ranks deletion candidates primarily by production
+# traffic. For everything listed here that signal is actively inverted: these flows
+# are low-volume BY DESIGN and high-consequence BY NATURE.
+#
+# Every entry requires a written reason of at least 25 characters explaining why
+# low traffic does not imply low importance. That friction is intentional - a
+# registry that is cheap to append to becomes a dumping ground and stops meaning
+# anything.
+#
+# Entries expire. Review dates are enforced by:
+#   goldenflow registry check config/protected-tests.yaml
+
+app_id: acme-shop
+
+entries:
+  # ------------------------------------------------------------- data rights
+  - pattern: "**/account/delete/**"
+    category: data_rights
+    reason: >
+      GDPR Art.17 and DPDP right to erasure. Exercised by a fraction of a percent
+      of users, but a silent failure is a regulatory breach with a reporting
+      obligation, not a bug.
+    owner: platform-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03
+
+  - pattern: "**/account/data_export/**"
+    category: data_rights
+    reason: >
+      GDPR Art.20 data portability. Traffic is negligible and the legal deadline
+      for fulfilment is fixed, so a regression is discovered by a regulator rather
+      than by users.
+    owner: platform-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03
+
+  # ---------------------------------------------------------------- financial
+  - pattern: "**/checkout/payment_failure/**"
+    category: financial
+    reason: >
+      Payment failure recovery is by definition rare in healthy production and is
+      the single path where a defect converts directly into abandoned revenue and
+      duplicate charges.
+    owner: payments-qe
+    added_on: 2026-08-03
+    review_by: 2027-02-03
+
+  - pattern: "**/support/refund/**"
+    category: financial
+    reason: >
+      Refund initiation carries chargeback and dispute exposure. Volume is a
+      fraction of purchase volume, consequence per failure is far higher.
+    owner: payments-qe
+    added_on: 2026-08-03
+    review_by: 2027-02-03
+
+  - pattern: "re:.*(duplicate_charge|double_debit|idempotency).*"
+    category: financial
+    reason: >
+      Idempotency and duplicate-charge guards fire on paths that should never occur
+      in production, so observed traffic approaches zero precisely when the guard
+      is working.
+    owner: payments-qe
+    added_on: 2026-08-03
+    review_by: 2027-02-03
+
+  # ------------------------------------------------------------ accessibility
+  - pattern: "**/a11y/**"
+    category: accessibility
+    reason: >
+      Screen-reader and large-text journeys are a small share of sessions and a
+      legal obligation under EN 301 549 / ADA. Usage share is not a proxy for
+      obligation.
+    owner: platform-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03
+
+  - pattern: "re:.*(talkback|voiceover|screen_reader|dynamic_type).*"
+    category: accessibility
+    reason: >
+      Assistive-technology paths are under-represented in analytics because those
+      users are under-represented in instrumentation, which biases the traffic
+      signal against them twice over.
+    owner: platform-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03
+
+  # ---------------------------------------------------------------- security
+  - pattern: "**/auth/otp/**"
+    category: security
+    reason: >
+      OTP verification guards account takeover. A regression here is exploited
+      before it is reported, so it cannot be allowed to decay quietly.
+    owner: security-qe
+    added_on: 2026-08-03
+    review_by: 2027-02-03
+
+  - pattern: "re:.*(session_expiry|token_refresh|force_logout).*"
+    category: security
+    reason: >
+      Session lifecycle tests exercise states most users never consciously reach,
+      while a failure leaves authenticated sessions alive beyond their intended
+      lifetime.
+    owner: security-qe
+    added_on: 2026-08-03
+    review_by: 2027-02-03
+
+  # ------------------------------------------------------- disaster recovery
+  - pattern: "re:.*(offline_mode|network_loss|backend_outage|degraded).*"
+    category: disaster_recovery
+    reason: >
+      Degraded-mode behaviour is rare in production by definition and is exactly
+      what must work during an incident, when no one has time to discover it is
+      broken.
+    owner: platform-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03
+
+  # ------------------------------------------------------------- regulatory
+  - pattern: "re:.*(age_gate|consent|cookie_policy|marketing_optout).*"
+    category: regulatory
+    reason: >
+      Consent capture and marketing opt-out are legally mandated flows whose
+      correct operation produces no engagement signal at all, making them
+      structurally invisible to a traffic-ranked pruner.
+    owner: legal-qe
+    added_on: 2026-08-03
+    review_by: 2027-08-03

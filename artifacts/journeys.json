@@ -1,0 +1,640 @@
+{
+  "sessionization": {
+    "traces": 1500,
+    "usable_traces": 1499,
+    "too_short": 1,
+    "split_on_inactivity": 0,
+    "events_without_session": 259,
+    "events_without_screen": 45,
+    "mean_length": 4.64
+  },
+  "dfg": {
+    "traces": 1499,
+    "screens": 28,
+    "transitions": 47,
+    "entry_points": 6,
+    "exit_points": 19,
+    "top_transitions": [
+      {
+        "edge": "splash -> home",
+        "count": 557
+      },
+      {
+        "edge": "product_detail -> cart",
+        "count": 548
+      },
+      {
+        "edge": "product_list -> product_detail",
+        "count": 510
+      },
+      {
+        "edge": "home -> category_list",
+        "count": 372
+      },
+      {
+        "edge": "category_list -> product_list",
+        "count": 370
+      }
+    ]
+  },
+  "clustering": {
+    "archetypes": 18,
+    "variants": 45,
+    "sessions": 1499,
+    "compression_ratio": 2.5,
+    "archetypes_for_95pct": 9,
+    "top_10_explain_pct": 97.67
+  },
+  "journeys": [
+    {
+      "journey_id": "aj_003",
+      "rank": 1,
+      "name": "Splash to Purchase",
+      "score": 95.19,
+      "sequence": [
+        "splash",
+        "home",
+        "search",
+        "product_detail",
+        "cart",
+        "delivery_address",
+        "payment_method",
+        "order_review",
+        "order_confirmation"
+      ],
+      "backbone": [
+        "search",
+        "delivery_address",
+        "order_confirmation"
+      ],
+      "sessions": 193,
+      "session_share_pct": 12.88,
+      "users": 133,
+      "variants": 6,
+      "mean_duration_s": 270.2,
+      "monetary_total": 102883.4,
+      "risk_events": 17,
+      "components": {
+        "frequency": 0.886,
+        "business_value": 1.0,
+        "risk": 0.944,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "order_confirmation": 193
+      }
+    },
+    {
+      "journey_id": "aj_002",
+      "rank": 2,
+      "name": "Cart Abandonment",
+      "score": 75.21,
+      "sequence": [
+        "home",
+        "product_detail",
+        "cart"
+      ],
+      "backbone": [
+        "product_detail",
+        "cart"
+      ],
+      "sessions": 285,
+      "session_share_pct": 19.01,
+      "users": 192,
+      "variants": 2,
+      "mean_duration_s": 85.0,
+      "monetary_total": 50953.91,
+      "risk_events": 12,
+      "components": {
+        "frequency": 0.951,
+        "business_value": 0.5,
+        "risk": 0.667,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "cart": 285
+      }
+    },
+    {
+      "journey_id": "aj_007",
+      "rank": 3,
+      "name": "Home to Payment Failure",
+      "score": 72.48,
+      "sequence": [
+        "home",
+        "product_detail",
+        "cart",
+        "delivery_address",
+        "payment_method",
+        "payment_failure"
+      ],
+      "backbone": [
+        "home",
+        "product_detail",
+        "delivery_address",
+        "payment_failure"
+      ],
+      "sessions": 72,
+      "session_share_pct": 4.8,
+      "users": 58,
+      "variants": 3,
+      "mean_duration_s": 182.7,
+      "monetary_total": 11735.81,
+      "risk_events": 15,
+      "components": {
+        "frequency": 0.722,
+        "business_value": 0.5,
+        "risk": 0.833,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "payment_failure": 72
+      }
+    },
+    {
+      "journey_id": "aj_001",
+      "rank": 4,
+      "name": "Splash to Product Detail",
+      "score": 70.0,
+      "sequence": [
+        "splash",
+        "home",
+        "category_list",
+        "product_list",
+        "product_detail"
+      ],
+      "backbone": [],
+      "sessions": 381,
+      "session_share_pct": 25.42,
+      "users": 238,
+      "variants": 6,
+      "mean_duration_s": 132.3,
+      "monetary_total": 0.0,
+      "risk_events": 18,
+      "components": {
+        "frequency": 1.0,
+        "business_value": 0.0,
+        "risk": 1.0,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "product_detail": 380,
+        "product_list": 1
+      }
+    },
+    {
+      "journey_id": "aj_006",
+      "rank": 5,
+      "name": "Splash to Home",
+      "score": 67.14,
+      "sequence": [
+        "splash",
+        "login",
+        "otp_verify",
+        "home"
+      ],
+      "backbone": [
+        "home"
+      ],
+      "sessions": 131,
+      "session_share_pct": 8.74,
+      "users": 95,
+      "variants": 4,
+      "mean_duration_s": 96.5,
+      "monetary_total": 0.0,
+      "risk_events": 9,
+      "components": {
+        "frequency": 0.821,
+        "business_value": 0.5,
+        "risk": 0.5,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "home": 131
+      }
+    },
+    {
+      "journey_id": "aj_009",
+      "rank": 6,
+      "name": "Splash to Home",
+      "score": 61.93,
+      "sequence": [
+        "splash",
+        "onboarding_carousel",
+        "signup",
+        "otp_verify",
+        "home"
+      ],
+      "backbone": [
+        "splash",
+        "home"
+      ],
+      "sessions": 46,
+      "session_share_pct": 3.07,
+      "users": 38,
+      "variants": 4,
+      "mean_duration_s": 123.0,
+      "monetary_total": 0.0,
+      "risk_events": 9,
+      "components": {
+        "frequency": 0.648,
+        "business_value": 0.5,
+        "risk": 0.5,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "home": 46
+      }
+    },
+    {
+      "journey_id": "aj_005",
+      "rank": 7,
+      "name": "Home to Product Detail",
+      "score": 60.58,
+      "sequence": [
+        "home",
+        "search",
+        "product_list",
+        "product_detail"
+      ],
+      "backbone": [
+        "home",
+        "search",
+        "product_list",
+        "product_detail"
+      ],
+      "sessions": 134,
+      "session_share_pct": 8.94,
+      "users": 92,
+      "variants": 1,
+      "mean_duration_s": 123.0,
+      "monetary_total": 0.0,
+      "risk_events": 15,
+      "components": {
+        "frequency": 0.825,
+        "business_value": 0.0,
+        "risk": 0.833,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "product_detail": 134
+      }
+    },
+    {
+      "journey_id": "aj_010",
+      "rank": 8,
+      "name": "Home to Refund Request",
+      "score": 58.44,
+      "sequence": [
+        "home",
+        "account_home",
+        "order_history",
+        "refund_request"
+      ],
+      "backbone": [
+        "home",
+        "order_history",
+        "refund_request"
+      ],
+      "sessions": 30,
+      "session_share_pct": 2.0,
+      "users": 23,
+      "variants": 2,
+      "mean_duration_s": 97.0,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.578,
+        "business_value": 0.5,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "refund_request": 30
+      }
+    },
+    {
+      "journey_id": "aj_017",
+      "rank": 9,
+      "name": "Order Review Abandonment",
+      "score": 57.11,
+      "sequence": [
+        "splash",
+        "home",
+        "search",
+        "product_detail",
+        "cart",
+        "delivery_address",
+        "payment_method",
+        "order_review"
+      ],
+      "backbone": [
+        "splash",
+        "home",
+        "search",
+        "product_detail",
+        "cart",
+        "delivery_address",
+        "payment_method",
+        "order_review"
+      ],
+      "sessions": 1,
+      "session_share_pct": 0.07,
+      "users": 1,
+      "variants": 1,
+      "mean_duration_s": 236.0,
+      "monetary_total": 806.71,
+      "risk_events": 17,
+      "components": {
+        "frequency": 0.117,
+        "business_value": 0.5,
+        "risk": 0.944,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "order_review": 1
+      }
+    },
+    {
+      "journey_id": "aj_012",
+      "rank": 10,
+      "name": "Home to Saved Cards",
+      "score": 52.73,
+      "sequence": [
+        "home",
+        "account_home",
+        "saved_cards"
+      ],
+      "backbone": [
+        "home",
+        "account_home",
+        "saved_cards"
+      ],
+      "sessions": 9,
+      "session_share_pct": 0.6,
+      "users": 7,
+      "variants": 1,
+      "mean_duration_s": 59.7,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.387,
+        "business_value": 0.5,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "saved_cards": 9
+      }
+    },
+    {
+      "journey_id": "aj_004",
+      "rank": 11,
+      "name": "Home to Order History",
+      "score": 51.22,
+      "sequence": [
+        "home",
+        "account_home",
+        "order_history"
+      ],
+      "backbone": [],
+      "sessions": 144,
+      "session_share_pct": 9.61,
+      "users": 114,
+      "variants": 6,
+      "mean_duration_s": 57.1,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.837,
+        "business_value": 0.0,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "order_history": 109,
+        "address_book": 20,
+        "profile_edit": 13,
+        "account_home": 2
+      }
+    },
+    {
+      "journey_id": "aj_014",
+      "rank": 12,
+      "name": "Home to Export My Data",
+      "score": 50.15,
+      "sequence": [
+        "home",
+        "account_home",
+        "data_export"
+      ],
+      "backbone": [
+        "home",
+        "account_home",
+        "data_export"
+      ],
+      "sessions": 5,
+      "session_share_pct": 0.33,
+      "users": 4,
+      "variants": 1,
+      "mean_duration_s": 65.6,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.301,
+        "business_value": 0.5,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "data_export": 5
+      }
+    },
+    {
+      "journey_id": "aj_015",
+      "rank": 13,
+      "name": "Home to Delete Account",
+      "score": 46.65,
+      "sequence": [
+        "home",
+        "account_home",
+        "account_delete"
+      ],
+      "backbone": [
+        "home",
+        "account_home",
+        "account_delete"
+      ],
+      "sessions": 2,
+      "session_share_pct": 0.13,
+      "users": 2,
+      "variants": 1,
+      "mean_duration_s": 70.5,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.185,
+        "business_value": 0.5,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "account_delete": 2
+      }
+    },
+    {
+      "journey_id": "aj_008",
+      "rank": 14,
+      "name": "Home to Contact Support",
+      "score": 45.75,
+      "sequence": [
+        "home",
+        "help_center",
+        "contact_support"
+      ],
+      "backbone": [
+        "help_center",
+        "contact_support"
+      ],
+      "sessions": 48,
+      "session_share_pct": 3.2,
+      "users": 39,
+      "variants": 2,
+      "mean_duration_s": 68.0,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.655,
+        "business_value": 0.0,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "contact_support": 48
+      }
+    },
+    {
+      "journey_id": "aj_011",
+      "rank": 15,
+      "name": "Splash to Forgot Password",
+      "score": 43.49,
+      "sequence": [
+        "splash",
+        "login",
+        "forgot_password"
+      ],
+      "backbone": [
+        "login",
+        "forgot_password"
+      ],
+      "sessions": 10,
+      "session_share_pct": 0.67,
+      "users": 10,
+      "variants": 2,
+      "mean_duration_s": 48.0,
+      "monetary_total": 0.0,
+      "risk_events": 1,
+      "components": {
+        "frequency": 0.403,
+        "business_value": 0.5,
+        "risk": 0.056,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "forgot_password": 10
+      }
+    },
+    {
+      "journey_id": "aj_013",
+      "rank": 16,
+      "name": "Home to Notification Center",
+      "score": 35.93,
+      "sequence": [
+        "home",
+        "notification_center"
+      ],
+      "backbone": [
+        "home",
+        "notification_center"
+      ],
+      "sessions": 6,
+      "session_share_pct": 0.4,
+      "users": 5,
+      "variants": 1,
+      "mean_duration_s": 42.0,
+      "monetary_total": 0.0,
+      "risk_events": 8,
+      "components": {
+        "frequency": 0.327,
+        "business_value": 0.0,
+        "risk": 0.444,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "notification_center": 6
+      }
+    },
+    {
+      "journey_id": "aj_018",
+      "rank": 17,
+      "name": "Splash to OTP Verification",
+      "score": 34.89,
+      "sequence": [
+        "splash",
+        "login",
+        "otp_verify"
+      ],
+      "backbone": [
+        "splash",
+        "login",
+        "otp_verify"
+      ],
+      "sessions": 1,
+      "session_share_pct": 0.07,
+      "users": 1,
+      "variants": 1,
+      "mean_duration_s": 55.0,
+      "monetary_total": 0.0,
+      "risk_events": 1,
+      "components": {
+        "frequency": 0.117,
+        "business_value": 0.5,
+        "risk": 0.056,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "otp_verify": 1
+      }
+    },
+    {
+      "journey_id": "aj_016",
+      "rank": 18,
+      "name": "Home to Product Detail",
+      "score": 33.78,
+      "sequence": [
+        "home",
+        "product_detail"
+      ],
+      "backbone": [
+        "home",
+        "product_detail"
+      ],
+      "sessions": 1,
+      "session_share_pct": 0.07,
+      "users": 0,
+      "variants": 1,
+      "mean_duration_s": 28.0,
+      "monetary_total": 0.0,
+      "risk_events": 11,
+      "components": {
+        "frequency": 0.117,
+        "business_value": 0.0,
+        "risk": 0.611,
+        "exposure": 1.0
+      },
+      "terminal_screens": {
+        "product_detail": 1
+      }
+    }
+  ]
+}

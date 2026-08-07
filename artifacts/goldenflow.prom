@@ -1,0 +1,51 @@
+# HELP goldenflow_transition_coverage_pct Share of production transitions covered by at least one test
+# TYPE goldenflow_transition_coverage_pct gauge
+goldenflow_transition_coverage_pct{app="acme-shop"} 38.3
+# HELP goldenflow_traffic_weighted_coverage_pct Coverage weighted by production session volume
+# TYPE goldenflow_traffic_weighted_coverage_pct gauge
+goldenflow_traffic_weighted_coverage_pct{app="acme-shop"} 89.9
+# HELP goldenflow_journeys_total Golden Journeys in the catalogue
+# TYPE goldenflow_journeys_total gauge
+goldenflow_journeys_total{app="acme-shop"} 18
+# HELP goldenflow_journeys_uncovered Golden Journeys with no test coverage at all
+# TYPE goldenflow_journeys_uncovered gauge
+goldenflow_journeys_uncovered{app="acme-shop"} 2
+# HELP goldenflow_unmapped_tests Tests whose screens could not be resolved
+# TYPE goldenflow_unmapped_tests gauge
+goldenflow_unmapped_tests{app="acme-shop"} 0
+# HELP goldenflow_findings Gap findings by severity
+# TYPE goldenflow_findings gauge
+goldenflow_findings{app="acme-shop",severity="critical"} 0
+goldenflow_findings{app="acme-shop",severity="high"} 8
+goldenflow_findings{app="acme-shop",severity="medium"} 5
+goldenflow_findings{app="acme-shop",severity="low"} 9
+goldenflow_findings{app="acme-shop",severity="info"} 1
+# HELP goldenflow_findings_by_kind Gap findings by kind
+# TYPE goldenflow_findings_by_kind gauge
+goldenflow_findings_by_kind{app="acme-shop",kind="coverage_gap"} 12
+goldenflow_findings_by_kind{app="acme-shop",kind="obsolete"} 3
+goldenflow_findings_by_kind{app="acme-shop",kind="stale"} 0
+goldenflow_findings_by_kind{app="acme-shop",kind="over_tested"} 3
+goldenflow_findings_by_kind{app="acme-shop",kind="assertion_gap"} 4
+goldenflow_findings_by_kind{app="acme-shop",kind="unmapped_test"} 0
+goldenflow_findings_by_kind{app="acme-shop",kind="protected_retained"} 1
+# HELP goldenflow_journey_coverage_ratio Per-journey transition coverage ratio
+# TYPE goldenflow_journey_coverage_ratio gauge
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_003",name="Splash to Purchase"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_002",name="Cart Abandonment"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_007",name="Home to Payment Failure"} 0.8
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_001",name="Splash to Product Detail"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_006",name="Splash to Home"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_009",name="Splash to Home"} 0.25
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_005",name="Home to Product Detail"} 0.667
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_010",name="Home to Refund Request"} 0.667
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_017",name="Order Review Abandonment"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_012",name="Home to Saved Cards"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_004",name="Home to Order History"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_014",name="Home to Export My Data"} 0.5
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_015",name="Home to Delete Account"} 0.5
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_008",name="Home to Contact Support"} 0.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_011",name="Splash to Forgot Password"} 0.5
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_013",name="Home to Notification Center"} 0.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_018",name="Splash to OTP Verification"} 1.0
+goldenflow_journey_coverage_ratio{app="acme-shop",journey_id="aj_016",name="Home to Product Detail"} 1.0

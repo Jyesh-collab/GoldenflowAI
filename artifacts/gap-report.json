@@ -1,0 +1,430 @@
+{
+  "summary": {
+    "production_transitions": 47,
+    "covered_transitions": 18,
+    "transition_coverage_pct": 38.3,
+    "traffic_weighted_coverage_pct": 89.9,
+    "journeys": 18,
+    "journeys_fully_covered": 9,
+    "journeys_uncovered": 2,
+    "unmapped_tests": 0
+  },
+  "by_severity": {
+    "critical": 0,
+    "high": 8,
+    "medium": 5,
+    "low": 9,
+    "info": 1
+  },
+  "by_kind": {
+    "coverage_gap": 12,
+    "obsolete": 3,
+    "stale": 0,
+    "over_tested": 3,
+    "assertion_gap": 4,
+    "unmapped_test": 0,
+    "protected_retained": 1
+  },
+  "findings": [
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Payment Failure: 4/5 transitions covered",
+      "detail": "72 sessions (4.8% of traffic), score 72.5. Missing: payment_method -> payment_failure",
+      "evidence": {
+        "sessions": 72,
+        "score": 72.5,
+        "missing_transitions": [
+          "payment_method -> payment_failure"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 15
+      },
+      "journey_id": "aj_007",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Contact Support: 0/2 transitions covered",
+      "detail": "48 sessions (3.2% of traffic), score 45.7. Missing: home -> help_center, help_center -> contact_support",
+      "evidence": {
+        "sessions": 48,
+        "score": 45.7,
+        "missing_transitions": [
+          "home -> help_center",
+          "help_center -> contact_support"
+        ],
+        "touches_critical_screen": false,
+        "risk_events": 8
+      },
+      "journey_id": "aj_008",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). "
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Splash to Home: 1/4 transitions covered",
+      "detail": "46 sessions (3.1% of traffic), score 61.9. Missing: splash -> onboarding_carousel, onboarding_carousel -> signup, signup -> otp_verify",
+      "evidence": {
+        "sessions": 46,
+        "score": 61.9,
+        "missing_transitions": [
+          "splash -> onboarding_carousel",
+          "onboarding_carousel -> signup",
+          "signup -> otp_verify"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 9
+      },
+      "journey_id": "aj_009",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Refund Request: 2/3 transitions covered",
+      "detail": "30 sessions (2.0% of traffic), score 58.4. Missing: order_history -> refund_request",
+      "evidence": {
+        "sessions": 30,
+        "score": 58.4,
+        "missing_transitions": [
+          "order_history -> refund_request"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 8
+      },
+      "journey_id": "aj_010",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Splash to Forgot Password: 1/2 transitions covered",
+      "detail": "10 sessions (0.7% of traffic), score 43.5. Missing: login -> forgot_password",
+      "evidence": {
+        "sessions": 10,
+        "score": 43.5,
+        "missing_transitions": [
+          "login -> forgot_password"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 1
+      },
+      "journey_id": "aj_011",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Notification Center: 0/1 transitions covered",
+      "detail": "6 sessions (0.4% of traffic), score 35.9. Missing: home -> notification_center",
+      "evidence": {
+        "sessions": 6,
+        "score": 35.9,
+        "missing_transitions": [
+          "home -> notification_center"
+        ],
+        "touches_critical_screen": false,
+        "risk_events": 8
+      },
+      "journey_id": "aj_013",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). "
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Export My Data: 1/2 transitions covered",
+      "detail": "5 sessions (0.3% of traffic), score 50.2. Missing: account_home -> data_export",
+      "evidence": {
+        "sessions": 5,
+        "score": 50.2,
+        "missing_transitions": [
+          "account_home -> data_export"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 8
+      },
+      "journey_id": "aj_014",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "high",
+      "title": "Home to Delete Account: 1/2 transitions covered",
+      "detail": "2 sessions (0.1% of traffic), score 46.7. Missing: account_home -> account_delete",
+      "evidence": {
+        "sessions": 2,
+        "score": 46.7,
+        "missing_transitions": [
+          "account_home -> account_delete"
+        ],
+        "touches_critical_screen": true,
+        "risk_events": 8
+      },
+      "journey_id": "aj_015",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "medium",
+      "title": "Home to Product Detail: 2/3 transitions covered",
+      "detail": "134 sessions (8.9% of traffic), score 60.6. Missing: search -> product_list",
+      "evidence": {
+        "sessions": 134,
+        "score": 60.6,
+        "missing_transitions": [
+          "search -> product_list"
+        ],
+        "touches_critical_screen": false,
+        "risk_events": 15
+      },
+      "journey_id": "aj_005",
+      "test_ids": [],
+      "recommendation": "Generate an Appium test for this journey (Phase 5). "
+    },
+    {
+      "kind": "assertion_gap",
+      "severity": "medium",
+      "title": "tests/test_account.py::test_login_with_otp_reaches_home drives critical screens without asserting",
+      "detail": "Walks but never asserts on: login, otp_verify. A regression on these screens would not fail this test.",
+      "evidence": {
+        "unasserted_critical_screens": [
+          "login",
+          "otp_verify"
+        ],
+        "assertions": 1
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_account.py::test_login_with_otp_reaches_home"
+      ],
+      "recommendation": "Add assertions on the critical screens this test visits."
+    },
+    {
+      "kind": "assertion_gap",
+      "severity": "medium",
+      "title": "tests/test_checkout.py::test_search_to_purchase_completes drives critical screens without asserting",
+      "detail": "Walks but never asserts on: delivery_address, payment_method. A regression on these screens would not fail this test.",
+      "evidence": {
+        "unasserted_critical_screens": [
+          "delivery_address",
+          "payment_method"
+        ],
+        "assertions": 6
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_checkout.py::test_search_to_purchase_completes"
+      ],
+      "recommendation": "Add assertions on the critical screens this test visits."
+    },
+    {
+      "kind": "assertion_gap",
+      "severity": "medium",
+      "title": "tests/test_checkout.py::test_wallet_payment_reaches_review drives critical screens without asserting",
+      "detail": "Walks but never asserts on: cart, delivery_address, order_review, payment_method. A regression on these screens would not fail this test.",
+      "evidence": {
+        "unasserted_critical_screens": [
+          "cart",
+          "delivery_address",
+          "order_review",
+          "payment_method"
+        ],
+        "assertions": 0
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_checkout.py::test_wallet_payment_reaches_review"
+      ],
+      "recommendation": "Add assertions on the critical screens this test visits."
+    },
+    {
+      "kind": "assertion_gap",
+      "severity": "medium",
+      "title": "tests/test_deeplinks.py::test_deeplink_straight_to_payment drives critical screens without asserting",
+      "detail": "Walks but never asserts on: payment_method. A regression on these screens would not fail this test.",
+      "evidence": {
+        "unasserted_critical_screens": [
+          "payment_method"
+        ],
+        "assertions": 0
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_deeplinks.py::test_deeplink_straight_to_payment"
+      ],
+      "recommendation": "Add assertions on the critical screens this test visits."
+    },
+    {
+      "kind": "over_tested",
+      "severity": "low",
+      "title": "3 tests on a below-median journey: Home to Order History",
+      "detail": "Journey scores 51.2 (median 52.7) yet carries 3 tests. Reallocating some of that effort would buy more.",
+      "evidence": {
+        "tests": 3,
+        "score": 51.2,
+        "sessions": 144
+      },
+      "journey_id": "aj_004",
+      "test_ids": [
+        "tests/test_account.py::test_address_book_edit",
+        "tests/test_account.py::test_order_history_lists_orders",
+        "tests/test_account.py::test_saved_cards_are_listed"
+      ],
+      "recommendation": "Consider consolidating and redirecting effort to an uncovered high-score journey."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "low",
+      "title": "Untested transition account_home -> address_book",
+      "detail": "20 production sessions walk this transition and no test covers it.",
+      "evidence": {
+        "sessions": 20,
+        "touches_critical_screen": false
+      },
+      "journey_id": null,
+      "test_ids": [],
+      "recommendation": "Add coverage for this navigation step."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "low",
+      "title": "Untested transition account_home -> profile_edit",
+      "detail": "13 production sessions walk this transition and no test covers it.",
+      "evidence": {
+        "sessions": 13,
+        "touches_critical_screen": false
+      },
+      "journey_id": null,
+      "test_ids": [],
+      "recommendation": "Add coverage for this navigation step."
+    },
+    {
+      "kind": "coverage_gap",
+      "severity": "low",
+      "title": "Untested transition home -> product_list",
+      "detail": "7 production sessions walk this transition and no test covers it.",
+      "evidence": {
+        "sessions": 7,
+        "touches_critical_screen": false
+      },
+      "journey_id": null,
+      "test_ids": [],
+      "recommendation": "Add coverage for this navigation step."
+    },
+    {
+      "kind": "over_tested",
+      "severity": "low",
+      "title": "3 tests on a below-median journey: Home to Export My Data",
+      "detail": "Journey scores 50.2 (median 52.7) yet carries 3 tests. Reallocating some of that effort would buy more.",
+      "evidence": {
+        "tests": 3,
+        "score": 50.2,
+        "sessions": 5
+      },
+      "journey_id": "aj_014",
+      "test_ids": [
+        "tests/test_account.py::test_address_book_edit",
+        "tests/test_account.py::test_order_history_lists_orders",
+        "tests/test_account.py::test_saved_cards_are_listed"
+      ],
+      "recommendation": "Consider consolidating and redirecting effort to an uncovered high-score journey."
+    },
+    {
+      "kind": "over_tested",
+      "severity": "low",
+      "title": "3 tests on a below-median journey: Home to Delete Account",
+      "detail": "Journey scores 46.7 (median 52.7) yet carries 3 tests. Reallocating some of that effort would buy more.",
+      "evidence": {
+        "tests": 3,
+        "score": 46.7,
+        "sessions": 2
+      },
+      "journey_id": "aj_015",
+      "test_ids": [
+        "tests/test_account.py::test_address_book_edit",
+        "tests/test_account.py::test_order_history_lists_orders",
+        "tests/test_account.py::test_saved_cards_are_listed"
+      ],
+      "recommendation": "Consider consolidating and redirecting effort to an uncovered high-score journey."
+    },
+    {
+      "kind": "obsolete",
+      "severity": "low",
+      "title": "Obsolete candidate: tests/test_deeplinks.py::test_deeplink_straight_to_order_confirmation",
+      "detail": "Every transition this test walks is absent from production: splash -> order_confirmation",
+      "evidence": {
+        "unreachable": [
+          "splash -> order_confirmation"
+        ],
+        "sessions": 0
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_deeplinks.py::test_deeplink_straight_to_order_confirmation"
+      ],
+      "recommendation": "CANDIDATE ONLY - requires a second corroborating signal (removed screen, retired feature flag) and human approval before any deletion PR is opened."
+    },
+    {
+      "kind": "obsolete",
+      "severity": "low",
+      "title": "Obsolete candidate: tests/test_deeplinks.py::test_deeplink_straight_to_payment",
+      "detail": "Every transition this test walks is absent from production: home -> payment_method",
+      "evidence": {
+        "unreachable": [
+          "home -> payment_method"
+        ],
+        "sessions": 0
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_deeplinks.py::test_deeplink_straight_to_payment"
+      ],
+      "recommendation": "CANDIDATE ONLY - requires a second corroborating signal (removed screen, retired feature flag) and human approval before any deletion PR is opened."
+    },
+    {
+      "kind": "obsolete",
+      "severity": "low",
+      "title": "Obsolete candidate: tests/test_deeplinks.py::test_deeplink_saved_cards_from_home",
+      "detail": "Every transition this test walks is absent from production: home -> saved_cards",
+      "evidence": {
+        "unreachable": [
+          "home -> saved_cards"
+        ],
+        "sessions": 0
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/test_deeplinks.py::test_deeplink_saved_cards_from_home"
+      ],
+      "recommendation": "CANDIDATE ONLY - requires a second corroborating signal (removed screen, retired feature flag) and human approval before any deletion PR is opened."
+    },
+    {
+      "kind": "protected_retained",
+      "severity": "info",
+      "title": "Protected from pruning: tests/a11y/test_talkback_checkout.py::test_talkback_reaches_confirmation_from_account",
+      "detail": "No production traffic on its path, but the test is protected under accessibility. Screen-reader and large-text journeys are a small share of sessions and a legal obligation under EN 301 549 / ADA. Usage share is not a proxy for obligation.",
+      "evidence": {
+        "category": "accessibility",
+        "owner": "platform-qe",
+        "unreachable": [
+          "account_home -> order_confirmation"
+        ]
+      },
+      "journey_id": null,
+      "test_ids": [
+        "tests/a11y/test_talkback_checkout.py::test_talkback_reaches_confirmation_from_account"
+      ],
+      "recommendation": "Retain. Low traffic is the expected state here."
+    }
+  ]
+}

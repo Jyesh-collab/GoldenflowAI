@@ -1,0 +1,90 @@
+{
+  "summary": {
+    "records": 3,
+    "complete_lineage": 3,
+    "approved": 0,
+    "rejected": 0,
+    "pending": 3,
+    "acceptance_rate": 0.0,
+    "rejection_themes": {}
+  },
+  "records": [
+    {
+      "artifact_id": "test_home_to_payment_failure",
+      "artifact_type": "test",
+      "created_at": "2026-08-07T05:29:16.231466+00:00",
+      "journey_id": "aj_007",
+      "sessions": 72,
+      "taxonomy_fingerprint": "fd24fa23214566d2",
+      "locator_sources": [
+        "crawl",
+        "page_object"
+      ],
+      "generator": "template",
+      "model": "rule-based",
+      "prompt_hash": "",
+      "validation_runs": 0,
+      "validation_profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "reviewer": "",
+      "review_decision": "pending",
+      "reviewed_at": null,
+      "rejection_reason": "",
+      "complete": true
+    },
+    {
+      "artifact_id": "test_home_to_product_detail",
+      "artifact_type": "test",
+      "created_at": "2026-08-07T05:29:16.231466+00:00",
+      "journey_id": "aj_005",
+      "sessions": 134,
+      "taxonomy_fingerprint": "fd24fa23214566d2",
+      "locator_sources": [
+        "page_object"
+      ],
+      "generator": "template",
+      "model": "rule-based",
+      "prompt_hash": "",
+      "validation_runs": 0,
+      "validation_profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "reviewer": "",
+      "review_decision": "pending",
+      "reviewed_at": null,
+      "rejection_reason": "",
+      "complete": true
+    },
+    {
+      "artifact_id": "test_home_to_delete_account",
+      "artifact_type": "test",
+      "created_at": "2026-08-07T05:29:16.231466+00:00",
+      "journey_id": "aj_015",
+      "sessions": 2,
+      "taxonomy_fingerprint": "fd24fa23214566d2",
+      "locator_sources": [
+        "crawl",
+        "page_object"
+      ],
+      "generator": "template",
+      "model": "rule-based",
+      "prompt_hash": "",
+      "validation_runs": 0,
+      "validation_profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "reviewer": "",
+      "review_decision": "pending",
+      "reviewed_at": null,
+      "rejection_reason": "",
+      "complete": true
+    }
+  ]
+}

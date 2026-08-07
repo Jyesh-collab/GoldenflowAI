@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goldenflow"
+version = "0.1.0"
+description = "GoldenFlow AI - A Self-Evolving Mobile QE Agent"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+mining = ["pandas>=2.0", "pm4py>=2.7"]
+graph = ["neo4j>=5.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+goldenflow = "goldenflow.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["goldenflow*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

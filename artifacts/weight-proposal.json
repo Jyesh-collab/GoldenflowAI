@@ -1,0 +1,49 @@
+{
+  "proposed_at": "2026-08-07T05:29:14.263278+00:00",
+  "before": {
+    "frequency": 0.3,
+    "business_value": 0.3,
+    "risk": 0.25,
+    "exposure": 0.15
+  },
+  "after": {
+    "frequency": 0.2723,
+    "business_value": 0.3389,
+    "risk": 0.2,
+    "exposure": 0.2
+  },
+  "deltas": {
+    "frequency": -0.0277,
+    "business_value": 0.0389,
+    "risk": -0.05,
+    "exposure": 0.05
+  },
+  "reason": "Tuned on 10 attributed defect(s). exposure predicted best (100% hit rate), risk worst (33%). Movement capped at 0.05 per round, floor 0.05.",
+  "applied": false,
+  "evidence": [
+    {
+      "component": "frequency",
+      "hit_rate": 0.556,
+      "defects_seen": 5,
+      "defects_missed": 4
+    },
+    {
+      "component": "business_value",
+      "hit_rate": 0.889,
+      "defects_seen": 8,
+      "defects_missed": 1
+    },
+    {
+      "component": "risk",
+      "hit_rate": 0.333,
+      "defects_seen": 3,
+      "defects_missed": 6
+    },
+    {
+      "component": "exposure",
+      "hit_rate": 1.0,
+      "defects_seen": 9,
+      "defects_missed": 0
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{"timestamp": "2026-08-06T23:00:37.427396+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000350", "release": "8.3.0"}, "user": {"id": "user-00409"}}
+{"timestamp": "2026-08-06T11:36:11.094449+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000758", "release": "8.3.0"}, "user": {"id": "user-00338"}}
+{"timestamp": "2026-08-06T01:04:30.962238+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000936", "release": "8.2.0"}, "user": {"id": null}}
+{"timestamp": "2026-08-06T13:09:07.385276+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-001121", "release": "8.2.1"}, "user": {"id": "user-00116"}}
+{"timestamp": "2026-08-06T01:53:04.697159+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-001361", "release": "8.3.0"}, "user": {"id": "user-00426"}}

@@ -1,0 +1,16 @@
+{
+  "app_id": "acme-shop",
+  "release_version": "8.2.0",
+  "captured_at": "2026-08-07T05:27:46.977040Z",
+  "captured_by": "qe-lead",
+  "automated_coverage_pct": 62.0,
+  "golden_journey_coverage_pct": 0.0,
+  "escaped_defects_per_release": 14.0,
+  "mean_time_to_detect_hours": 36.0,
+  "regression_suite_runtime_minutes": 180.0,
+  "flaky_test_pct": 9.5,
+  "manual_authoring_hours_per_sprint": 40.0,
+  "total_test_count": 820,
+  "notes": "",
+  "_checksum": "a6a1c1a8594a1830"
+}

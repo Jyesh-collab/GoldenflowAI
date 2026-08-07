@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<!--
+  The screen the Appium suite has no Page Object for. Phase 3 flagged
+  payment_method -> payment_failure as the highest-consequence coverage gap;
+  this crawl dump is what makes that gap closeable.
+-->
+<hierarchy rotation="0">
+  <android.widget.FrameLayout index="0" package="com.acme.shop" class="android.widget.FrameLayout" text="" resource-id="" content-desc="" clickable="false" enabled="true" bounds="[0,0][1080,2340]">
+    <android.widget.LinearLayout index="0" package="com.acme.shop" class="android.widget.LinearLayout" text="" resource-id="com.acme.shop:id/payment_failure_root" content-desc="" clickable="false" enabled="true" bounds="[0,0][1080,2340]">
+      <android.widget.ImageView index="0" package="com.acme.shop" class="android.widget.ImageView" text="" resource-id="com.acme.shop:id/failure_icon" content-desc="payment_failure_icon" clickable="false" enabled="true" bounds="[460,320][620,480]" />
+      <android.widget.TextView index="1" package="com.acme.shop" class="android.widget.TextView" text="Payment declined" resource-id="com.acme.shop:id/failure_title" content-desc="payment_failure_title" clickable="false" enabled="true" bounds="[48,540][1032,620]" />
+      <android.widget.TextView index="2" package="com.acme.shop" class="android.widget.TextView" text="Your card was declined by the issuer. No money has been taken." resource-id="com.acme.shop:id/failure_message" content-desc="payment_failure_message" clickable="false" enabled="true" bounds="[48,640][1032,780]" />
+      <android.widget.TextView index="3" package="com.acme.shop" class="android.widget.TextView" text="Reference: card_declined" resource-id="com.acme.shop:id/failure_code" content-desc="payment_failure_code" clickable="false" enabled="true" bounds="[48,800][1032,860]" />
+      <android.widget.Button index="4" package="com.acme.shop" class="android.widget.Button" text="Try again" resource-id="com.acme.shop:id/failure_retry" content-desc="payment_failure_retry" clickable="true" enabled="true" bounds="[48,1000][1032,1120]" />
+      <android.widget.Button index="5" package="com.acme.shop" class="android.widget.Button" text="Choose another payment method" resource-id="com.acme.shop:id/failure_change_method" content-desc="payment_failure_change_method" clickable="true" enabled="true" bounds="[48,1160][1032,1280]" />
+      <android.widget.TextView index="6" package="com.acme.shop" class="android.widget.TextView" text="Contact support" resource-id="com.acme.shop:id/failure_support_link" content-desc="payment_failure_support" clickable="true" enabled="true" bounds="[48,1360][1032,1420]" />
+    </android.widget.LinearLayout>
+  </android.widget.FrameLayout>
+</hierarchy>

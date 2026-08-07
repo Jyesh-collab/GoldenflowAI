@@ -1,0 +1,9 @@
+{"timestamp": "2026-08-06T19:56:51.854811+00:00", "level": "warning", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000096", "release": "8.2.1"}, "user": {"id": "user-00250"}}
+{"timestamp": "2026-08-06T15:56:51.129045+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000284", "release": "8.2.0"}, "user": {"id": null}}
+{"timestamp": "2026-08-06T15:00:57.863201+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000377", "release": "8.3.0"}, "user": {"id": null}}
+{"timestamp": "2026-08-06T11:44:49.642973+00:00", "level": "warning", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000680", "release": "8.2.1"}, "user": {"id": "user-00433"}}
+{"timestamp": "2026-08-06T21:03:02.921550+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000864", "release": "8.3.0"}, "user": {"id": "user-00234"}}
+{"timestamp": "2026-08-06T07:18:57.256931+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-000961", "release": "8.2.1"}, "user": {"id": "user-00038"}}
+{"timestamp": "2026-08-06T13:18:52.018127+00:00", "level": "warning", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-001035", "release": "8.3.0"}, "user": {"id": "user-00236"}}
+{"timestamp": "2026-08-06T05:38:40.776945+00:00", "level": "error", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-001043", "release": "8.2.0"}, "user": {"id": null}}
+{"timestamp": "2026-08-06T14:15:15.703523+00:00", "level": "warning", "title": "HttpException: 503 from /v2/orders", "tags": {"session_id": "sess-001213", "release": "8.2.0"}, "user": {"id": "user-00250"}}

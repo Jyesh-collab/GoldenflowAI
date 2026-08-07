@@ -1,0 +1,267 @@
+# Screen Taxonomy - the join contract between production journeys and QA assets.
+#
+# THIS FILE IS THE INTERFACE between three teams:
+#   * mobile engineering  owns analytics_tags  (what the app emits)
+#   * GoldenFlow          owns screen_id       (the canonical join key)
+#   * QE automation       owns page_objects    (what Appium drives)
+#
+# Changing a screen_id or an analytics_tag is a breaking change. Validate with:
+#   goldenflow taxonomy validate config/taxonomy.yaml
+#
+# See docs/naming-contract.md for the governance process.
+
+version: "1.0.0"
+app_id: acme-shop
+
+domains:
+  - auth
+  - browse
+  - checkout
+  - account
+  - support
+
+screens:
+  # ------------------------------------------------------------------ auth
+  - screen_id: splash
+    display_name: Splash
+    domain: auth
+    analytics_tags: [Splash]
+    page_objects: [SplashScreen]
+    sensitivity: none
+
+  - screen_id: onboarding_carousel
+    display_name: Onboarding Carousel
+    domain: auth
+    analytics_tags: [Onboarding, OnboardingCarousel]
+    page_objects: [OnboardingScreen]
+    sensitivity: none
+
+  - screen_id: login
+    display_name: Login
+    domain: auth
+    analytics_tags: [Login]
+    page_objects: [LoginScreen]
+    sensitivity: critical
+    occlusion_required: true
+    critical: true
+    notes: Credential entry - full screen occlusion, never field-level.
+
+  - screen_id: signup
+    display_name: Sign Up
+    domain: auth
+    analytics_tags: [Signup, Registration]
+    page_objects: [SignupScreen]
+    sensitivity: critical
+    occlusion_required: true
+    critical: true
+
+  - screen_id: otp_verify
+    display_name: OTP Verification
+    domain: auth
+    analytics_tags: [OTPVerify]
+    page_objects: [OtpVerifyScreen]
+    sensitivity: critical
+    occlusion_required: true
+    critical: true
+    notes: One-time codes must never reach session replay storage.
+
+  - screen_id: forgot_password
+    display_name: Forgot Password
+    domain: auth
+    analytics_tags: [ForgotPassword]
+    page_objects: [ForgotPasswordScreen]
+    sensitivity: high
+    occlusion_required: true
+
+  # ---------------------------------------------------------------- browse
+  - screen_id: home
+    display_name: Home
+    domain: browse
+    analytics_tags: [Home, HomeFeed]
+    page_objects: [HomeScreen]
+    sensitivity: none
+
+  - screen_id: category_list
+    display_name: Category List
+    domain: browse
+    analytics_tags: [CategoryList]
+    page_objects: [CategoryListScreen]
+    sensitivity: none
+
+  - screen_id: product_list
+    display_name: Product List
+    domain: browse
+    analytics_tags: [ProductList, PLP]
+    page_objects: [ProductListScreen]
+    sensitivity: none
+
+  - screen_id: product_detail
+    display_name: Product Detail
+    domain: browse
+    analytics_tags: [ProductDetail, PDP]
+    page_objects: [ProductDetailScreen]
+    sensitivity: none
+
+  - screen_id: search
+    display_name: Search
+    domain: browse
+    analytics_tags: [Search, SearchResults]
+    page_objects: [SearchScreen]
+    sensitivity: low
+
+  # -------------------------------------------------------------- checkout
+  - screen_id: cart
+    display_name: Cart
+    domain: checkout
+    analytics_tags: [Cart]
+    page_objects: [CartScreen]
+    sensitivity: none
+    critical: true
+
+  - screen_id: delivery_address
+    display_name: Delivery Address
+    domain: checkout
+    analytics_tags: [DeliveryAddress, AddressSelect]
+    page_objects: [DeliveryAddressScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+
+  - screen_id: payment_method
+    display_name: Payment Method
+    domain: checkout
+    analytics_tags: [PaymentMethod, PaymentSelect]
+    page_objects: [PaymentMethodScreen]
+    sensitivity: critical
+    occlusion_required: true
+    critical: true
+    notes: Card entry. Full screen occlusion mandated by docs/pii-policy.md.
+
+  - screen_id: order_review
+    display_name: Order Review
+    domain: checkout
+    analytics_tags: [OrderReview]
+    page_objects: [OrderReviewScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+
+  - screen_id: order_confirmation
+    display_name: Order Confirmation
+    domain: checkout
+    analytics_tags: [OrderConfirmation, OrderSuccess]
+    page_objects: [OrderConfirmationScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+
+  - screen_id: payment_failure
+    display_name: Payment Failure
+    domain: checkout
+    analytics_tags: [PaymentFailure, PaymentError]
+    page_objects: [PaymentFailureScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+    notes: >
+      Low traffic by design, high consequence. Protected in
+      config/protected-tests.yaml against traffic-based pruning.
+
+  # --------------------------------------------------------------- account
+  - screen_id: account_home
+    display_name: Account Home
+    domain: account
+    analytics_tags: [Account, AccountHome]
+    page_objects: [AccountHomeScreen]
+    sensitivity: low
+
+  - screen_id: order_history
+    display_name: Order History
+    domain: account
+    analytics_tags: [OrderHistory]
+    page_objects: [OrderHistoryScreen]
+    sensitivity: high
+    occlusion_required: true
+
+  - screen_id: profile_edit
+    display_name: Edit Profile
+    domain: account
+    analytics_tags: [ProfileEdit]
+    page_objects: [ProfileEditScreen]
+    sensitivity: high
+    occlusion_required: true
+
+  - screen_id: saved_cards
+    display_name: Saved Cards
+    domain: account
+    analytics_tags: [SavedCards]
+    page_objects: [SavedCardsScreen]
+    sensitivity: critical
+    occlusion_required: true
+    critical: true
+
+  - screen_id: address_book
+    display_name: Address Book
+    domain: account
+    analytics_tags: [AddressBook]
+    page_objects: [AddressBookScreen]
+    sensitivity: high
+    occlusion_required: true
+
+  - screen_id: account_delete
+    display_name: Delete Account
+    domain: account
+    analytics_tags: [AccountDelete, DeleteAccountConfirm]
+    page_objects: [AccountDeleteScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+    notes: >
+      GDPR / DPDP right to erasure. Near-zero production traffic and absolutely
+      non-negotiable coverage - the canonical example of why the protected
+      registry exists.
+
+  - screen_id: data_export
+    display_name: Export My Data
+    domain: account
+    analytics_tags: [DataExport]
+    page_objects: [DataExportScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+    notes: GDPR / DPDP right to data portability.
+
+  # --------------------------------------------------------------- support
+  - screen_id: help_center
+    display_name: Help Center
+    domain: support
+    analytics_tags: [HelpCenter]
+    page_objects: [HelpCenterScreen]
+    sensitivity: none
+
+  - screen_id: contact_support
+    display_name: Contact Support
+    domain: support
+    analytics_tags: [ContactSupport]
+    page_objects: [ContactSupportScreen]
+    sensitivity: low
+
+  - screen_id: refund_request
+    display_name: Refund Request
+    domain: support
+    analytics_tags: [RefundRequest]
+    page_objects: [RefundRequestScreen]
+    sensitivity: high
+    occlusion_required: true
+    critical: true
+    notes: Financial dispute path. Low volume, high regulatory exposure.
+
+  # Known gap, tracked deliberately: instrumented in the app but no Page Object
+  # binding exists yet. Surfaces as a WARNING in taxonomy validation and lowers
+  # the automation_binding dimension of the readiness audit.
+  - screen_id: notification_center
+    display_name: Notification Center
+    domain: account
+    analytics_tags: [NotificationCenter]
+    page_objects: []
+    sensitivity: low

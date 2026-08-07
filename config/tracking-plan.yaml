@@ -1,0 +1,275 @@
+# Tracking Plan - the event schema contract.
+#
+# This is an API between the app team and GoldenFlow. The app promises to emit these
+# events, with these properties, of these types, on these screens. GoldenFlow
+# promises to build on nothing else.
+#
+# Reviewed like an API: additive changes are normal PRs, removals and type changes
+# are breaking. Validate the contract and check production against it with:
+#
+#   goldenflow tracking validate config/tracking-plan.yaml
+#   goldenflow tracking conformance --plan config/tracking-plan.yaml \
+#       --taxonomy config/taxonomy.yaml --events artifacts/sample-events.jsonl
+#
+# NO PERSONAL DATA IN PROPERTIES. Reference by identifier and resolve server-side
+# under access control. Enforced by the PII scanner - see docs/pii-policy.md.
+
+version: "1.0.0"
+app_id: acme-shop
+
+# Required on every event regardless of type. These are the fields that make an
+# event joinable at all; without them it is telemetry, not a journey step.
+common_properties:
+  - name: session_id
+    type: string
+    required: true
+    description: Groups events into a single user session. The journey backbone.
+  - name: timestamp
+    type: timestamp
+    required: true
+    description: Client event time, ISO-8601 or epoch. Orders the sequence.
+  - name: app_version
+    type: string
+    required: false
+    description: Enables cohorting journeys by release.
+
+events:
+  # ---------------------------------------------------------------- navigation
+  - name: screen_view
+    type: screen_view
+    description: >
+      Emitted on every screen entry. The single most important event in the
+      system - it is the raw material of every mined journey.
+    screens: ["*"]
+    properties:
+      - name: screen_tag
+        type: string
+        required: true
+        description: Must resolve via config/taxonomy.yaml or the event is orphaned.
+      - name: referrer_tag
+        type: string
+        required: false
+        description: Previous screen. Redundant with sequence, useful for validation.
+
+  # --------------------------------------------------------------- browse
+  - name: banner_tap
+    type: interaction
+    screens: [home]
+    properties:
+      - name: banner_id
+        type: string
+        required: true
+      - name: position
+        type: integer
+        required: false
+
+  - name: category_tap
+    type: interaction
+    screens: [home, category_list]
+    properties:
+      - name: category_id
+        type: string
+        required: true
+
+  - name: search_submit
+    type: interaction
+    screens: [search]
+    properties:
+      - name: query_length
+        type: integer
+        required: true
+        description: >
+          Length, never the query itself. Search terms routinely contain names,
+          addresses and order numbers typed by users.
+      - name: result_count
+        type: integer
+        required: true
+
+  - name: suggestion_tap
+    type: interaction
+    screens: [search]
+    properties:
+      - name: position
+        type: integer
+        required: true
+
+  - name: filter_apply
+    type: interaction
+    screens: [product_list]
+    properties:
+      - name: filter_type
+        type: string
+        required: true
+      - name: result_count
+        type: integer
+        required: false
+
+  - name: product_tap
+    type: interaction
+    screens: [product_list, home, search]
+    properties:
+      - name: product_id
+        type: string
+        required: true
+      - name: position
+        type: integer
+        required: false
+
+  - name: variant_select
+    type: interaction
+    screens: [product_detail]
+    properties:
+      - name: variant_id
+        type: string
+        required: true
+
+  # --------------------------------------------------------------- checkout
+  - name: add_to_cart
+    type: interaction
+    screens: [product_detail, product_list]
+    properties:
+      - name: product_id
+        type: string
+        required: true
+      - name: quantity
+        type: integer
+        required: true
+      - name: price
+        type: number
+        required: true
+        description: Feeds the business_value term of Golden Journey scoring.
+
+  - name: quantity_change
+    type: interaction
+    screens: [cart]
+    properties:
+      - name: product_id
+        type: string
+        required: true
+      - name: quantity
+        type: integer
+        required: true
+
+  - name: checkout_start
+    type: interaction
+    screens: [cart]
+    properties:
+      - name: cart_value
+        type: number
+        required: true
+      - name: item_count
+        type: integer
+        required: true
+
+  - name: address_select
+    type: interaction
+    screens: [delivery_address]
+    properties:
+      - name: address_id
+        type: string
+        required: true
+        description: Identifier only. Never the address itself.
+
+  - name: payment_select
+    type: interaction
+    screens: [payment_method]
+    properties:
+      - name: payment_type
+        type: string
+        required: true
+        description: Category such as card/wallet/cod. Never an instrument identifier.
+
+  - name: place_order
+    type: interaction
+    screens: [order_review]
+    properties:
+      - name: order_value
+        type: number
+        required: true
+      - name: item_count
+        type: integer
+        required: true
+
+  - name: order_completed
+    type: interaction
+    screens: [order_confirmation]
+    properties:
+      - name: order_id
+        type: string
+        required: true
+      - name: order_value
+        type: number
+        required: true
+
+  - name: payment_failed
+    type: error
+    screens: [payment_method, payment_failure, order_review]
+    description: >
+      Low volume, high consequence. Drives the risk term of journey scoring and
+      is the anchor for the protected payment-failure test suite.
+    properties:
+      - name: failure_code
+        type: string
+        required: true
+      - name: payment_type
+        type: string
+        required: false
+      - name: retry_count
+        type: integer
+        required: false
+
+  - name: retry_payment
+    type: interaction
+    screens: [payment_failure]
+    properties:
+      - name: retry_count
+        type: integer
+        required: true
+
+  # ------------------------------------------------------------------- auth
+  - name: login_submit
+    type: interaction
+    screens: [login]
+    properties:
+      - name: method
+        type: string
+        required: true
+        description: password/otp/social. Never the credential.
+
+  - name: signup_submit
+    type: interaction
+    screens: [signup]
+    properties:
+      - name: method
+        type: string
+        required: true
+
+  - name: otp_submit
+    type: interaction
+    screens: [otp_verify]
+    properties:
+      - name: attempt
+        type: integer
+        required: true
+        description: Attempt number only. The code itself must never be emitted.
+
+  # ---------------------------------------------------------------- support
+  - name: ticket_submit
+    type: interaction
+    screens: [contact_support]
+    properties:
+      - name: topic
+        type: string
+        required: true
+        description: Enumerated topic, not free text. Free text carries PII.
+
+  - name: refund_submit
+    type: interaction
+    screens: [refund_request]
+    properties:
+      - name: order_id
+        type: string
+        required: true
+      - name: reason_code
+        type: string
+        required: true

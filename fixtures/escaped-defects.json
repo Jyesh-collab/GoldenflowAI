@@ -1,0 +1,144 @@
+{
+  "_comment": [
+    "Escaped production defects from one release cycle, as a QE team would export",
+    "them from Jira. Synthetic, and shaped to exercise every attribution branch:",
+    "gaps GoldenFlow flagged and nobody closed, defects that slipped past a green",
+    "test, journeys mining never saw, and backend issues that were never",
+    "GoldenFlow's to catch."
+  ],
+  "release": "9.0.0",
+  "defects": [
+    {
+      "defect_id": "BUG-4412",
+      "title": "Retry after declined card loops back to an empty cart",
+      "detected_at": "2026-07-14T09:22:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_007",
+      "screens": ["payment_method", "payment_failure"],
+      "severity": "critical",
+      "notes": "GoldenFlow flagged payment_method -> payment_failure as an uncovered gap in the M10 report. No test was written."
+    },
+    {
+      "defect_id": "BUG-4418",
+      "title": "Delete Account confirm button disabled for users with an open order",
+      "detected_at": "2026-07-19T14:05:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_015",
+      "screens": ["account_delete"],
+      "severity": "critical",
+      "notes": "GDPR erasure blocked. Flagged as an uncovered gap; 2 sessions/week so it was deprioritised."
+    },
+    {
+      "defect_id": "BUG-4423",
+      "title": "Refund request submits but never reaches the backend",
+      "detected_at": "2026-07-21T11:40:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_010",
+      "screens": ["refund_request"],
+      "severity": "high",
+      "notes": "Flagged as an uncovered gap."
+    },
+    {
+      "defect_id": "BUG-4431",
+      "title": "Wallet payment charges twice when Continue is double-tapped",
+      "detected_at": "2026-07-23T16:18:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_003",
+      "screens": ["payment_method", "order_review"],
+      "severity": "critical",
+      "covering_tests": ["tests/test_checkout.py::test_wallet_payment_reaches_review"],
+      "notes": "A test walks this path and passed. It asserts nothing about the outcome - flagged as an assertion_gap in the M10 report."
+    },
+    {
+      "defect_id": "BUG-4437",
+      "title": "Order total shows pre-discount price on the review screen",
+      "detected_at": "2026-07-25T08:55:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_003",
+      "screens": ["order_review"],
+      "severity": "high",
+      "covering_tests": ["tests/test_checkout.py::test_search_to_purchase_completes"],
+      "notes": "Covered path, green test. The test asserts order_total is not None, not that it is correct."
+    },
+    {
+      "defect_id": "BUG-4440",
+      "title": "Promo code row overlaps subtotal on small screens",
+      "detected_at": "2026-07-26T13:02:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_099",
+      "screens": ["cart"],
+      "severity": "medium",
+      "notes": "Journey not in the Golden set - the promo row shipped in 9.0.0 and mining had not seen it yet."
+    },
+    {
+      "defect_id": "BUG-4445",
+      "title": "Search returns stale results after backend cache eviction",
+      "detected_at": "2026-07-28T10:11:00Z",
+      "release": "9.0.0",
+      "severity": "high",
+      "notes": "Backend. No client journey to attribute it to."
+    },
+    {
+      "defect_id": "BUG-4451",
+      "title": "Push notification deep link opens the wrong product",
+      "detected_at": "2026-07-29T17:44:00Z",
+      "release": "9.0.0",
+      "severity": "medium",
+      "notes": "Notification infrastructure, out of scope."
+    },
+    {
+      "defect_id": "BUG-4460",
+      "title": "OTP resend button has no rate limit",
+      "detected_at": "2026-07-30T12:30:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_018",
+      "screens": ["otp_verify"],
+      "severity": "high",
+      "notes": "Flagged as an uncovered gap."
+    },
+    {
+      "defect_id": "BUG-4466",
+      "title": "Saved cards list shows expired cards as selectable",
+      "detected_at": "2026-08-01T09:15:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_012",
+      "screens": ["saved_cards"],
+      "severity": "medium",
+      "covering_tests": ["tests/test_account.py::test_saved_cards_are_listed"],
+      "notes": "Covered, green. Test asserts card_count() >= 0, which cannot fail."
+    },
+    {
+      "defect_id": "BUG-4470",
+      "title": "Contact Support form loses input on rotation",
+      "detected_at": "2026-08-02T15:20:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_008",
+      "screens": ["contact_support"],
+      "severity": "low",
+      "notes": "Flagged as an uncovered gap."
+    },
+    {
+      "defect_id": "BUG-4473",
+      "title": "Data export email never sends for accounts older than 3 years",
+      "detected_at": "2026-08-03T11:05:00Z",
+      "release": "9.0.0",
+      "journey_id": "aj_014",
+      "screens": ["data_export"],
+      "severity": "critical",
+      "notes": "GDPR portability. Flagged as an uncovered gap; 5 sessions/week."
+    }
+  ],
+  "gaps_reported": [
+    {"journey_id": "aj_007", "reported_at": "2026-06-01T00:00:00Z", "severity": "high", "caused_defect": "BUG-4412"},
+    {"journey_id": "aj_015", "reported_at": "2026-06-01T00:00:00Z", "severity": "high", "caused_defect": "BUG-4418"},
+    {"journey_id": "aj_010", "reported_at": "2026-06-01T00:00:00Z", "severity": "high", "caused_defect": "BUG-4423"},
+    {"journey_id": "aj_018", "reported_at": "2026-06-01T00:00:00Z", "severity": "medium", "caused_defect": "BUG-4460"},
+    {"journey_id": "aj_008", "reported_at": "2026-06-01T00:00:00Z", "severity": "high", "caused_defect": "BUG-4470"},
+    {"journey_id": "aj_014", "reported_at": "2026-06-01T00:00:00Z", "severity": "high", "caused_defect": "BUG-4473"},
+    {"journey_id": "aj_011", "reported_at": "2026-06-01T00:00:00Z", "severity": "medium", "closed_by_test": "tests/generated/test_splash_to_forgot_password.py"},
+    {"journey_id": "aj_013", "reported_at": "2026-06-01T00:00:00Z", "severity": "low", "closed_by_test": "tests/generated/test_home_to_notification_center.py"},
+    {"journey_id": "aj_009", "reported_at": "2026-06-01T00:00:00Z", "severity": "medium"},
+    {"journey_id": "aj_005", "reported_at": "2026-06-01T00:00:00Z", "severity": "low"},
+    {"journey_id": "aj_016", "reported_at": "2026-06-01T00:00:00Z", "severity": "low"}
+  ]
+}

@@ -1,0 +1,61 @@
+# Tenant registry - one platform, many apps.
+#
+# The isolation that matters here is BLAST RADIUS, not privacy. These teams work for
+# the same company. What must not happen is a taxonomy edit for one app re-keying
+# another app's journey graph, which presents as a mysterious coverage collapse
+# rather than an error.
+#
+#   goldenflow tenant list config/tenants.yaml
+#   goldenflow tenant check config/tenants.yaml    # isolation violations
+
+tenants:
+  - tenant_id: acme-shop
+    display_name: Acme Shopping
+    platform: both
+    owner_team: retail-qe
+    taxonomy_path: config/taxonomy.yaml
+    tracking_plan_path: config/tracking-plan.yaml
+    registry_path: config/protected-tests.yaml
+    suite_path: fixtures/appium-suite
+    store_path: artifacts/events.db
+    source: uxcam
+    readiness_threshold: 70.0
+    onboarded_at: "2026-06-01"
+    status: active
+
+  - tenant_id: acme-pay
+    display_name: Acme Payments
+    platform: both
+    owner_team: payments-qe
+    taxonomy_path: config/tenants/acme-pay/taxonomy.yaml
+    tracking_plan_path: config/tenants/acme-pay/tracking-plan.yaml
+    registry_path: config/tenants/acme-pay/protected-tests.yaml
+    suite_path: repos/acme-pay-automation
+    store_path: artifacts/acme-pay/events.db
+    source: uxcam
+    # A payments app weights risk far above raw traffic. A shopping app should not
+    # inherit that, and Phase 6 tunes each tenant separately for the same reason.
+    weights:
+      frequency: 0.15
+      business_value: 0.30
+      risk: 0.40
+      exposure: 0.15
+    drift_thresholds:
+      js_divergence_alert: 0.12
+    readiness_threshold: 80.0
+    onboarded_at: "2026-07-15"
+    status: active
+
+  - tenant_id: acme-rewards
+    display_name: Acme Rewards
+    platform: android
+    owner_team: growth-qe
+    taxonomy_path: config/tenants/acme-rewards/taxonomy.yaml
+    tracking_plan_path: config/tenants/acme-rewards/tracking-plan.yaml
+    registry_path: config/tenants/acme-rewards/protected-tests.yaml
+    suite_path: repos/acme-rewards-automation
+    store_path: artifacts/acme-rewards/events.db
+    source: firebase
+    readiness_threshold: 70.0
+    onboarded_at: "2026-08-01"
+    status: onboarding

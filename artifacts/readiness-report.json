@@ -1,0 +1,58 @@
+{
+  "app_id": "acme-shop",
+  "sample_size": 12699,
+  "score": 89.2,
+  "threshold": 70.0,
+  "verdict": "GO",
+  "passed": true,
+  "dimensions": [
+    {
+      "name": "screen_coverage",
+      "weight": 0.25,
+      "score": 100.0,
+      "detail": "28/28 declared screens seen in sample",
+      "blocker": false
+    },
+    {
+      "name": "action_coverage",
+      "weight": 0.15,
+      "score": 53.6,
+      "detail": "15/28 observed screens emit non-navigation events",
+      "blocker": false
+    },
+    {
+      "name": "session_integrity",
+      "weight": 0.2,
+      "score": 98.8,
+      "detail": "98% events carry session_id; 100% of 1500 sessions are time-ordered",
+      "blocker": false
+    },
+    {
+      "name": "identity_stability",
+      "weight": 0.15,
+      "score": 91.2,
+      "detail": "82% events carry user_id; 0 session(s) span multiple user IDs",
+      "blocker": false
+    },
+    {
+      "name": "naming_consistency",
+      "weight": 0.15,
+      "score": 87.5,
+      "detail": "28/32 observed tags resolve to the taxonomy",
+      "blocker": false
+    },
+    {
+      "name": "automation_binding",
+      "weight": 0.1,
+      "score": 96.4,
+      "detail": "27/28 screens have a Page Object binding",
+      "blocker": false
+    }
+  ],
+  "remediation": [
+    "[action_coverage] Instrument interaction events (taps, submits, failures) - screen views alone give sequence but no intent, so mined journeys cannot be scored by business value.",
+    "[naming_consistency] Unmapped tags seen in production: HomeV2 (14x), ExperimentalPLP (14x), DebugScreen (10x), LegacyCheckout (7x). Either add them to the taxonomy or fix the app's tagging - unmapped events are silently dropped from every journey.",
+    "[identity_stability] Set a stable user identity at login and keep it across reinstall. Without it, cohorting and per-user journey analysis degrade to per-session only.",
+    "[automation_binding] Bind remaining screens to Page Objects. Unbound screens produce journey specs that Phase 4 cannot resolve into executable steps."
+  ]
+}

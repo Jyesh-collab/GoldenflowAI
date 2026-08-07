@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<!--
+  GDPR Art.17 erasure. Two production sessions in the sample, in the protected
+  test registry, and no Page Object exists. Reached by the crawler with an
+  authenticated fixture account.
+
+  Note the confirm button: no content-desc, so accessibility ID resolution fails
+  and the resolver must fall back to resource-id. That is the realistic case, and
+  the diagnostics should say so rather than silently downgrading.
+-->
+<hierarchy rotation="0">
+  <android.widget.FrameLayout index="0" package="com.acme.shop" class="android.widget.FrameLayout" text="" resource-id="" content-desc="" clickable="false" enabled="true" bounds="[0,0][1080,2340]">
+    <android.widget.LinearLayout index="0" package="com.acme.shop" class="android.widget.LinearLayout" text="" resource-id="com.acme.shop:id/account_delete_root" content-desc="" clickable="false" enabled="true" bounds="[0,0][1080,2340]">
+      <android.widget.TextView index="0" package="com.acme.shop" class="android.widget.TextView" text="Delete your account" resource-id="com.acme.shop:id/delete_title" content-desc="account_delete_title" clickable="false" enabled="true" bounds="[48,160][1032,240]" />
+      <android.widget.TextView index="1" package="com.acme.shop" class="android.widget.TextView" text="This permanently removes your orders, addresses and saved cards. This cannot be undone." resource-id="com.acme.shop:id/delete_warning" content-desc="account_delete_warning" clickable="false" enabled="true" bounds="[48,280][1032,460]" />
+      <android.widget.CheckBox index="2" package="com.acme.shop" class="android.widget.CheckBox" text="I understand this is permanent" resource-id="com.acme.shop:id/delete_acknowledge" content-desc="account_delete_acknowledge" clickable="true" enabled="true" bounds="[48,520][1032,600]" />
+      <android.widget.EditText index="3" package="com.acme.shop" class="android.widget.EditText" text="" resource-id="com.acme.shop:id/delete_password" content-desc="account_delete_password" clickable="true" enabled="true" bounds="[48,660][1032,760]" />
+      <android.widget.Button index="4" package="com.acme.shop" class="android.widget.Button" text="Delete my account" resource-id="com.acme.shop:id/delete_confirm" content-desc="" clickable="true" enabled="true" bounds="[48,860][1032,980]" />
+      <android.widget.Button index="5" package="com.acme.shop" class="android.widget.Button" text="Cancel" resource-id="com.acme.shop:id/delete_cancel" content-desc="account_delete_cancel" clickable="true" enabled="true" bounds="[48,1020][1032,1140]" />
+    </android.widget.LinearLayout>
+  </android.widget.FrameLayout>
+</hierarchy>

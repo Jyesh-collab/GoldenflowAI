@@ -1,0 +1,227 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1620 1640" width="1620" height="1640" font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#6d5ce7"/>
+    </marker>
+    <marker id="arwFb" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#9aa5b8"/>
+    </marker>
+    <marker id="arwAmb" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#d99518"/>
+    </marker>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1f2d5a" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#243a6b"/>
+      <stop offset="100%" stop-color="#3d5a9e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1620" height="1640" fill="#ffffff"/>
+
+  <!-- ============ TITLE ============ -->
+  <rect x="0" y="0" width="1620" height="112" fill="url(#hdr)"/>
+  <text x="60" y="52" font-size="32" font-weight="700" fill="#ffffff">GoldenFlow AI &#8212; Production Architecture</text>
+  <text x="60" y="84" font-size="16" fill="#c3d0ea">A Self-Evolving Mobile QE Agent  &#183;  Learning from Production. Evolving Quality.</text>
+  <text x="1560" y="52" font-size="13" fill="#9fb2d8" text-anchor="end">Process mining + conformance checking</text>
+  <text x="1560" y="76" font-size="13" fill="#9fb2d8" text-anchor="end">applied to mobile quality engineering</text>
+
+  <!-- ============ BAND 1 : PRODUCTION TELEMETRY ============ -->
+  <text x="60" y="163" font-size="13" font-weight="700" fill="#7d8aa3" letter-spacing="1.6">PRODUCTION TELEMETRY</text>
+
+  <g filter="url(#sh)">
+    <rect x="60" y="178" width="265" height="142" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="60" y="178" width="265" height="5" rx="2.5" fill="#4a6fb5"/>
+    <rect x="345" y="178" width="265" height="142" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="345" y="178" width="265" height="5" rx="2.5" fill="#4a6fb5"/>
+    <rect x="630" y="178" width="265" height="142" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="630" y="178" width="265" height="5" rx="2.5" fill="#4a6fb5"/>
+    <rect x="915" y="178" width="265" height="142" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="915" y="178" width="265" height="5" rx="2.5" fill="#4a6fb5"/>
+  </g>
+
+  <text x="84" y="215" font-size="17" font-weight="700" fill="#1f2d5a">Mobile App SDK</text>
+  <text x="84" y="241" font-size="13" fill="#5c6b85">Screen views, custom events,</text>
+  <text x="84" y="261" font-size="13" fill="#5c6b85">user &amp; session identifiers</text>
+  <text x="84" y="295" font-size="12" font-weight="600" fill="#4a6fb5">Android &#183; iOS &#183; RN &#183; Flutter</text>
+
+  <text x="369" y="215" font-size="17" font-weight="700" fill="#1f2d5a">Session Replay</text>
+  <text x="369" y="241" font-size="13" fill="#5c6b85">Auto-captured taps, screens,</text>
+  <text x="369" y="261" font-size="13" fill="#5c6b85">rage taps + view hierarchy</text>
+  <text x="369" y="295" font-size="12" font-weight="600" fill="#4a6fb5">UXCam</text>
+
+  <text x="654" y="215" font-size="17" font-weight="700" fill="#1f2d5a">Crash &amp; Errors</text>
+  <text x="654" y="241" font-size="13" fill="#5c6b85">Crashes, ANRs, rage taps,</text>
+  <text x="654" y="261" font-size="13" fill="#5c6b85">release health</text>
+  <text x="654" y="295" font-size="12" font-weight="600" fill="#4a6fb5">Crashlytics &#183; Sentry</text>
+
+  <text x="939" y="215" font-size="17" font-weight="700" fill="#1f2d5a">Backend APM</text>
+  <text x="939" y="241" font-size="13" fill="#5c6b85">API latency, error rates,</text>
+  <text x="939" y="261" font-size="13" fill="#5c6b85">distributed traces</text>
+  <text x="939" y="295" font-size="12" font-weight="600" fill="#4a6fb5">Datadog &#183; Tempo &#183; New Relic</text>
+
+  <line x1="620" y1="320" x2="620" y2="366" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- ============ BAND 2 : INGESTION ============ -->
+  <text x="60" y="392" font-size="13" font-weight="700" fill="#7d8aa3" letter-spacing="1.6">INGESTION &amp; NORMALIZATION</text>
+  <g filter="url(#sh)">
+    <rect x="60" y="406" width="1120" height="104" rx="10" fill="#f7f9fc" stroke="#b9c5da" stroke-width="1.5"/>
+  </g>
+  <text x="88" y="444" font-size="20" font-weight="700" fill="#1f2d5a">RudderStack &#8212; Customer Data Platform</text>
+  <text x="88" y="472" font-size="14" fill="#5c6b85">One instrumentation point in the app. Fans out to product analytics for humans, and to the warehouse for GoldenFlow.</text>
+  <text x="88" y="494" font-size="13" font-style="italic" fill="#7d8aa3">Makes the analytics vendor a destination toggle &#8212; swapping vendors is an adapter change, not a rewrite.</text>
+
+  <line x1="620" y1="510" x2="620" y2="556" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- ============ BAND 3 : EVENT STORE ============ -->
+  <text x="60" y="582" font-size="13" font-weight="700" fill="#7d8aa3" letter-spacing="1.6">SINGLE SOURCE OF TRUTH</text>
+  <g filter="url(#sh)">
+    <rect x="60" y="596" width="1120" height="104" rx="10" fill="#f6f3ff" stroke="#a892f0" stroke-width="1.8"/>
+  </g>
+  <text x="88" y="634" font-size="20" font-weight="700" fill="#4a30bd">Event Store &#8212; BigQuery / ClickHouse</text>
+  <text x="88" y="662" font-size="14" fill="#5c6b85">Raw, per-session, ordered, event-level. Risk signals joined on session ID so a crash lands at a precise point in a journey.</text>
+  <text x="88" y="684" font-size="13" font-style="italic" fill="#7d8aa3">Preserves the per-user sequence and identity that an aggregated metrics store discards at write time.</text>
+
+  <line x1="620" y1="700" x2="620" y2="746" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- ============ BAND 4 : AGENT 1 ============ -->
+  <g filter="url(#sh)">
+    <rect x="60" y="762" width="1120" height="238" rx="12" fill="#edfaf3" stroke="#1fa06b" stroke-width="2"/>
+  </g>
+  <circle cx="94" cy="800" r="17" fill="#12805a"/>
+  <text x="94" y="806" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="124" y="807" font-size="22" font-weight="700" fill="#0f6f4e">Journey Intelligence Agent</text>
+  <text x="1152" y="807" font-size="13" font-weight="600" fill="#3f9c78" text-anchor="end">Deterministic analysis &#183; Python + PM4Py</text>
+
+  <rect x="85" y="836" width="256" height="140" rx="9" fill="#ffffff" stroke="#a9dcc6" stroke-width="1.5"/>
+  <text x="105" y="868" font-size="16" font-weight="700" fill="#0f6f4e">Sessionize</text>
+  <text x="105" y="894" font-size="12.5" fill="#5c6b85">Group events into ordered</text>
+  <text x="105" y="913" font-size="12.5" fill="#5c6b85">traces per session. Handles</text>
+  <text x="105" y="932" font-size="12.5" fill="#5c6b85">backgrounding, cold start.</text>
+  <text x="105" y="960" font-size="11.5" font-weight="600" fill="#3f9c78">session ID &#183; inactivity split</text>
+
+  <rect x="356" y="836" width="256" height="140" rx="9" fill="#ffffff" stroke="#a9dcc6" stroke-width="1.5"/>
+  <text x="376" y="868" font-size="16" font-weight="700" fill="#0f6f4e">Process Mining</text>
+  <text x="376" y="894" font-size="12.5" fill="#5c6b85">Directly-Follows Graph, then</text>
+  <text x="376" y="913" font-size="12.5" fill="#5c6b85">Inductive Miner to discover</text>
+  <text x="376" y="932" font-size="12.5" fill="#5c6b85">the real process model.</text>
+  <text x="376" y="960" font-size="11.5" font-weight="600" fill="#3f9c78">PM4Py</text>
+
+  <rect x="627" y="836" width="256" height="140" rx="9" fill="#ffffff" stroke="#a9dcc6" stroke-width="1.5"/>
+  <text x="647" y="868" font-size="16" font-weight="700" fill="#0f6f4e">Cluster &amp; Score</text>
+  <text x="647" y="894" font-size="12.5" fill="#5c6b85">Collapse 1000s of variants to</text>
+  <text x="647" y="913" font-size="12.5" fill="#5c6b85">archetypes, then rank:</text>
+  <text x="647" y="932" font-size="12.5" fill="#5c6b85">frequency &#215; value &#215; risk &#215; gap</text>
+  <text x="647" y="960" font-size="11.5" font-weight="600" fill="#3f9c78">PrefixSpan &#183; Markov chains</text>
+
+  <rect x="898" y="836" width="256" height="140" rx="9" fill="#ffffff" stroke="#a9dcc6" stroke-width="1.5"/>
+  <text x="918" y="868" font-size="16" font-weight="700" fill="#0f6f4e">Journey Drift</text>
+  <text x="918" y="894" font-size="12.5" fill="#5c6b85">Distribution shift, novel path</text>
+  <text x="918" y="913" font-size="12.5" fill="#5c6b85">emergence rate, drop-off</text>
+  <text x="918" y="932" font-size="12.5" fill="#5c6b85">position movement.</text>
+  <text x="918" y="960" font-size="11.5" font-weight="600" fill="#3f9c78">JS divergence &#183; PSI</text>
+
+  <line x1="620" y1="1000" x2="620" y2="1046" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+  <text x="640" y="1030" font-size="13" font-weight="600" fill="#6d5ce7">Golden Journeys</text>
+
+  <!-- ============ BAND 5 : GRAPH ============ -->
+  <g filter="url(#sh)">
+    <rect x="60" y="1062" width="1120" height="150" rx="12" fill="#f4f0ff" stroke="#7c5cf0" stroke-width="2"/>
+  </g>
+  <text x="88" y="1104" font-size="22" font-weight="700" fill="#4a30bd">Neo4j &#8212; Journey Graph + Coverage Graph</text>
+  <text x="88" y="1136" font-size="14" fill="#5c6b85">Screens as nodes. Production transitions as weighted edges. Every existing test projected as a path over the same node set.</text>
+  <text x="88" y="1160" font-size="14" fill="#5c6b85">Both worlds in one database, one vocabulary &#8212; so coverage analysis becomes a graph diff rather than a heuristic.</text>
+  <text x="88" y="1192" font-size="12.5" font-weight="600" fill="#7c5cf0">gap = high-traffic edges with no covering test path  &#183;  obsolete = test paths with near-zero production traffic</text>
+
+  <!-- QA ASSETS SIDE COLUMN -->
+  <g filter="url(#sh)">
+    <rect x="1230" y="762" width="330" height="450" rx="12" fill="#fffbeb" stroke="#f0b429" stroke-width="2"/>
+  </g>
+  <text x="1258" y="802" font-size="17" font-weight="700" fill="#b45309">EXISTING QA ASSETS</text>
+  <line x1="1258" y1="816" x2="1532" y2="816" stroke="#f0d08a" stroke-width="1.5"/>
+
+  <rect x="1258" y="834" width="274" height="46" rx="7" fill="#ffffff" stroke="#f0d08a" stroke-width="1.3"/>
+  <text x="1276" y="863" font-size="14" font-weight="600" fill="#8a5a12">Appium Automation Suite</text>
+  <rect x="1258" y="890" width="274" height="46" rx="7" fill="#ffffff" stroke="#f0d08a" stroke-width="1.3"/>
+  <text x="1276" y="919" font-size="14" font-weight="600" fill="#8a5a12">Page Objects (POM)</text>
+  <rect x="1258" y="946" width="274" height="46" rx="7" fill="#ffffff" stroke="#f0d08a" stroke-width="1.3"/>
+  <text x="1276" y="975" font-size="14" font-weight="600" fill="#8a5a12">Test Cases &amp; Regression Suite</text>
+
+  <rect x="1258" y="1016" width="274" height="86" rx="8" fill="#fef3c7" stroke="#e0a51a" stroke-width="1.5"/>
+  <text x="1276" y="1046" font-size="15" font-weight="700" fill="#8a5a12">AST Suite Parser</text>
+  <text x="1276" y="1069" font-size="12" fill="#7c6320">Java/TestNG &#183; pytest &#183; WebdriverIO</text>
+  <text x="1276" y="1088" font-size="12" fill="#7c6320">Extracts screens, steps, assertions</text>
+
+  <rect x="1258" y="1112" width="274" height="76" rx="8" fill="#ffffff" stroke="#f0d08a" stroke-width="1.3"/>
+  <text x="1276" y="1140" font-size="13" font-weight="700" fill="#b45309">Protected Test Registry</text>
+  <text x="1276" y="1161" font-size="11.5" fill="#7c6320">Never pruned regardless of traffic:</text>
+  <text x="1276" y="1178" font-size="11.5" fill="#7c6320">refunds, deletion, a11y, regulatory</text>
+
+  <path d="M1230,1137 L1196,1137" stroke="#d99518" stroke-width="2.5" fill="none" marker-end="url(#arwAmb)"/>
+
+  <line x1="620" y1="1212" x2="620" y2="1258" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- ============ BAND 6 : AGENT 2 ============ -->
+  <g filter="url(#sh)">
+    <rect x="60" y="1274" width="1120" height="238" rx="12" fill="#eef3ff" stroke="#2563eb" stroke-width="2"/>
+  </g>
+  <circle cx="94" cy="1312" r="17" fill="#1d4ed8"/>
+  <text x="94" y="1318" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="124" y="1319" font-size="22" font-weight="700" fill="#1d4ed8">Quality Strategy Agent</text>
+  <text x="1152" y="1319" font-size="13" font-weight="600" fill="#5b83d8" text-anchor="end">Nothing reaches review until it has run green on a real device</text>
+
+  <rect x="85" y="1348" width="256" height="140" rx="9" fill="#ffffff" stroke="#b3c8f5" stroke-width="1.5"/>
+  <text x="105" y="1380" font-size="16" font-weight="700" fill="#1d4ed8">Graph Diff</text>
+  <text x="105" y="1406" font-size="12.5" fill="#5c6b85">Coverage gaps, obsolete tests,</text>
+  <text x="105" y="1425" font-size="12.5" fill="#5c6b85">stale paths, assertion gaps,</text>
+  <text x="105" y="1444" font-size="12.5" fill="#5c6b85">over-tested low-value flows.</text>
+  <text x="105" y="1472" font-size="11.5" font-weight="600" fill="#5b83d8">Cypher queries + confidence</text>
+
+  <rect x="356" y="1348" width="256" height="140" rx="9" fill="#ffffff" stroke="#b3c8f5" stroke-width="1.5"/>
+  <text x="376" y="1380" font-size="16" font-weight="700" fill="#1d4ed8">Locator Resolution</text>
+  <text x="376" y="1406" font-size="12.5" fill="#5c6b85">Turns screen names into</text>
+  <text x="376" y="1425" font-size="12.5" fill="#5c6b85">executable locators via three</text>
+  <text x="376" y="1444" font-size="12.5" fill="#5c6b85">independent paths.</text>
+  <text x="376" y="1472" font-size="11.5" font-weight="600" fill="#5b83d8">POM &#183; Robo crawl &#183; replay tree</text>
+
+  <rect x="627" y="1348" width="256" height="140" rx="9" fill="#ffffff" stroke="#b3c8f5" stroke-width="1.5"/>
+  <text x="647" y="1380" font-size="16" font-weight="700" fill="#1d4ed8">Generate</text>
+  <text x="647" y="1406" font-size="12.5" fill="#5c6b85">Journey spec + locators +</text>
+  <text x="647" y="1425" font-size="12.5" fill="#5c6b85">existing tests as few-shot, so</text>
+  <text x="647" y="1444" font-size="12.5" fill="#5c6b85">output matches repo idiom.</text>
+  <text x="647" y="1472" font-size="11.5" font-weight="600" fill="#5b83d8">Claude &#183; provenance metadata</text>
+
+  <rect x="898" y="1348" width="256" height="140" rx="9" fill="#ffffff" stroke="#b3c8f5" stroke-width="1.5"/>
+  <text x="918" y="1380" font-size="16" font-weight="700" fill="#1d4ed8">Validate</text>
+  <text x="918" y="1406" font-size="12.5" fill="#5c6b85">Compile, run on device farm,</text>
+  <text x="918" y="1425" font-size="12.5" fill="#5c6b85">repeat N&#215; across profiles.</text>
+  <text x="918" y="1444" font-size="12.5" fill="#5c6b85">Any flake disqualifies.</text>
+  <text x="918" y="1472" font-size="11.5" font-weight="600" fill="#5b83d8">BrowserStack &#183; Test Lab</text>
+
+  <line x1="620" y1="1512" x2="620" y2="1552" stroke="#6d5ce7" stroke-width="2.5" marker-end="url(#arw)"/>
+
+  <!-- ============ BAND 7 : OUTPUTS ============ -->
+  <g filter="url(#sh)">
+    <rect x="60" y="1568" width="265" height="52" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <rect x="345" y="1568" width="265" height="52" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <rect x="630" y="1568" width="265" height="52" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <rect x="915" y="1568" width="265" height="52" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  </g>
+  <text x="84" y="1592" font-size="15" font-weight="700" fill="#15803d">Pull Request</text>
+  <text x="84" y="1610" font-size="11.5" fill="#4f7a5e">Human approval required &#183; never auto-commit</text>
+  <text x="369" y="1592" font-size="15" font-weight="700" fill="#15803d">Grafana</text>
+  <text x="369" y="1610" font-size="11.5" fill="#4f7a5e">Drift, coverage %, open gap count</text>
+  <text x="654" y="1592" font-size="15" font-weight="700" fill="#15803d">Jira</text>
+  <text x="654" y="1610" font-size="11.5" fill="#4f7a5e">Gap tickets with journey evidence</text>
+  <text x="939" y="1592" font-size="15" font-weight="700" fill="#15803d">Outcome Tracking</text>
+  <text x="939" y="1610" font-size="11.5" fill="#4f7a5e">Did generated tests catch real defects?</text>
+
+  <!-- ============ FEEDBACK LOOP ============ -->
+  <path d="M1180,1594 L1596,1594 L1596,249 L1188,249" stroke="#9aa5b8" stroke-width="2" stroke-dasharray="7,5" fill="none" marker-end="url(#arwFb)"/>
+  <rect x="1230" y="1274" width="330" height="112" rx="10" fill="#ffffff" stroke="#c3cbd9" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="1258" y="1308" font-size="15" font-weight="700" fill="#5c6b85">CONTINUOUS FEEDBACK LOOP</text>
+  <text x="1258" y="1334" font-size="12.5" fill="#7d8aa3">Escaped-defect attribution and reviewer</text>
+  <text x="1258" y="1353" font-size="12.5" fill="#7d8aa3">rejections retune the scoring weights.</text>
+  <text x="1258" y="1376" font-size="12" font-weight="600" fill="#9aa5b8">This is what &#8220;self-evolving&#8221; actually means.</text>
+</svg>

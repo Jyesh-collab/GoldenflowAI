@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1070" width="1700" height="1070" font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif">
+  <defs>
+    <filter id="s2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1f2d5a" flood-opacity="0.13"/>
+    </filter>
+    <linearGradient id="hd2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#243a6b"/>
+      <stop offset="100%" stop-color="#3d5a9e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1700" height="1070" fill="#ffffff"/>
+
+  <!-- HEADER -->
+  <rect x="0" y="0" width="1700" height="108" fill="url(#hd2)"/>
+  <text x="60" y="50" font-size="31" font-weight="700" fill="#ffffff">GoldenFlow AI &#8212; Product Roadmap</text>
+  <text x="60" y="82" font-size="15" fill="#c3d0ea">Full product build-out &#183; 8 phases &#183; ~18 months to GA, ~24 months to org-wide adoption</text>
+  <text x="1640" y="50" font-size="13" fill="#9fb2d8" text-anchor="end">Phases overlap deliberately &#8212;</text>
+  <text x="1640" y="72" font-size="13" fill="#9fb2d8" text-anchor="end">bars are staffing windows, not hard gates</text>
+
+  <!-- QUARTER STRIPES -->
+  <rect x="430" y="150" width="150" height="701" fill="#f7f9fc"/>
+  <rect x="730" y="150" width="150" height="701" fill="#f7f9fc"/>
+  <rect x="1030" y="150" width="150" height="701" fill="#f7f9fc"/>
+  <rect x="1330" y="150" width="150" height="701" fill="#f7f9fc"/>
+
+  <!-- MONTH AXIS -->
+  <line x1="430" y1="185" x2="1630" y2="185" stroke="#ccd5e4" stroke-width="1.5"/>
+  <text x="455" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q1</text>
+  <text x="605" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q2</text>
+  <text x="755" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q3</text>
+  <text x="905" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q4</text>
+  <text x="1055" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q5</text>
+  <text x="1205" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q6</text>
+  <text x="1355" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q7</text>
+  <text x="1505" y="145" font-size="12" font-weight="700" fill="#7d8aa3" text-anchor="middle">Q8</text>
+
+  <g font-size="10.5" fill="#9aa5b8" text-anchor="middle">
+    <text x="455" y="172">M1</text><text x="505" y="172">M2</text><text x="555" y="172">M3</text>
+    <text x="605" y="172">M4</text><text x="655" y="172">M5</text><text x="705" y="172">M6</text>
+    <text x="755" y="172">M7</text><text x="805" y="172">M8</text><text x="855" y="172">M9</text>
+    <text x="905" y="172">M10</text><text x="955" y="172">M11</text><text x="1005" y="172">M12</text>
+    <text x="1055" y="172">M13</text><text x="1105" y="172">M14</text><text x="1155" y="172">M15</text>
+    <text x="1205" y="172">M16</text><text x="1255" y="172">M17</text><text x="1305" y="172">M18</text>
+    <text x="1355" y="172">M19</text><text x="1405" y="172">M20</text><text x="1455" y="172">M21</text>
+    <text x="1505" y="172">M22</text><text x="1555" y="172">M23</text><text x="1605" y="172">M24</text>
+  </g>
+
+  <g stroke="#e3e9f2" stroke-width="1">
+    <line x1="580" y1="185" x2="580" y2="851"/><line x1="730" y1="185" x2="730" y2="851"/>
+    <line x1="880" y1="185" x2="880" y2="851"/><line x1="1030" y1="185" x2="1030" y2="851"/>
+    <line x1="1180" y1="185" x2="1180" y2="851"/><line x1="1330" y1="185" x2="1330" y2="851"/>
+    <line x1="1480" y1="185" x2="1480" y2="851"/>
+  </g>
+  <line x1="430" y1="185" x2="430" y2="851" stroke="#ccd5e4" stroke-width="1.5"/>
+
+  <!-- ===== PHASE 0 ===== -->
+  <circle cx="82" cy="232" r="15" fill="#94a3b8"/><text x="82" y="238" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">0</text>
+  <text x="108" y="227" font-size="16.5" font-weight="700" fill="#1f2d5a">Foundation &amp; Readiness</text>
+  <text x="108" y="248" font-size="12.5" fill="#7d8aa3">Readiness audit &#183; taxonomy &#183; baselines &#183; privacy</text>
+  <text x="82" y="259" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">3.5 FTE</text>
+  <g filter="url(#s2)"><rect x="430" y="211" width="100" height="42" rx="7" fill="#94a3b8"/></g>
+  <text x="558" y="237" font-size="12" font-weight="600" fill="#64748b">Go / No-Go decision</text>
+
+  <!-- ===== PHASE 1 ===== -->
+  <circle cx="82" cy="314" r="15" fill="#7c5cf0"/><text x="82" y="320" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <text x="108" y="309" font-size="16.5" font-weight="700" fill="#1f2d5a">Data Foundation</text>
+  <text x="108" y="330" font-size="12.5" fill="#7d8aa3">RudderStack &#183; SDKs &#183; event store &#183; data quality</text>
+  <text x="82" y="341" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">5.5 FTE</text>
+  <g filter="url(#s2)"><rect x="480" y="293" width="200" height="42" rx="7" fill="#7c5cf0"/></g>
+  <text x="496" y="319" font-size="12.5" font-weight="600" fill="#ffffff">Single source of truth</text>
+
+  <!-- ===== PHASE 2 ===== -->
+  <circle cx="82" cy="396" r="15" fill="#1fa06b"/><text x="82" y="402" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+  <text x="108" y="391" font-size="16.5" font-weight="700" fill="#1f2d5a">Journey Intelligence Engine</text>
+  <text x="108" y="412" font-size="12.5" fill="#7d8aa3">PM4Py mining &#183; clustering &#183; scoring &#183; drift</text>
+  <text x="82" y="423" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">5 FTE</text>
+  <g filter="url(#s2)"><rect x="580" y="375" width="250" height="42" rx="7" fill="#1fa06b"/></g>
+  <text x="596" y="401" font-size="12.5" font-weight="600" fill="#ffffff">Golden Journey catalogue &#8212; Agent 1</text>
+
+  <!-- ===== PHASE 3 ===== -->
+  <circle cx="82" cy="478" r="15" fill="#10b981"/><text x="82" y="484" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+  <text x="108" y="473" font-size="16.5" font-weight="700" fill="#1f2d5a">QA Asset Graph &amp; Gap Analysis</text>
+  <text x="108" y="494" font-size="12.5" fill="#7d8aa3">Suite parsers &#183; coverage graph &#183; gap diff</text>
+  <text x="82" y="505" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">5 FTE</text>
+  <g filter="url(#s2)"><rect x="730" y="457" width="200" height="42" rx="7" fill="#10b981"/></g>
+  <text x="958" y="483" font-size="12" font-weight="700" fill="#0f8a5f">First standalone value</text>
+
+  <!-- ===== PHASE 4 ===== -->
+  <circle cx="82" cy="560" r="15" fill="#e0a51a"/><text x="82" y="566" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+  <text x="108" y="555" font-size="16.5" font-weight="700" fill="#1f2d5a">Locator Resolution</text>
+  <text x="108" y="576" font-size="12.5" fill="#7d8aa3">POM resolver &#183; Robo crawl &#183; self-healing</text>
+  <text x="82" y="587" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">4 FTE</text>
+  <g filter="url(#s2)"><rect x="830" y="539" width="200" height="42" rx="7" fill="#e0a51a"/></g>
+  <text x="846" y="565" font-size="12.5" font-weight="600" fill="#ffffff">Journeys become executable</text>
+
+  <!-- ===== PHASE 5 ===== -->
+  <circle cx="82" cy="642" r="15" fill="#2563eb"/><text x="82" y="648" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+  <text x="108" y="637" font-size="16.5" font-weight="700" fill="#1f2d5a">Generation &amp; Validation</text>
+  <text x="108" y="658" font-size="12.5" fill="#7d8aa3">Codegen &#183; device-farm gate &#183; PR workflow</text>
+  <text x="82" y="669" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">5 FTE</text>
+  <g filter="url(#s2)"><rect x="930" y="621" width="250" height="42" rx="7" fill="#2563eb"/></g>
+  <text x="946" y="647" font-size="12.5" font-weight="600" fill="#ffffff">Validated automation &#8212; Agent 2</text>
+
+  <!-- ===== PHASE 6 ===== -->
+  <circle cx="82" cy="724" r="15" fill="#6d5ce7"/><text x="82" y="730" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+  <text x="108" y="719" font-size="16.5" font-weight="700" fill="#1f2d5a">Closed Loop &amp; Governance</text>
+  <text x="108" y="740" font-size="12.5" fill="#7d8aa3">Outcome tracking &#183; auto-tune &#183; audit lineage</text>
+  <text x="82" y="751" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">4.5 FTE</text>
+  <g filter="url(#s2)"><rect x="1080" y="703" width="250" height="42" rx="7" fill="#6d5ce7"/></g>
+  <text x="1096" y="729" font-size="12.5" font-weight="600" fill="#ffffff">The system measures itself</text>
+
+  <!-- ===== PHASE 7 ===== -->
+  <circle cx="82" cy="806" r="15" fill="#0f766e"/><text x="82" y="812" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+  <text x="108" y="801" font-size="16.5" font-weight="700" fill="#1f2d5a">Multi-App Scale &amp; Productization</text>
+  <text x="108" y="822" font-size="12.5" fill="#7d8aa3">Multi-tenancy &#183; onboarding &#183; connectors &#183; SLAs</text>
+  <text x="82" y="833" font-size="10" font-weight="600" fill="#9aa5b8" text-anchor="middle">6.5 FTE</text>
+  <g filter="url(#s2)"><rect x="1230" y="785" width="400" height="42" rx="7" fill="#0f766e"/></g>
+  <text x="1246" y="811" font-size="12.5" font-weight="600" fill="#ffffff">Adoptable across the organisation</text>
+
+  <line x1="430" y1="851" x2="1630" y2="851" stroke="#ccd5e4" stroke-width="1.5"/>
+
+  <!-- MILESTONE DIAMONDS -->
+  <g fill="#1f2d5a">
+    <path d="M530,232 l9,-9 l9,9 l-9,9 Z" fill="#64748b"/>
+    <path d="M930,478 l9,-9 l9,9 l-9,9 Z" fill="#0f8a5f"/>
+    <path d="M1180,642 l9,-9 l9,9 l-9,9 Z" fill="#1d4ed8"/>
+    <path d="M1330,724 l9,-9 l9,9 l-9,9 Z" fill="#5b3fd6"/>
+  </g>
+
+  <!-- ===== GATES BAND ===== -->
+  <text x="60" y="905" font-size="13" font-weight="700" fill="#7d8aa3" letter-spacing="1.6">CRITICAL GATES &#8212; EACH ONE CAN STOP THE PROGRAMME</text>
+
+  <g filter="url(#s2)">
+    <rect x="60" y="922" width="300" height="108" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="60" y="922" width="6" height="108" rx="3" fill="#94a3b8"/>
+    <rect x="388" y="922" width="300" height="108" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="388" y="922" width="6" height="108" rx="3" fill="#7c5cf0"/>
+    <rect x="716" y="922" width="300" height="108" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="716" y="922" width="6" height="108" rx="3" fill="#10b981"/>
+    <rect x="1044" y="922" width="300" height="108" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="1044" y="922" width="6" height="108" rx="3" fill="#2563eb"/>
+    <rect x="1372" y="922" width="268" height="108" rx="10" fill="#ffffff" stroke="#ccd5e4" stroke-width="1.5"/>
+    <rect x="1372" y="922" width="6" height="108" rx="3" fill="#6d5ce7"/>
+  </g>
+
+  <text x="84" y="951" font-size="14.5" font-weight="700" fill="#1f2d5a">M2 &#183; Instrumentation gate</text>
+  <text x="84" y="975" font-size="12" fill="#5c6b85">Readiness &#8805; 70% on a pilot app. If the</text>
+  <text x="84" y="993" font-size="12" fill="#5c6b85">app cannot be mined, that is a valid</text>
+  <text x="84" y="1011" font-size="12" fill="#5c6b85">outcome &#8212; found cheaply, not late.</text>
+
+  <text x="412" y="951" font-size="14.5" font-weight="700" fill="#1f2d5a">M5 &#183; Data quality gate</text>
+  <text x="412" y="975" font-size="12" fill="#5c6b85">&#8805; 90% screen coverage, zero PII in a</text>
+  <text x="412" y="993" font-size="12" fill="#5c6b85">1,000-session audit. Garbage here</text>
+  <text x="412" y="1011" font-size="12" fill="#5c6b85">becomes confident nonsense later.</text>
+
+  <text x="740" y="951" font-size="14.5" font-weight="700" fill="#1f2d5a">M10 &#183; Trust gate</text>
+  <text x="740" y="975" font-size="12" fill="#5c6b85">&#8805; 75% of reported gaps confirmed real</text>
+  <text x="740" y="993" font-size="12" fill="#5c6b85">by QE leads. Insight ships before</text>
+  <text x="740" y="1011" font-size="12" fill="#5c6b85">generation &#8212; it earns Phase 5 credit.</text>
+
+  <text x="1068" y="951" font-size="14.5" font-weight="700" fill="#1f2d5a">M15 &#183; Quality gate</text>
+  <text x="1068" y="975" font-size="12" fill="#5c6b85">&#8805; 60% of generated PRs merged</text>
+  <text x="1068" y="993" font-size="12" fill="#5c6b85">unmodified, flake rate at or below the</text>
+  <text x="1068" y="1011" font-size="12" fill="#5c6b85">existing suite. Zero unreviewed commits.</text>
+
+  <text x="1396" y="951" font-size="14.5" font-weight="700" fill="#1f2d5a">M18 &#183; Value gate</text>
+  <text x="1396" y="975" font-size="12" fill="#5c6b85">Measured escaped-defect reduction</text>
+  <text x="1396" y="993" font-size="12" fill="#5c6b85">against the Phase 0 baseline. No</text>
+  <text x="1396" y="1011" font-size="12" fill="#5c6b85">baseline, no claim.</text>
+</svg>

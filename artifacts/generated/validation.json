@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "runner": "compile-only",
+    "generated": 3,
+    "validated": 0,
+    "failed": 0,
+    "flaky": 0,
+    "unvalidated": 3,
+    "first_attempt_pass_rate": 0.0,
+    "runs_per_profile": 2,
+    "profiles": [
+      "pixel_7_android_14",
+      "galaxy_s22_android_13",
+      "iphone_14_ios_17"
+    ]
+  },
+  "results": [
+    {
+      "test_name": "test_home_to_payment_failure",
+      "verdict": "unvalidated",
+      "reason": "compile-only did not execute anything on a device",
+      "runs": 6,
+      "executed_runs": 0,
+      "profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "pass_rate": 0.0,
+      "mean_duration_s": 0.0,
+      "eligible_for_pr": false
+    },
+    {
+      "test_name": "test_home_to_product_detail",
+      "verdict": "unvalidated",
+      "reason": "compile-only did not execute anything on a device",
+      "runs": 6,
+      "executed_runs": 0,
+      "profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "pass_rate": 0.0,
+      "mean_duration_s": 0.0,
+      "eligible_for_pr": false
+    },
+    {
+      "test_name": "test_home_to_delete_account",
+      "verdict": "unvalidated",
+      "reason": "compile-only did not execute anything on a device",
+      "runs": 6,
+      "executed_runs": 0,
+      "profiles": [
+        "galaxy_s22_android_13",
+        "iphone_14_ios_17",
+        "pixel_7_android_14"
+      ],
+      "pass_rate": 0.0,
+      "mean_duration_s": 0.0,
+      "eligible_for_pr": false
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+[
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Payment Failure: 4/5 transitions covered",
+      "description": "72 sessions (4.8% of traffic), score 72.5. Missing: payment_method -> payment_failure\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_007\n\nEvidence:\n{\n  \"sessions\": 72,\n  \"score\": 72.5,\n  \"missing_transitions\": [\n    \"payment_method -> payment_failure\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 15\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Contact Support: 0/2 transitions covered",
+      "description": "48 sessions (3.2% of traffic), score 45.7. Missing: home -> help_center, help_center -> contact_support\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_008\n\nEvidence:\n{\n  \"sessions\": 48,\n  \"score\": 45.7,\n  \"missing_transitions\": [\n    \"home -> help_center\",\n    \"help_center -> contact_support\"\n  ],\n  \"touches_critical_screen\": false,\n  \"risk_events\": 8\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). \n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Splash to Home: 1/4 transitions covered",
+      "description": "46 sessions (3.1% of traffic), score 61.9. Missing: splash -> onboarding_carousel, onboarding_carousel -> signup, signup -> otp_verify\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_009\n\nEvidence:\n{\n  \"sessions\": 46,\n  \"score\": 61.9,\n  \"missing_transitions\": [\n    \"splash -> onboarding_carousel\",\n    \"onboarding_carousel -> signup\",\n    \"signup -> otp_verify\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 9\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Refund Request: 2/3 transitions covered",
+      "description": "30 sessions (2.0% of traffic), score 58.4. Missing: order_history -> refund_request\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_010\n\nEvidence:\n{\n  \"sessions\": 30,\n  \"score\": 58.4,\n  \"missing_transitions\": [\n    \"order_history -> refund_request\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 8\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Splash to Forgot Password: 1/2 transitions covered",
+      "description": "10 sessions (0.7% of traffic), score 43.5. Missing: login -> forgot_password\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_011\n\nEvidence:\n{\n  \"sessions\": 10,\n  \"score\": 43.5,\n  \"missing_transitions\": [\n    \"login -> forgot_password\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 1\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Notification Center: 0/1 transitions covered",
+      "description": "6 sessions (0.4% of traffic), score 35.9. Missing: home -> notification_center\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_013\n\nEvidence:\n{\n  \"sessions\": 6,\n  \"score\": 35.9,\n  \"missing_transitions\": [\n    \"home -> notification_center\"\n  ],\n  \"touches_critical_screen\": false,\n  \"risk_events\": 8\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). \n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Export My Data: 1/2 transitions covered",
+      "description": "5 sessions (0.3% of traffic), score 50.2. Missing: account_home -> data_export\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_014\n\nEvidence:\n{\n  \"sessions\": 5,\n  \"score\": 50.2,\n  \"missing_transitions\": [\n    \"account_home -> data_export\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 8\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Delete Account: 1/2 transitions covered",
+      "description": "2 sessions (0.1% of traffic), score 46.7. Missing: account_home -> account_delete\n\nSeverity: high\nFinding type: coverage_gap\nGolden Journey: aj_015\n\nEvidence:\n{\n  \"sessions\": 2,\n  \"score\": 46.7,\n  \"missing_transitions\": [\n    \"account_home -> account_delete\"\n  ],\n  \"touches_critical_screen\": true,\n  \"risk_events\": 8\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). Journey touches a screen the taxonomy marks critical.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap",
+        "critical-screen"
+      ],
+      "priority": {
+        "name": "High"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] Home to Product Detail: 2/3 transitions covered",
+      "description": "134 sessions (8.9% of traffic), score 60.6. Missing: search -> product_list\n\nSeverity: medium\nFinding type: coverage_gap\nGolden Journey: aj_005\n\nEvidence:\n{\n  \"sessions\": 134,\n  \"score\": 60.6,\n  \"missing_transitions\": [\n    \"search -> product_list\"\n  ],\n  \"touches_critical_screen\": false,\n  \"risk_events\": 15\n}\n\nRecommendation: Generate an Appium test for this journey (Phase 5). \n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "coverage_gap"
+      ],
+      "priority": {
+        "name": "Medium"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] tests/test_account.py::test_login_with_otp_reaches_home drives critical screens without asserting",
+      "description": "Walks but never asserts on: login, otp_verify. A regression on these screens would not fail this test.\n\nSeverity: medium\nFinding type: assertion_gap\nTests: tests/test_account.py::test_login_with_otp_reaches_home\n\nEvidence:\n{\n  \"unasserted_critical_screens\": [\n    \"login\",\n    \"otp_verify\"\n  ],\n  \"assertions\": 1\n}\n\nRecommendation: Add assertions on the critical screens this test visits.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "assertion_gap"
+      ],
+      "priority": {
+        "name": "Medium"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] tests/test_checkout.py::test_search_to_purchase_completes drives critical screens without asserting",
+      "description": "Walks but never asserts on: delivery_address, payment_method. A regression on these screens would not fail this test.\n\nSeverity: medium\nFinding type: assertion_gap\nTests: tests/test_checkout.py::test_search_to_purchase_completes\n\nEvidence:\n{\n  \"unasserted_critical_screens\": [\n    \"delivery_address\",\n    \"payment_method\"\n  ],\n  \"assertions\": 6\n}\n\nRecommendation: Add assertions on the critical screens this test visits.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "assertion_gap"
+      ],
+      "priority": {
+        "name": "Medium"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] tests/test_checkout.py::test_wallet_payment_reaches_review drives critical screens without asserting",
+      "description": "Walks but never asserts on: cart, delivery_address, order_review, payment_method. A regression on these screens would not fail this test.\n\nSeverity: medium\nFinding type: assertion_gap\nTests: tests/test_checkout.py::test_wallet_payment_reaches_review\n\nEvidence:\n{\n  \"unasserted_critical_screens\": [\n    \"cart\",\n    \"delivery_address\",\n    \"order_review\",\n    \"payment_method\"\n  ],\n  \"assertions\": 0\n}\n\nRecommendation: Add assertions on the critical screens this test visits.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "assertion_gap"
+      ],
+      "priority": {
+        "name": "Medium"
+      }
+    }
+  },
+  {
+    "fields": {
+      "project": {
+        "key": "QA"
+      },
+      "summary": "[GoldenFlow] tests/test_deeplinks.py::test_deeplink_straight_to_payment drives critical screens without asserting",
+      "description": "Walks but never asserts on: payment_method. A regression on these screens would not fail this test.\n\nSeverity: medium\nFinding type: assertion_gap\nTests: tests/test_deeplinks.py::test_deeplink_straight_to_payment\n\nEvidence:\n{\n  \"unasserted_critical_screens\": [\n    \"payment_method\"\n  ],\n  \"assertions\": 0\n}\n\nRecommendation: Add assertions on the critical screens this test visits.\n\nRaised automatically by GoldenFlow AI from production telemetry.",
+      "issuetype": {
+        "name": "Task"
+      },
+      "labels": [
+        "goldenflow",
+        "assertion_gap"
+      ],
+      "priority": {
+        "name": "Medium"
+      }
+    }
+  }
+]

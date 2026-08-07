@@ -1,0 +1,951 @@
+{
+  "summary": {
+    "screens": 26,
+    "screens_resolved": 18,
+    "journeys": 18,
+    "executable_journeys": 12,
+    "executable_journey_pct": 66.7,
+    "step_resolution_pct": 89.0,
+    "blocking_screens": {
+      "onboarding_carousel": 1,
+      "signup": 1,
+      "refund_request": 1,
+      "data_export": 1,
+      "help_center": 1,
+      "contact_support": 1,
+      "forgot_password": 1,
+      "notification_center": 1
+    }
+  },
+  "disagreements": [],
+  "screens": {
+    "login": {
+      "screen_id": "login",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 4,
+      "resolved": 4,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 4
+      },
+      "locators": {
+        "email_field": {
+          "strategy": "accessibility_id",
+          "value": "login_email",
+          "screen_id": "login",
+          "element_role": "email_field",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "password_field": {
+          "strategy": "accessibility_id",
+          "value": "login_password",
+          "screen_id": "login",
+          "element_role": "password_field",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "submit": {
+          "strategy": "accessibility_id",
+          "value": "login_submit",
+          "screen_id": "login",
+          "element_role": "submit",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "forgot_link": {
+          "strategy": "accessibility_id",
+          "value": "login_forgot_password",
+          "screen_id": "login",
+          "element_role": "forgot_link",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "otp_verify": {
+      "screen_id": "otp_verify",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 3,
+      "resolved": 3,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 3
+      },
+      "locators": {
+        "code_field": {
+          "strategy": "accessibility_id",
+          "value": "otp_code_field",
+          "screen_id": "otp_verify",
+          "element_role": "code_field",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "verify": {
+          "strategy": "accessibility_id",
+          "value": "otp_verify",
+          "screen_id": "otp_verify",
+          "element_role": "verify",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "resend": {
+          "strategy": "accessibility_id",
+          "value": "otp_resend",
+          "screen_id": "otp_verify",
+          "element_role": "resend",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "account_home": {
+      "screen_id": "account_home",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 4,
+      "resolved": 4,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 4
+      },
+      "locators": {
+        "order_history_row": {
+          "strategy": "accessibility_id",
+          "value": "account_order_history",
+          "screen_id": "account_home",
+          "element_role": "order_history_row",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "saved_cards_row": {
+          "strategy": "accessibility_id",
+          "value": "account_saved_cards",
+          "screen_id": "account_home",
+          "element_role": "saved_cards_row",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "address_book_row": {
+          "strategy": "accessibility_id",
+          "value": "account_address_book",
+          "screen_id": "account_home",
+          "element_role": "address_book_row",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "privacy_row": {
+          "strategy": "accessibility_id",
+          "value": "account_privacy",
+          "screen_id": "account_home",
+          "element_role": "privacy_row",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "order_history": {
+      "screen_id": "order_history",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 2,
+      "resolved": 2,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "resource_id": 1,
+        "accessibility_id": 1
+      },
+      "locators": {
+        "order_row": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/order_row",
+          "screen_id": "order_history",
+          "element_role": "order_row",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "empty_state": {
+          "strategy": "accessibility_id",
+          "value": "order_history_empty",
+          "screen_id": "order_history",
+          "element_role": "empty_state",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "saved_cards": {
+      "screen_id": "saved_cards",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 2,
+      "resolved": 2,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "resource_id": 1,
+        "accessibility_id": 1
+      },
+      "locators": {
+        "card_row": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/saved_card_row",
+          "screen_id": "saved_cards",
+          "element_role": "card_row",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "add_card": {
+          "strategy": "accessibility_id",
+          "value": "saved_cards_add",
+          "screen_id": "saved_cards",
+          "element_role": "add_card",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "splash": {
+      "screen_id": "splash",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 2,
+      "resolved": 2,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 2
+      },
+      "locators": {
+        "logo": {
+          "strategy": "accessibility_id",
+          "value": "splash_logo",
+          "screen_id": "splash",
+          "element_role": "logo",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "get_started": {
+          "strategy": "accessibility_id",
+          "value": "splash_get_started",
+          "screen_id": "splash",
+          "element_role": "get_started",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "home": {
+      "screen_id": "home",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 4,
+      "resolved": 4,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 3,
+        "resource_id": 1
+      },
+      "locators": {
+        "banner_carousel": {
+          "strategy": "accessibility_id",
+          "value": "home_banner_carousel",
+          "screen_id": "home",
+          "element_role": "banner_carousel",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "search_entry": {
+          "strategy": "accessibility_id",
+          "value": "home_search_entry",
+          "screen_id": "home",
+          "element_role": "search_entry",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "category_tile": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/category_tile",
+          "screen_id": "home",
+          "element_role": "category_tile",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "account_tab": {
+          "strategy": "accessibility_id",
+          "value": "home_tab_account",
+          "screen_id": "home",
+          "element_role": "account_tab",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "search": {
+      "screen_id": "search",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 5,
+      "resolved": 5,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 4,
+        "resource_id": 1
+      },
+      "locators": {
+        "query_field": {
+          "strategy": "accessibility_id",
+          "value": "search_query_field",
+          "screen_id": "search",
+          "element_role": "query_field",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "submit": {
+          "strategy": "accessibility_id",
+          "value": "search_submit",
+          "screen_id": "search",
+          "element_role": "submit",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "result_row": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/search_result_row",
+          "screen_id": "search",
+          "element_role": "result_row",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "resultrows": {
+          "strategy": "accessibility_id",
+          "value": "search_result_row",
+          "screen_id": "search",
+          "element_role": "resultrows",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "emptystate": {
+          "strategy": "accessibility_id",
+          "value": "search_empty_state",
+          "screen_id": "search",
+          "element_role": "emptystate",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "category_list": {
+      "screen_id": "category_list",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 1,
+      "resolved": 1,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "resource_id": 1
+      },
+      "locators": {
+        "category_row": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/category_row",
+          "screen_id": "category_list",
+          "element_role": "category_row",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "product_list": {
+      "screen_id": "product_list",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 2,
+      "resolved": 2,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 1,
+        "resource_id": 1
+      },
+      "locators": {
+        "filter_button": {
+          "strategy": "accessibility_id",
+          "value": "plp_filter",
+          "screen_id": "product_list",
+          "element_role": "filter_button",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "product_card": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/product_card",
+          "screen_id": "product_list",
+          "element_role": "product_card",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "product_detail": {
+      "screen_id": "product_detail",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 4,
+      "resolved": 4,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 4
+      },
+      "locators": {
+        "title": {
+          "strategy": "accessibility_id",
+          "value": "pdp_title",
+          "screen_id": "product_detail",
+          "element_role": "title",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "price": {
+          "strategy": "accessibility_id",
+          "value": "pdp_price",
+          "screen_id": "product_detail",
+          "element_role": "price",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "variant_picker": {
+          "strategy": "accessibility_id",
+          "value": "pdp_variant_picker",
+          "screen_id": "product_detail",
+          "element_role": "variant_picker",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "add_to_cart": {
+          "strategy": "accessibility_id",
+          "value": "pdp_add_to_cart",
+          "screen_id": "product_detail",
+          "element_role": "add_to_cart",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "cart": {
+      "screen_id": "cart",
+      "sources": [
+        "crawl",
+        "page_object"
+      ],
+      "elements": 11,
+      "resolved": 5,
+      "resolution_rate": 0.455,
+      "strategy_mix": {
+        "accessibility_id": 3,
+        "semantic_xpath": 2
+      },
+      "locators": {
+        "subtotal": {
+          "strategy": "accessibility_id",
+          "value": "cart_subtotal",
+          "screen_id": "cart",
+          "element_role": "subtotal",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "checkout_button": {
+          "strategy": "accessibility_id",
+          "value": "cart_checkout",
+          "screen_id": "cart",
+          "element_role": "checkout_button",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "cart_title": {
+          "strategy": "accessibility_id",
+          "value": "cart_title",
+          "screen_id": "cart",
+          "element_role": "cart_title",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "trail_runner_gtx": {
+          "strategy": "semantic_xpath",
+          "value": "//android.widget.TextView[@text=\"Trail Runner GTX\"]",
+          "screen_id": "cart",
+          "element_role": "trail_runner_gtx",
+          "stability": 0.55,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "merino_socks": {
+          "strategy": "semantic_xpath",
+          "value": "//android.widget.TextView[@text=\"Merino Socks\"]",
+          "screen_id": "cart",
+          "element_role": "merino_socks",
+          "stability": 0.55,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        }
+      },
+      "diagnostics": [
+        "cart.line_item: every candidate is ambiguous (up to 2 matches). The element needs a unique accessibility ID.",
+        "cart.quantity_steppers: every candidate is ambiguous (up to 2 matches). The element needs a unique accessibility ID.",
+        "cart.cart_line_item: only fragile candidates (best is accessibility_id, stability 0.333). Generating from this would produce a test that breaks on the next build.",
+        "cart.cart_quantity_stepper: only fragile candidates (best is accessibility_id, stability 0.333). Generating from this would produce a test that breaks on the next build.",
+        "cart.cart_line_item_2: only fragile candidates (best is accessibility_id, stability 0.333). Generating from this would produce a test that breaks on the next build.",
+        "cart.cart_quantity_stepper_2: only fragile candidates (best is accessibility_id, stability 0.333). Generating from this would produce a test that breaks on the next build."
+      ]
+    },
+    "delivery_address": {
+      "screen_id": "delivery_address",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 3,
+      "resolved": 3,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 2,
+        "resource_id": 1
+      },
+      "locators": {
+        "saved_address_row": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/address_row",
+          "screen_id": "delivery_address",
+          "element_role": "saved_address_row",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "add_address": {
+          "strategy": "accessibility_id",
+          "value": "address_add_new",
+          "screen_id": "delivery_address",
+          "element_role": "add_address",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "continue": {
+          "strategy": "accessibility_id",
+          "value": "address_continue",
+          "screen_id": "delivery_address",
+          "element_role": "continue",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "payment_method": {
+      "screen_id": "payment_method",
+      "sources": [
+        "crawl",
+        "page_object"
+      ],
+      "elements": 5,
+      "resolved": 5,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "resource_id": 3,
+        "accessibility_id": 2
+      },
+      "locators": {
+        "card_option": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/payment_option_card",
+          "screen_id": "payment_method",
+          "element_role": "card_option",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "wallet_option": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/payment_option_wallet",
+          "screen_id": "payment_method",
+          "element_role": "wallet_option",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "cod_option": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/payment_option_cod",
+          "screen_id": "payment_method",
+          "element_role": "cod_option",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "continue": {
+          "strategy": "accessibility_id",
+          "value": "payment_continue",
+          "screen_id": "payment_method",
+          "element_role": "continue",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "payment_title": {
+          "strategy": "accessibility_id",
+          "value": "payment_title",
+          "screen_id": "payment_method",
+          "element_role": "payment_title",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        }
+      },
+      "diagnostics": []
+    },
+    "order_review": {
+      "screen_id": "order_review",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 2,
+      "resolved": 2,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 2
+      },
+      "locators": {
+        "order_total": {
+          "strategy": "accessibility_id",
+          "value": "review_order_total",
+          "screen_id": "order_review",
+          "element_role": "order_total",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "place_order": {
+          "strategy": "accessibility_id",
+          "value": "review_place_order",
+          "screen_id": "order_review",
+          "element_role": "place_order",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "order_confirmation": {
+      "screen_id": "order_confirmation",
+      "sources": [
+        "page_object"
+      ],
+      "elements": 3,
+      "resolved": 3,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 3
+      },
+      "locators": {
+        "order_id": {
+          "strategy": "accessibility_id",
+          "value": "confirmation_order_id",
+          "screen_id": "order_confirmation",
+          "element_role": "order_id",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "success_banner": {
+          "strategy": "accessibility_id",
+          "value": "confirmation_success_banner",
+          "screen_id": "order_confirmation",
+          "element_role": "success_banner",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        },
+        "continue_shopping": {
+          "strategy": "accessibility_id",
+          "value": "confirmation_continue_shopping",
+          "screen_id": "order_confirmation",
+          "element_role": "continue_shopping",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "page_object"
+        }
+      },
+      "diagnostics": []
+    },
+    "account_delete": {
+      "screen_id": "account_delete",
+      "sources": [
+        "crawl"
+      ],
+      "elements": 6,
+      "resolved": 6,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 5,
+        "resource_id": 1
+      },
+      "locators": {
+        "account_delete_title": {
+          "strategy": "accessibility_id",
+          "value": "account_delete_title",
+          "screen_id": "account_delete",
+          "element_role": "account_delete_title",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "account_delete_warning": {
+          "strategy": "accessibility_id",
+          "value": "account_delete_warning",
+          "screen_id": "account_delete",
+          "element_role": "account_delete_warning",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "account_delete_acknowledge": {
+          "strategy": "accessibility_id",
+          "value": "account_delete_acknowledge",
+          "screen_id": "account_delete",
+          "element_role": "account_delete_acknowledge",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "account_delete_password": {
+          "strategy": "accessibility_id",
+          "value": "account_delete_password",
+          "screen_id": "account_delete",
+          "element_role": "account_delete_password",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "delete_confirm": {
+          "strategy": "resource_id",
+          "value": "com.acme.shop:id/delete_confirm",
+          "screen_id": "account_delete",
+          "element_role": "delete_confirm",
+          "stability": 0.8,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "account_delete_cancel": {
+          "strategy": "accessibility_id",
+          "value": "account_delete_cancel",
+          "screen_id": "account_delete",
+          "element_role": "account_delete_cancel",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        }
+      },
+      "diagnostics": []
+    },
+    "payment_failure": {
+      "screen_id": "payment_failure",
+      "sources": [
+        "crawl"
+      ],
+      "elements": 7,
+      "resolved": 7,
+      "resolution_rate": 1.0,
+      "strategy_mix": {
+        "accessibility_id": 7
+      },
+      "locators": {
+        "payment_failure_icon": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_icon",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_icon",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_title": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_title",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_title",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_message": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_message",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_message",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_code": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_code",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_code",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_retry": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_retry",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_retry",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_change_method": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_change_method",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_change_method",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        },
+        "payment_failure_support": {
+          "strategy": "accessibility_id",
+          "value": "payment_failure_support",
+          "screen_id": "payment_failure",
+          "element_role": "payment_failure_support",
+          "stability": 1.0,
+          "unique": true,
+          "usable": true,
+          "source": "crawl"
+        }
+      },
+      "diagnostics": []
+    }
+  }
+}
