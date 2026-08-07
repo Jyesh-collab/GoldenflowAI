@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../data/repository/auth_repository.dart';
 import '../../domain/services/auth_storage.dart';
+import '../../../../core/analytics/uxcam_service.dart';
 import '../../../../core/graphql/graphql_client.dart';
 import '../../../../core/notifications/device_token_service.dart';
 
@@ -162,6 +163,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final email = await AuthStorage.getUserEmail();
       final userId = await AuthStorage.getUserId();
       final deviceToken = await DeviceTokenService.getDeviceToken();
+      if (userId != null) {
+        UxcamService.identifyUser(userId: userId, name: name, email: email);
+      }
       emit(AuthAuthenticated(
         token: token,
         userName: name,
@@ -209,6 +213,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
 
       debugPrint('✅ Login successful — token: ${token.substring(0, 10)}..., userId: $userId');
+      if (userId != null) {
+        UxcamService.identifyUser(
+          userId: userId,
+          name: event.email,
+          email: event.email,
+        );
+      }
+      UxcamService.logEvent('login_success');
       emit(
         AuthAuthenticated(
           token: token,
@@ -250,6 +262,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       // If the API returns a token, auto-login
       final token = customer.token ?? customer.apiToken ?? '';
+      UxcamService.logEvent('registration_success');
       if (token.isNotEmpty) {
         await AuthStorage.saveToken(token);
         await AuthStorage.saveUserInfo(
@@ -257,6 +270,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           email: customer.email,
           userId: customer.id,
         );
+        if (customer.id != null) {
+          UxcamService.identifyUser(
+            userId: customer.id!,
+            name: customer.displayName,
+            email: customer.email,
+          );
+        }
         emit(
           AuthAuthenticated(
             token: token,
@@ -314,6 +334,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // Device token is cleared by repository.logout()
     // Clear GraphQL HiveStore cache on logout
     await GraphQLClientProvider.clearCache();
+    UxcamService.clearUserIdentity();
     debugPrint('✅ Logged out');
     emit(const AuthUnauthenticated());
   }

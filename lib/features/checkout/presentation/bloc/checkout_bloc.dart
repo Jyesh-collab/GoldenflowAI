@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../../../core/analytics/uxcam_service.dart';
 import '../../../../core/error/error_mapper.dart';
 import '../../../cart/data/models/cart_model.dart';
 import '../../data/models/checkout_model.dart';
@@ -404,6 +405,10 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     InitCheckout event,
     Emitter<CheckoutState> emit,
   ) async {
+    UxcamService.logEvent('checkout_started', {
+      'isGuest': event.isGuest,
+      'itemCount': event.cart.items.length,
+    });
     final token = event.cart.cartToken;
     emit(
       state.copyWith(
@@ -1411,6 +1416,10 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       final response = await repository.placeOrder();
       debugPrint('[CheckoutBloc] placeOrder orderId=${response.orderId}');
       if (response.success) {
+        UxcamService.logEvent('order_placed', {
+          'orderId': response.orderId,
+          'paymentMethod': state.selectedPaymentMethod,
+        });
         emit(
           state.copyWith(
             status: CheckoutStatus.orderPlaced,

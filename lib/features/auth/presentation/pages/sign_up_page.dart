@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/app_back_button.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -64,7 +65,10 @@ class _SignUpPageState extends State<SignUpPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
-    return Scaffold(
+    return UxcamTrackedScreen(
+      screenName: 'Sign Up',
+      sensitive: true,
+      child: Scaffold(
       backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
       appBar: AppBar(
         backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
@@ -400,6 +404,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         ),
+      ),
       ),
     );
   }

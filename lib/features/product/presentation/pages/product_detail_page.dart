@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_service.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/recently_viewed/recently_viewed_products_service.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/navigation/app_navigator.dart';
@@ -75,6 +77,11 @@ class _ProductDetailPageState extends State<ProductDetailPage>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<WishlistCubit>().refreshWishlist();
     });
+    UxcamService.logEvent('product_viewed', {
+      'urlKey': widget.urlKey,
+      if (widget.productId != null) 'productId': widget.productId,
+      if (widget.productName != null) 'productName': widget.productName,
+    });
   }
 
   @override
@@ -97,20 +104,23 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   Widget build(BuildContext context) {
     final repository = context.read<CategoryRepository>();
 
-    return BlocProvider(
-      create: (_) => ProductDetailBloc(repository: repository)
-        ..add(
-          LoadProductDetail(
-            urlKey: widget.urlKey,
-            productId: widget.productId,
-            productType: widget.productType,
+    return UxcamTrackedScreen(
+      screenName: 'Product Detail',
+      child: BlocProvider(
+        create: (_) => ProductDetailBloc(repository: repository)
+          ..add(
+            LoadProductDetail(
+              urlKey: widget.urlKey,
+              productId: widget.productId,
+              productType: widget.productType,
+            ),
           ),
+        child: _ProductDetailView(
+          productName: widget.productName,
+          urlKey: widget.urlKey,
+          productId: widget.productId,
+          productType: widget.productType,
         ),
-      child: _ProductDetailView(
-        productName: widget.productName,
-        urlKey: widget.urlKey,
-        productId: widget.productId,
-        productType: widget.productType,
       ),
     );
   }

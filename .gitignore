@@ -70,3 +70,8 @@ assets/ml/
 # **/GoogleService-Info.plist
 # !android/app/google-services.json
 # !ios/Runner/GoogleService-Info.plist
+
+# Local Bagisto backend (Docker) used for dev/testing against a real API.
+# The Bagisto app source/vendor is large and disposable - not part of this repo's history.
+bagisto-backend/bagisto/
+bagisto-backend/*.env

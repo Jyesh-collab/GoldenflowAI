@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/graphql/graphql_client.dart';
 import '../../../../core/currency/currency_formatter.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -66,15 +67,19 @@ class CheckoutPage extends StatelessWidget {
       initialToken: latestToken,
     );
 
-    return BlocProvider(
-      create: (_) => CheckoutBloc(
-        repository: repo,
-        getLatestAuthToken: getLatestAuthToken,
-        onCartRefreshRequested: () {
-          context.read<CartBloc>().add(LoadCart());
-        },
-      )..add(InitCheckout(cart: cartState.cart, isGuest: isGuest)),
-      child: const _CheckoutPageView(),
+    return UxcamTrackedScreen(
+      screenName: 'Checkout',
+      sensitive: true,
+      child: BlocProvider(
+        create: (_) => CheckoutBloc(
+          repository: repo,
+          getLatestAuthToken: getLatestAuthToken,
+          onCartRefreshRequested: () {
+            context.read<CartBloc>().add(LoadCart());
+          },
+        )..add(InitCheckout(cart: cartState.cart, isGuest: isGuest)),
+        child: const _CheckoutPageView(),
+      ),
     );
   }
 }

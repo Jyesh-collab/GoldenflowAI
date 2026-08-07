@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/error/error_mapper.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/wishlist/wishlist_cubit.dart';
@@ -50,19 +51,22 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (ctx) {
-        final bloc = SearchBloc(repository: ctx.read<CategoryRepository>())
-          ..add(InitSearch());
+    return UxcamTrackedScreen(
+      screenName: 'Search',
+      child: BlocProvider(
+        create: (ctx) {
+          final bloc = SearchBloc(repository: ctx.read<CategoryRepository>())
+            ..add(InitSearch());
 
-        // If initialQuery is provided, submit search automatically
-        if (initialQuery != null && initialQuery!.isNotEmpty) {
-          bloc.add(SubmitSearch(initialQuery!));
-        }
+          // If initialQuery is provided, submit search automatically
+          if (initialQuery != null && initialQuery!.isNotEmpty) {
+            bloc.add(SubmitSearch(initialQuery!));
+          }
 
-        return bloc;
-      },
-      child: const _SearchPageView(),
+          return bloc;
+        },
+        child: const _SearchPageView(),
+      ),
     );
   }
 }

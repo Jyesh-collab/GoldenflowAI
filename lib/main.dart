@@ -16,6 +16,7 @@ import 'core/theme/theme_cubit.dart';
 import 'core/wishlist/wishlist_cubit.dart';
 import 'core/notifications/firebase_service.dart';
 import 'core/notifications/fcm_service.dart';
+import 'core/analytics/uxcam_service.dart';
 import 'core/error/error_mapper.dart';
 import 'core/widgets/app_update_gate.dart';
 import 'features/auth/data/repository/auth_repository.dart';
@@ -35,6 +36,7 @@ import 'features/splash/presentation/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await UxcamService.initialize();
   final firebaseEnabled = await FirebaseService.initialize();
 
   // Initialize Firebase

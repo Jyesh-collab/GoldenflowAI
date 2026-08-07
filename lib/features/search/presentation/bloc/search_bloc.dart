@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/analytics/uxcam_service.dart';
 import '../../../../core/error/error_mapper.dart';
 import '../../../category/data/models/product_model.dart';
 import '../../../category/data/models/category_model.dart';
@@ -259,6 +260,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
     try {
       final result = await repository.getProducts(query: query, first: 20);
+
+      UxcamService.logEvent('search_performed', {
+        'query': query,
+        'resultCount': result.totalCount,
+      });
 
       if (result.products.isEmpty) {
         emit(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_service.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/navigation/app_navigator.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -39,6 +40,14 @@ class MainShellState extends State<MainShell> {
   /// previous tab before exiting.
   final List<int> _tabHistory = [0]; // initial tab
 
+  static const _tabNames = ['Home', 'Categories', 'Cart', 'Account'];
+
+  @override
+  void initState() {
+    super.initState();
+    UxcamService.tagScreen(_tabNames[_currentIndex]);
+  }
+
   void switchToTab(int index) {
     final action = resolveMainShellTabRequest(
       currentIndex: _currentIndex,
@@ -53,6 +62,7 @@ class MainShellState extends State<MainShell> {
         }
         _currentIndex = index;
       });
+      UxcamService.tagScreen(_tabNames[index]);
     }
 
     if (action.shouldReloadCart) {
@@ -67,6 +77,7 @@ class MainShellState extends State<MainShell> {
     if (_tabHistory.isNotEmpty) {
       final previousTab = _tabHistory.removeLast();
       setState(() => _currentIndex = previousTab);
+      UxcamService.tagScreen(_tabNames[previousTab]);
       return false; // Don't exit app
     }
     return true; // Exit app

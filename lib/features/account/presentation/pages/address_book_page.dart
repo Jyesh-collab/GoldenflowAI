@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../data/repository/account_repository.dart';
@@ -29,7 +30,10 @@ class AddressBookPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Scaffold(
+    return UxcamTrackedScreen(
+      screenName: 'Address Book',
+      sensitive: true,
+      child: Scaffold(
       backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
       body: SafeArea(
         bottom: false,
@@ -87,6 +91,7 @@ class AddressBookPage extends StatelessWidget {
             _buildBottomButton(context, isDark),
           ],
         ),
+      ),
       ),
     );
   }

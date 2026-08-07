@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/error/error_mapper.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/selection_sheet.dart';
@@ -408,7 +409,10 @@ class _AddAddressPageState extends State<AddAddressPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
-    return BlocListener<AddressBookBloc, AddressBookState>(
+    return UxcamTrackedScreen(
+      screenName: _isEditing ? 'Edit Address' : 'Add Address',
+      sensitive: true,
+      child: BlocListener<AddressBookBloc, AddressBookState>(
       listenWhen: (prev, curr) =>
           prev.addressCreated != curr.addressCreated ||
           prev.addressUpdated != curr.addressUpdated ||
@@ -468,6 +472,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

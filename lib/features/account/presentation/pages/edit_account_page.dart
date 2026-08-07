@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
@@ -74,7 +75,10 @@ class _EditAccountPageState extends State<EditAccountPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
-    return BlocConsumer<EditAccountBloc, EditAccountState>(
+    return UxcamTrackedScreen(
+      screenName: 'Edit Account',
+      sensitive: true,
+      child: BlocConsumer<EditAccountBloc, EditAccountState>(
       listener: (context, state) {
         // Show success snackbar
         if (state.successMessage != null) {
@@ -243,6 +247,7 @@ class _EditAccountPageState extends State<EditAccountPage> {
           ),
         );
       },
+      ),
     );
   }
 

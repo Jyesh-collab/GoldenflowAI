@@ -1,0 +1,20 @@
+import 'api_constants.dart';
+
+/// UXCam App Key.
+/// Get this from your UXCam dashboard (Settings > App Keys).
+/// Replace before release — analytics is disabled while this is a placeholder.
+const String uxcamAppKey = 'YOUR_UXCAM_APP_KEY_HERE';
+
+/// Whether [uxcamAppKey] is still the placeholder value.
+bool get isUxcamAppKeyConfigured =>
+    uxcamAppKey.isNotEmpty && uxcamAppKey != 'YOUR_UXCAM_APP_KEY_HERE';
+
+/// True when [bagistoEndpoint] points at a local/dev backend
+/// (the Android emulator host alias, localhost, or a LAN/private IP).
+/// Used to keep local development sessions out of UXCam analytics.
+bool get isLocalDevBackend {
+  final endpoint = bagistoEndpoint.toLowerCase();
+  return endpoint.contains('10.0.2.2') ||
+      endpoint.contains('localhost') ||
+      endpoint.contains('127.0.0.1');
+}

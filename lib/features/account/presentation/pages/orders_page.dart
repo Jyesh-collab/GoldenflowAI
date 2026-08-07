@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../data/models/account_models.dart';
@@ -33,7 +34,9 @@ class OrdersPage extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
-    return Scaffold(
+    return UxcamTrackedScreen(
+      screenName: 'Orders',
+      child: Scaffold(
       backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
       appBar: AppBar(
         backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
@@ -88,6 +91,7 @@ class OrdersPage extends StatelessWidget {
             isLoadingMore: state.isLoadingMore,
           );
         },
+      ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/analytics/uxcam_service.dart';
 import '../../../../core/navigation/route_observer.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -50,6 +51,7 @@ class _AccountDashboardPageState extends State<AccountDashboardPage>
       _route = route;
       appRouteObserver.subscribe(this, route);
     }
+    UxcamService.tagScreen('Account Dashboard');
   }
 
   @override
@@ -63,6 +65,7 @@ class _AccountDashboardPageState extends State<AccountDashboardPage>
   @override
   void didPopNext() {
     if (!mounted) return;
+    UxcamService.tagScreen('Account Dashboard');
     context.read<AccountDashboardBloc>().add(const RefreshAccountDashboard());
   }
 
