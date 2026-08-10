@@ -1,0 +1,761 @@
+{
+  "@@locale": "nl",
+  "appTitle": "Bagisto Winkel",
+  "homeFailedToLoad": "Startpagina kon niet worden geladen",
+  "commonUnknownError": "Onbekende fout",
+  "commonRetry": "Opnieuw proberen",
+  "homeFeaturedProducts": "Uitgelichte producten",
+  "homeDefaultProducts": "Producten",
+  "homeBackToTop": "Terug naar boven",
+  "homeViewCart": "BEKIJK WINKELWAGEN",
+  "homeAddedToCartMessage": "{productName} toegevoegd aan winkelwagen",
+  "@homeAddedToCartMessage": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "homeLoginToManageWishlist": "Log in om de verlanglijst te beheren",
+  "homeAddedToWishlist": "Toegevoegd aan verlanglijst",
+  "homeRemovedFromWishlist": "Verwijderd uit verlanglijst",
+  "homeViewAll": "Alles bekijken",
+  "homeCollections": "Collecties",
+  "homeCategorySemanticLabel": "Categorie {categoryName}",
+  "@homeCategorySemanticLabel": {
+    "placeholders": {
+      "categoryName": {}
+    }
+  },
+  "homeDiscountOff": "{percent}% korting",
+  "@homeDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productFailedToLoad": "Product kon niet worden geladen",
+  "productNotFound": "Product niet gevonden",
+  "productDetail": "Productdetails",
+  "productDetails": "Details",
+  "productShowLess": "Minder tonen",
+  "productLoadMore": "Meer laden",
+  "productMoreInformations": "Meer informatie",
+  "productSku": "SKU",
+  "productType": "Type",
+  "productBrand": "Merk",
+  "productColor": "Kleur",
+  "productSize": "Maat",
+  "productReviews": "Beoordelingen",
+  "productNoReviewsYet": "Nog geen beoordelingen",
+  "productRating": "{count} beoordeling",
+  "@productRating": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productReviewsCount": "{count} beoordelingen",
+  "@productReviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productPostedOn": "Geplaatst op {day} {month} {year}",
+  "@productPostedOn": {
+    "placeholders": {
+      "day": {},
+      "month": {},
+      "year": {}
+    }
+  },
+  "productReviewSubmitted": "Je beoordeling is verzonden!",
+  "productWriteReview": "Beoordeling schrijven",
+  "productPleaseLoginForReviews": "Log in om je beoordelingen te bekijken",
+  "productLoadMoreReviews": "Meer beoordelingen laden",
+  "productRelatedProduct": "Gerelateerd product",
+  "productDiscountOff": "{percent}% korting",
+  "@productDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productVeryGood": "Zeer goed",
+  "productGood": "Goed",
+  "productAverage": "Gemiddeld",
+  "productBad": "Slecht",
+  "productVeryBad": "Zeer slecht",
+  "productInStock": "Op voorraad",
+  "productOutOfStock": "Niet op voorraad",
+  "productQuantity": "Aantal",
+  "productWishlistAction": "Verlanglijst",
+  "productCompareAction": "Vergelijken",
+  "productShareAction": "Delen",
+  "productLoginToCompare": "Log in om toe te voegen aan vergelijken",
+  "productAddedToCompare": "Toegevoegd aan vergelijken",
+  "productAddToCart": "Toevoegen aan winkelwagen",
+  "accountMoveToCart": "Verplaatsen naar winkelwagen",
+  "productBuyNow": "Nu kopen",
+  "productSelectOptionsFirst": "Selecteer eerst productopties",
+  "productBookingBookTable": "Tafel reserveren *",
+  "productBookingSelectDateRequired": "Datum selecteren *",
+  "productBookingSelectSlotRequired": "Tijdslot selecteren *",
+  "productBookingSpecialRequestNotesRequired": "Speciale verzoeken/Notities *",
+  "productBookingBookAppointment": "Afspraak boeken *",
+  "productBookingDateFormatHint": "JJJJ-MM-DD",
+  "productBookingFrom": "Van",
+  "productBookingTo": "Tot",
+  "productBookingSelectDate": "Datum selecteren",
+  "productBookingLocation": "Locatie",
+  "productBookingSlotDuration": "Duur van het tijdslot",
+  "productBookingAvailability": "Beschikbaarheid",
+  "productBookingStartDate": "Startdatum",
+  "productBookingEndDate": "Einddatum",
+  "productBookingDate": "Datum",
+  "productBookingViewOnMap": "Bekijk op kaart",
+  "productBookingEventOn": "Evenement op:",
+  "productBookingBookYourTicket": "Boek je ticket",
+  "productBookingSlotDurationLabel": "Duur van het tijdslot:",
+  "productBookingDurationMinutes": "{count} minuten",
+  "@productBookingDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productBookingAvailableFrom": "Beschikbaar vanaf",
+  "productBookingAvailableTo": "Beschikbaar tot",
+  "productBookingSpecialRequestNotesHint": "Speciale verzoeken/Notities",
+  "productBookingChooseRentOption": "Kies huurtype *",
+  "productBookingDailyBasis": "Per dag",
+  "productBookingHourlyBasis": "Per uur",
+  "productBookingNoDatesAvailable": "Geen data beschikbaar voor reservering",
+  "productBookingSelectSlot": "Tijdslot selecteren",
+  "productBookingSelectDateFirst": "Selecteer eerst een datum",
+  "productBookingChooseDateFirstToSeeSlots": "Selecteer eerst een datum om beschikbare tijdslots te zien.",
+  "productBookingLoadingSlots": "Tijdslots laden...",
+  "productBookingSlotsLoadingForSelectedDate": "Beschikbare tijdslots voor de geselecteerde datum worden geladen.",
+  "productBookingUnableToLoadSlots": "Kan tijdslots niet laden",
+  "productBookingNoSlotsAvailable": "Geen tijdslots beschikbaar",
+  "productBookingNoSlotsAvailableForSelectedDate": "Er zijn geen tijdslots beschikbaar voor de geselecteerde datum.",
+  "productBookingSelectOneSlotToContinue": "Selecteer een beschikbaar tijdslot om verder te gaan.",
+  "productBookingSpecialRequestNotesLowercase": "Speciale verzoeken/Notities",
+  "productDownloadableLinks": "Links",
+  "productDownloadableSamples": "Voorbeelden",
+  "productDownloadSample": "Voorbeeld downloaden",
+  "productDefaultName": "Product",
+  "categoryDefaultName": "Categorieën",
+  "categorySubCategories": "Subcategorieën",
+  "categorySomethingWentWrong": "Er is iets misgegaan",
+  "categoryUnknownError": "Onbekende fout",
+  "categoryItemsFound": "{count} artikelen gevonden",
+  "@categoryItemsFound": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "categoryNoProductsFound": "Geen producten gevonden",
+  "categorySort": "Sorteren",
+  "categoryFilter": "Filteren",
+  "categoryFilters": "Filters",
+  "categoryNoFiltersAvailable": "Geen filters beschikbaar",
+  "categoryFiltersWillAppear": "Filters verschijnen wanneer beschikbaar voor deze categorie",
+  "categoryApplyFilters": "Filters toepassen",
+  "categoryApplyFiltersCount": "Filters toepassen ({count})",
+  "@categoryApplyFiltersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryClearAll": "Alles wissen",
+  "categoryTryAdjustingFilters": "Probeer je filters of zoekcriteria aan te passen",
+  "categoryError": "Fout",
+  "categoryLoginToManageWishlist": "Log in om de verlanglijst te beheren",
+  "categoryAddedToWishlist": "Toegevoegd aan verlanglijst",
+  "categoryRemovedFromWishlist": "Verwijderd uit verlanglijst",
+  "categoryFailedToUpdateWishlist": "Verlanglijst kon niet worden bijgewerkt: {error}",
+  "@categoryFailedToUpdateWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cart": "Winkelwagen",
+  "cartPleaseLoginWishlist": "Log in om de verlanglijst te bekijken",
+  "cartItemsInCart": "{count} {itemText} in de winkelwagen",
+  "@cartItemsInCart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "itemText": {}
+    }
+  },
+  "cartYourCartEmpty": "Je winkelwagen is leeg",
+  "cartAddProductsHere": "Voeg producten toe aan je winkelwagen om ze hier te zien",
+  "cartContinueShopping": "Verder winkelen",
+  "cartUnit": "Eenheid",
+  "cartUnits": "Eenheden",
+  "cartPleaseLoginWishlistAdd": "Log in om toe te voegen aan verlanglijst",
+  "cartMovedToWishlist": "Verplaatst naar verlanglijst",
+  "cartFailedMoveWishlist": "Verplaatsen naar verlanglijst mislukt: {error}",
+  "@cartFailedMoveWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cartViewMore": "Meer bekijken",
+  "cartViewLess": "Minder bekijken",
+  "cartEmptyCartAction": "Winkelwagen legen",
+  "cartApplyCoupon": "Coupon toepassen",
+  "cartCouponCode": "Couponcode",
+  "cartApply": "Toepassen",
+  "cartAppliedCoupon": "Coupon toegepast",
+  "cartRemove": "Verwijderen",
+  "cartPriceBreak": "Prijsopbouw",
+  "cartSubTotal": "Subtotaal",
+  "cartDiscount": "Korting",
+  "cartDeliveryCharges": "Verzendkosten",
+  "cartTax": "Belasting",
+  "cartGrandTotal": "Eindtotaal",
+  "cartAmountToBePaid": "Te betalen bedrag",
+  "cartPayNow": "Nu betalen",
+  "cartRemoveItem": "Artikel verwijderen",
+  "cartRemoveItemConfirm": "Weet je zeker dat je \"{productName}\" uit je winkelwagen wilt verwijderen?",
+  "@cartRemoveItemConfirm": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "cartCancel": "Annuleren",
+  "cartEmptyCartTitle": "Winkelwagen legen",
+  "cartEmptyCartConfirm": "Weet je zeker dat je alle artikelen uit je winkelwagen wilt verwijderen?",
+  "checkout": "Afrekenen",
+  "checkoutBillingTo": "Factureren aan",
+  "checkoutDeliveredTo": "Geleverd aan",
+  "checkoutChange": "Wijzigen",
+  "checkoutSelectBillingAddress": "Factuuradres selecteren",
+  "checkoutSelectShippingAddress": "Verzendadres selecteren",
+  "checkoutBillingAddress": "Factuuradres",
+  "checkoutEnterAddress": "Adres invoeren",
+  "checkoutFirstName": "Voornaam",
+  "checkoutLastName": "Achternaam",
+  "checkoutEmail": "E-mail",
+  "checkoutPhone": "Telefoon",
+  "checkoutStreetAddress": "Straatadres",
+  "checkoutCountry": "Land",
+  "checkoutState": "Provincie",
+  "checkoutCity": "Stad",
+  "checkoutPostcode": "Postcode",
+  "checkoutCompanyOptional": "Bedrijf (optioneel)",
+  "checkoutUseSameAddressShipping": "Hetzelfde adres voor verzending gebruiken?",
+  "checkoutPhoneValue": "Telefoon: {phone}",
+  "@checkoutPhoneValue": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "checkoutAddressTypeOffice": "Kantoor",
+  "checkoutAddressTypeHome": "Thuis",
+  "checkoutAddressTypeBilling": "Facturering",
+  "checkoutAddressTypeShipping": "Verzending",
+  "checkoutAddressTypeDefault": "Standaard",
+  "checkoutFieldRequired": "{field} is verplicht",
+  "@checkoutFieldRequired": {
+    "placeholders": {
+      "field": {}
+    }
+  },
+  "checkoutSaveContinue": "Opslaan en doorgaan",
+  "checkoutYourCartEmpty": "Je winkelwagen is leeg",
+  "checkoutSelectCountry": "Land selecteren",
+  "checkoutSelectState": "Provincie selecteren",
+  "checkoutCountryRequired": "Land is verplicht",
+  "checkoutStateRequired": "Provincie is verplicht",
+  "checkoutSelectCountryFirst": "Selecteer eerst een land",
+  "checkoutShippingMethod": "Verzendmethode",
+  "checkoutSaveAddressSeeShipping": "Sla je adres op om verzendopties te zien",
+  "checkoutPaymentMethod": "Betaalmethode",
+  "checkoutSelectShippingMethodFirst": "Selecteer eerst een verzendmethode",
+  "checkoutEnterCouponCode": "Voer je couponcode in",
+  "checkoutDiscountCoupon": "Korting (coupon)",
+  "checkoutPlaceOrder": "Bestelling plaatsen",
+  "thankYouTitle": "Bedankt voor je bestelling!",
+  "thankYouSubtitle": "We mailen je de bestelgegevens en trackinginformatie",
+  "thankYouOrderNumber": "Je bestelnummer is {orderNumber}",
+  "@thankYouOrderNumber": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "thankYouViewOrder": "Bestelling bekijken",
+  "thankYouContinueShopping": "Verder winkelen",
+  "accountPleaseTryAgainLater": "Probeer het later opnieuw",
+  "accountUserFallback": "Gebruiker",
+  "accountBack": "Terug",
+  "accountSettings": "Instellingen",
+  "accountMyOrders": "Mijn bestellingen",
+  "accountMyDownloadableProducts": "Mijn downloadbare producten",
+  "accountWishlist": "Verlanglijst",
+  "accountCompareProducts": "Producten vergelijken",
+  "accountProductReview": "Productbeoordeling",
+  "accountAddressBook": "Adresboek",
+  "accountEditAccount": "Account bewerken",
+  "accountLogout": "Uitloggen",
+  "accountLogoutConfirmation": "Weet je zeker dat je wilt uitloggen?",
+  "accountNoCountriesAvailable": "Geen landen beschikbaar. Probeer het opnieuw.",
+  "accountPleaseSelectCountry": "Selecteer een land",
+  "accountPleaseSelectOrEnterState": "Selecteer of voer een provincie in",
+  "accountAddressUpdatedSuccessfully": "Adres succesvol bijgewerkt",
+  "accountAddressAddedSuccessfully": "Adres succesvol toegevoegd",
+  "accountGoBack": "Ga terug",
+  "accountEditAddress": "Adres bewerken",
+  "accountAddNewAddress": "Nieuw adres toevoegen",
+  "accountFirstNameRequired": "Voornaam is verplicht",
+  "accountLastNameRequired": "Achternaam is verplicht",
+  "accountEnterValidEmail": "Voer een geldig e-mailadres in",
+  "accountCompanyName": "Bedrijfsnaam",
+  "accountVatId": "Btw-nummer",
+  "accountStreetAddressRequired": "Straatadres is verplicht",
+  "accountCityRequired": "Stad is verplicht",
+  "accountZipPostcode": "Postcode",
+  "accountZipPostcodeRequired": "Postcode is verplicht",
+  "accountTelephone": "Telefoon",
+  "accountPhoneNumberRequired": "Telefoonnummer is verplicht",
+  "accountChangeDefaultBillingAddress": "Standaard factuuradres wijzigen",
+  "accountChangeDefaultShippingAddress": "Standaard verzendadres wijzigen",
+  "accountUpdateAddress": "Adres bijwerken",
+  "accountSaveToAddressBook": "Opslaan in adresboek",
+  "accountPleaseLoginToWriteReview": "Log in om een beoordeling te schrijven",
+  "accountPleaseSelectRating": "Selecteer een beoordeling",
+  "accountAddReview": "Beoordeling toevoegen",
+  "accountReviewSubmitted": "Beoordeling verzonden!",
+  "accountNickName": "Bijnaam",
+  "accountEnterYourName": "Voer je naam in",
+  "accountNameRequired": "Naam is verplicht",
+  "accountSummary": "Samenvatting",
+  "accountReviewSummaryHint": "Korte samenvatting van je beoordeling",
+  "accountSummaryRequired": "Samenvatting is verplicht",
+  "accountReview": "Beoordeling",
+  "accountDetailedReviewHint": "Schrijf hier je uitgebreide beoordeling",
+  "accountReviewRequired": "Beoordeling is verplicht",
+  "accountRating": "Beoordeling",
+  "accountSubmitReview": "Beoordeling verzenden",
+  "accountCouldNotLoadAddresses": "Adressen konden niet worden geladen",
+  "accountPleaseTryAgain": "Probeer het opnieuw",
+  "accountNoAddressesSaved": "Geen adressen opgeslagen",
+  "accountAddAddressToGetStarted": "Voeg een nieuw adres toe om te beginnen",
+  "accountNoProductsToCompare": "Geen producten om te vergelijken",
+  "accountAddProductsToCompareHint": "Voeg producten toe om te vergelijken vanaf de productdetailpagina.",
+  "accountProducts": "Producten",
+  "accountDescription": "Beschrijving",
+  "accountShortDescription": "Korte beschrijving",
+  "accountActivity": "Activiteit",
+  "accountSeller": "Verkoper",
+  "accountNotAvailable": "N/B",
+  "accountMessageSentSuccessfully": "Bericht succesvol verzonden!",
+  "accountAnErrorOccurred": "Er is een fout opgetreden",
+  "accountContactUs": "Neem contact met ons op",
+  "accountName": "Naam",
+  "accountEnterYourEmail": "Voer je e-mail in",
+  "accountContact": "Contact",
+  "accountEnterYourPhoneNumber": "Voer je telefoonnummer in",
+  "accountMessage": "Bericht",
+  "accountEnterYourMessage": "Voer je bericht in",
+  "accountSendMessage": "Bericht verzenden",
+  "accountNameFieldEmpty": "Naamveld mag niet leeg zijn",
+  "accountNameMinChars": "Naam moet minimaal 2 tekens bevatten",
+  "accountEmailFieldEmpty": "E-mailveld mag niet leeg zijn",
+  "accountPleaseEnterValidEmailAddress": "Voer een geldig e-mailadres in",
+  "accountContactNumberEmpty": "Contactnummer mag niet leeg zijn",
+  "accountPleaseEnterValidContactNumber": "Voer een geldig contactnummer in",
+  "accountMessageFieldEmpty": "Berichtveld mag niet leeg zijn",
+  "accountMessageMinChars": "Bericht moet minimaal 10 tekens bevatten",
+  "accountDownloadableProducts": "Downloadbare producten",
+  "accountNoDownloadsYet": "Nog geen downloads",
+  "accountDownloadsEmptyDescription": "Je gedownloade producten verschijnen hier.",
+  "accountProductsProgress": "{current} / {total} producten",
+  "@accountProductsProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "accountRemainingDownloadsLeft": "{value} over",
+  "@accountRemainingDownloadsLeft": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "accountDownload": "Downloaden",
+  "accountFileName": "Bestand: {fileName}",
+  "@accountFileName": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "accountDownloadWillStartShortly": "Je download start binnenkort. Controleer je downloadmap.",
+  "accountClose": "Sluiten",
+  "accountOrders": "Bestellingen",
+  "accountNoOrdersYet": "Nog geen bestellingen",
+  "accountOrdersEmptyDescription": "Je bestellingen verschijnen hier zodra je een aankoop doet.",
+  "accountOrderSingular": "Bestelling",
+  "accountOrderPlural": "Bestellingen",
+  "accountOrderTotalItems": "{total} (Artikelen {count})",
+  "@accountOrderTotalItems": {
+    "placeholders": {
+      "total": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOrderAndReturn": "Bestellen en retourneren",
+  "accountTrackOrder": "Bestelling volgen",
+  "accountReturnPolicy": "Retourbeleid",
+  "accountReturnRequest": "Retouraanvraag",
+  "accountNotifications": "Meldingen",
+  "accountPrivacy": "Privacy",
+  "accountAccount": "Account",
+  "accountPreferences": "Voorkeuren",
+  "accountLanguage": "Taal",
+  "accountNoLanguagesAvailable": "Geen talen beschikbaar",
+  "accountCurrency": "Valuta",
+  "accountOthers": "Overig",
+  "accountNoPagesAvailable": "Geen pagina's beschikbaar",
+  "accountProductReviews": "Productbeoordelingen",
+  "accountMyReviews": "Mijn beoordelingen",
+  "accountNoReviewsYet": "Nog geen beoordelingen",
+  "accountReviewsEmptyDescription": "Je productbeoordelingen verschijnen hier.",
+  "accountReviewSingular": "Beoordeling",
+  "accountReviewPlural": "Beoordelingen",
+  "accountPostedOn": "Geplaatst op {date}",
+  "@accountPostedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountCloseSettings": "Instellingen sluiten",
+  "accountChangeTheme": "Thema wijzigen",
+  "accountAllNotifications": "Alle meldingen",
+  "accountOffers": "Aanbiedingen",
+  "accountOfflineData": "Offline gegevens",
+  "accountTrackRecentlyViewedProducts": "Recent bekeken producten volgen en tonen",
+  "accountShowSearchTag": "Zoeklabel tonen",
+  "accountTryAgain": "Opnieuw proberen",
+  "accountYourWishlistEmpty": "Je verlanglijst is leeg",
+  "accountWishlistEmptyDescription": "Blader door producten en voeg ze toe aan je verlanglijst",
+  "accountItemSingular": "Artikel",
+  "accountItemPlural": "Artikelen",
+  "accountStartingAt": "Vanaf {price}",
+  "@accountStartingAt": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "accountAboutThisPage": "Over deze pagina",
+  "accountPageId": "Pagina-ID: {id}",
+  "@accountPageId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "mainTabHome": "Home",
+  "mainTabCategories": "Categorieën",
+  "mainTabCart": "Winkelwagen",
+  "mainTabAccount": "Account",
+  "authLoginSuccess": "Welkom! Succesvol ingelogd.",
+  "authWelcomeBack": "Welkom terug!",
+  "authLoginToAccount": "Log in op je account",
+  "authEmailAddress": "E-mailadres",
+  "authEnterYourEmail": "Voer je e-mailadres in",
+  "authPleaseEnterEmail": "Voer je e-mailadres in",
+  "authPleaseEnterValidEmail": "Voer een geldig e-mailadres in",
+  "authPassword": "Wachtwoord",
+  "authEnterYourPassword": "Voer je wachtwoord in",
+  "authPleaseEnterPassword": "Voer je wachtwoord in",
+  "authPasswordMinLength": "Wachtwoord moet minimaal 6 tekens bevatten",
+  "authForgotPasswordTitle": "Wachtwoord vergeten?",
+  "authLogin": "Inloggen",
+  "authNoAccountPrompt": "Heb je geen account? ",
+  "authSignUp": "Registreren",
+  "authAccountCreatedSuccess": "Account succesvol aangemaakt!",
+  "authCreateAccount": "Account aanmaken",
+  "authSignupGetStarted": "Registreer om te beginnen",
+  "authFirstNameHint": "Voornaam",
+  "authLastNameHint": "Achternaam",
+  "authRequired": "Verplicht",
+  "authCreatePasswordHint": "Maak een wachtwoord aan",
+  "authConfirmPassword": "Bevestig wachtwoord",
+  "authConfirmPasswordHint": "Bevestig je wachtwoord",
+  "authPleaseConfirmPassword": "Bevestig je wachtwoord",
+  "authPasswordsDoNotMatch": "Wachtwoorden komen niet overeen",
+  "authAlreadyHaveAccountPrompt": "Heb je al een account? ",
+  "authForgotPasswordSubtitle": "Voer je e-mailadres in en we sturen je een link om je wachtwoord opnieuw in te stellen.",
+  "authSendResetLink": "Link voor reset verzenden",
+  "authBackToLogin": "Terug naar inloggen",
+  "authNiceToSeeYouHere": "Fijn je hier te zien",
+  "accountEditTitle": "Account bewerken",
+  "accountFirstNameRequiredLabel": "Voornaam *",
+  "accountLastNameRequiredLabel": "Achternaam *",
+  "accountChangeEmail": "E-mail wijzigen",
+  "accountChangePassword": "Wachtwoord wijzigen",
+  "accountDeleteAccount": "Account verwijderen",
+  "accountGender": "Geslacht",
+  "accountSelectGender": "Geslacht selecteren",
+  "accountDob": "Geboortedatum",
+  "monthJanShort": "Jan",
+  "monthFebShort": "Feb",
+  "monthMarShort": "Mrt",
+  "monthAprShort": "Apr",
+  "monthMayShort": "Mei",
+  "monthJunShort": "Jun",
+  "monthJulShort": "Jul",
+  "monthAugShort": "Aug",
+  "monthSepShort": "Sep",
+  "monthOctShort": "Okt",
+  "monthNovShort": "Nov",
+  "monthDecShort": "Dec",
+  "accountSubscribeNewsletters": "Abonneren op nieuwsbrieven",
+  "accountSaveProfile": "Profiel opslaan",
+  "accountNewEmail": "Nieuw e-mailadres",
+  "accountEmailRequired": "E-mail is verplicht",
+  "accountCurrentPassword": "Huidig wachtwoord",
+  "accountPasswordRequired": "Wachtwoord is verplicht",
+  "accountChange": "Wijzigen",
+  "accountCurrentPasswordRequired": "Huidig wachtwoord is verplicht",
+  "accountNewPassword": "Nieuw wachtwoord",
+  "accountConfirmPassword": "Bevestig wachtwoord",
+  "accountDeleteWarning": "Deze actie is permanent en kan niet ongedaan worden gemaakt. Al je gegevens worden verwijderd.",
+  "accountEnterYourPassword": "Voer je wachtwoord in",
+  "accountDelete": "Verwijderen",
+  "accountGenderMale": "Man",
+  "accountGenderFemale": "Vrouw",
+  "accountGenderOther": "Anders",
+  "accountOrdersWithNumber": "Bestellingen {number}",
+  "@accountOrdersWithNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountReorderSuccessful": "Opnieuw bestellen gelukt",
+  "accountReorderItemsAdded": "{message} \n\n{count} artikelen zijn toegevoegd aan je winkelwagen.",
+  "@accountReorderItemsAdded": {
+    "placeholders": {
+      "message": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOk": "OK",
+  "accountGoToCart": "Ga naar winkelwagen",
+  "accountFailedToLoadOrderDetails": "Bestelgegevens konden niet worden geladen",
+  "accountDetails": "Details",
+  "accountInvoices": "Facturen",
+  "accountShipments": "Zendingen",
+  "accountPlacedOn": "Geplaatst op {date}",
+  "@accountPlacedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountItemsOrdered": "{count} artikel(en) besteld",
+  "@accountItemsOrdered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountBillingAddress": "Factuuradres",
+  "accountShippingAddress": "Verzendadres",
+  "accountShippingMethod": "Verzendmethode",
+  "accountPaymentMethod": "Betaalmethode",
+  "accountNoInvoicesForOrder": "Geen facturen voor deze bestelling",
+  "accountInvoicedCount": "{count} gefactureerd",
+  "@accountInvoicedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoShipmentsForOrder": "Geen zendingen voor deze bestelling",
+  "accountReorder": "Opnieuw bestellen",
+  "accountMoreInfo": "Meer info",
+  "accountOrderedQty": "Bestelde hoeveelheid",
+  "accountShipped": "Verzonden",
+  "accountInvoiced": "Gefactureerd",
+  "accountUnitPrice": "Stuksprijs",
+  "accountSubTotalWithSpace": "Subtotaal",
+  "accountTotalPaid": "Totaal betaald",
+  "accountTotalRefunded": "Totaal terugbetaald",
+  "accountTotalDue": "Totaal verschuldigd",
+  "accountInvoiceNumber": "Factuur {number}",
+  "@accountInvoiceNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountShipmentNumber": "Zending {number}",
+  "@accountShipmentNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountFailedToLoadInvoiceDetails": "Factuurgegevens konden niet worden geladen",
+  "accountInvoiceStatus": "Factuurstatus",
+  "accountInvoiceDate": "Factuurdatum",
+  "accountOrderId": "Bestel-ID",
+  "accountOrderDate": "Besteldatum",
+  "accountOrderStatus": "Bestelstatus",
+  "accountChannel": "Kanaal",
+  "accountDefault": "Standaard",
+  "accountStatusPaid": "Betaald",
+  "accountStatusPending": "In behandeling",
+  "accountStatusPendingPayment": "Betaling in behandeling",
+  "accountStatusOverdue": "Achterstallig",
+  "accountStatusRefunded": "Terugbetaald",
+  "accountShippedQty": "Verzonden hoeveelheid",
+  "accountInvoicedQty": "Gefactureerde hoeveelheid",
+  "accountUnitPriceWithColon": "Stuksprijs:",
+  "accountSubTotalWithColon": "Subtotaal:",
+  "accountDownloadInvoice": "Factuur downloaden",
+  "accountInvoice": "Factuur",
+  "accountRecentOrders": "Recente bestellingen",
+  "accountNoRecentOrders": "Geen recente bestellingen",
+  "accountStatusProcessing": "Verwerken",
+  "accountStatusCompleted": "Voltooid",
+  "accountStatusCancelled": "Geannuleerd",
+  "accountStatusClosed": "Gesloten",
+  "accountStatusUnknown": "Onbekend",
+  "accountWishlistItemsCount": "Verlanglijstitems ({count})",
+  "@accountWishlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoWishlistItems": "Geen verlanglijstitems",
+  "accountDefaultAddresses": "Standaardadressen",
+  "accountNoProductReviewsYet": "Nog geen productbeoordelingen",
+  "searchFailedTitle": "Zoeken mislukt",
+  "searchHint": "Zoek producten",
+  "searchImageSearch": "Zoeken op afbeelding",
+  "searchRecentSearches": "Recente zoekopdrachten",
+  "searchClearAll": "Alles wissen",
+  "searchTopCategories": "Topcategorieën",
+  "searchResultsFound": "{count} resultaten gevonden",
+  "@searchResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDiscountOff": "{percent}% korting",
+  "@searchDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "searchNoProductsFound": "Geen producten gevonden",
+  "searchTryDifferentTerm": "Probeer te zoeken met een andere term",
+  "searchSpeechNotAvailable": "Spraakherkenning is niet beschikbaar",
+  "searchFailedToStartVoice": "Spraakinvoer kon niet worden gestart: {error}",
+  "@searchFailedToStartVoice": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "searchMicrophonePermissionDenied": "Microfoontoestemming geweigerd",
+  "searchRetake": "Opnieuw maken",
+  "searchSearch": "Zoeken",
+  "searchTryAgain": "Opnieuw proberen",
+  "searchRecognizedObjects": "Herkende objecten",
+  "searchResult": "Resultaat:",
+  "searchFailedToCaptureImage": "Kan afbeelding niet vastleggen",
+  "searchProcessing": "Verwerken... {progress}%",
+  "@searchProcessing": {
+    "placeholders": {
+      "progress": {
+        "type": "int"
+      }
+    }
+  },
+  "searchOpeningCamera": "Camera openen...",
+  "searchFailedToProcessImage": "Kan afbeelding niet verwerken",
+  "homeRecentlyViewedProducts": "Recent bekeken producten",
+  "accountItemsCount": "{count} artikel(en)",
+  "@accountItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountTrack": "Volgen",
+  "accountTrackingVia": "Tracking {trackNumber} via {carrier}",
+  "@accountTrackingVia": {
+    "placeholders": {
+      "trackNumber": {},
+      "carrier": {}
+    }
+  },
+  "accountUnknownCarrier": "Onbekende vervoerder",
+  "accountTrackingNumber": "Trackingnummer",
+  "accountSkuValue": "SKU : {sku}",
+  "@accountSkuValue": {
+    "placeholders": {
+      "sku": {}
+    }
+  },
+  "accountShippedQtyValue": "Verzonden aantal : {qty}",
+  "@accountShippedQtyValue": {
+    "placeholders": {
+      "qty": {
+        "type": "int"
+      }
+    }
+  },
+  "commonTimeoutError": "The server is taking too long to respond. Please check your connection and try again.",
+  "commonUnableToReachServer": "Unable to reach the server. Please check your internet connection and try again.",
+  "commonNetworkError": "A network error occurred. Please check your internet connection and try again.",
+  "commonProcessingError": "Something went wrong while processing the data. Please try again later.",
+  "commonMissingInformation": "Some required information is missing. Please fill in all required fields and try again.",
+  "commonTooManyRequests": "Too many requests. Please wait a moment and try again.",
+  "commonServerError": "The server encountered an error. Please try again later.",
+  "commonPermissionDenied": "You don't have permission to perform this action.",
+  "commonSecureConnectionError": "A secure connection could not be established. Please try again later.",
+  "commonCartSessionExpired": "Your cart session has expired. Please try again.",
+  "commonGenericError": "Something went wrong. Please try again.",
+  "commonGenericErrorWithContext": "Something went wrong while {context}. Please try again.",
+  "@commonGenericErrorWithContext": {
+    "placeholders": {
+      "context": {}
+    }
+  },
+  "commonEdit": "Edit",
+  "authInvalidCredentials": "The email or password you entered is incorrect. Please try again.",
+  "authSessionExpired": "Your session has expired. Please log in again.",
+  "authSessionInvalid": "Your session is no longer valid. Please log in again.",
+  "categorySortByTitle": "Sort By",
+  "categorySortAZ": "From A-Z",
+  "categorySortZA": "From Z-A",
+  "categorySortNewest": "Newest First",
+  "categorySortOldest": "Oldest First",
+  "categorySortCheapest": "Cheapest First",
+  "categorySortExpensive": "Expensive First",
+  "accountSelectAddress": "Select Address",
+  "accountSetAsDefault": "Set as Default",
+  "accountAddressTypeHome": "Home",
+  "accountAddressTypeOffice": "Office",
+  "accountAddressTypeCustomer": "Customer",
+  "cartAddedToCartSuccess": "Product added to cart successfully",
+  "productSelectDownloadLink": "Please select at least one link",
+  "wishlistItemRemoved": "Item removed from wishlist"
+}

@@ -1,0 +1,35 @@
+name: bagisto-backend
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: bagisto-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bagisto
+      MYSQL_USER: bagisto
+      MYSQL_PASSWORD: bagisto
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    image: webdevops/php-apache:8.3
+    container_name: bagisto-app
+    restart: unless-stopped
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      PHP_DISPLAY_ERRORS: 1
+      PHP_MEMORY_LIMIT: 1G
+      PHP_MAX_EXECUTION_TIME: 300
+    ports:
+      - "8080:80"
+    volumes:
+      - ./bagisto:/app
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:

@@ -1,0 +1,761 @@
+{
+  "@@locale": "de",
+  "appTitle": "Bagisto Store",
+  "homeFailedToLoad": "Startseite konnte nicht geladen werden",
+  "commonUnknownError": "Unbekannter Fehler",
+  "commonRetry": "Erneut versuchen",
+  "homeFeaturedProducts": "Empfohlene Produkte",
+  "homeDefaultProducts": "Produkte",
+  "homeBackToTop": "Zurück nach oben",
+  "homeViewCart": "WARENKORB ANZEIGEN",
+  "homeAddedToCartMessage": "{productName} wurde zum Warenkorb hinzugefügt",
+  "@homeAddedToCartMessage": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "homeLoginToManageWishlist": "Bitte melden Sie sich an, um die Wunschliste zu verwalten",
+  "homeAddedToWishlist": "Zur Wunschliste hinzugefügt",
+  "homeRemovedFromWishlist": "Von der Wunschliste entfernt",
+  "homeViewAll": "Alle anzeigen",
+  "homeCollections": "Kollektionen",
+  "homeCategorySemanticLabel": "Kategorie {categoryName}",
+  "@homeCategorySemanticLabel": {
+    "placeholders": {
+      "categoryName": {}
+    }
+  },
+  "homeDiscountOff": "{percent}% Rabatt",
+  "@homeDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productFailedToLoad": "Produkt konnte nicht geladen werden",
+  "productNotFound": "Produkt nicht gefunden",
+  "productDetail": "Produktdetails",
+  "productDetails": "Details",
+  "productShowLess": "Weniger anzeigen",
+  "productLoadMore": "Mehr laden",
+  "productMoreInformations": "Weitere Informationen",
+  "productSku": "Artikelnummer",
+  "productType": "Typ",
+  "productBrand": "Marke",
+  "productColor": "Farbe",
+  "productSize": "Größe",
+  "productReviews": "Bewertungen",
+  "productNoReviewsYet": "Noch keine Bewertungen",
+  "productRating": "{count} Bewertung",
+  "@productRating": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productReviewsCount": "{count} Bewertungen",
+  "@productReviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productPostedOn": "Veröffentlicht am {day} {month} {year}",
+  "@productPostedOn": {
+    "placeholders": {
+      "day": {},
+      "month": {},
+      "year": {}
+    }
+  },
+  "productReviewSubmitted": "Ihre Bewertung wurde gesendet!",
+  "productWriteReview": "Bewertung schreiben",
+  "productPleaseLoginForReviews": "Bitte melden Sie sich an, um Ihre Bewertungen zu sehen",
+  "productLoadMoreReviews": "Mehr Bewertungen laden",
+  "productRelatedProduct": "Ähnliches Produkt",
+  "productDiscountOff": "{percent}% Rabatt",
+  "@productDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productVeryGood": "Sehr gut",
+  "productGood": "Gut",
+  "productAverage": "Durchschnittlich",
+  "productBad": "Schlecht",
+  "productVeryBad": "Sehr schlecht",
+  "productInStock": "Auf Lager",
+  "productOutOfStock": "Nicht auf Lager",
+  "productQuantity": "Menge",
+  "productWishlistAction": "Wunschliste",
+  "productCompareAction": "Vergleichen",
+  "productShareAction": "Teilen",
+  "productLoginToCompare": "Bitte melden Sie sich an, um zum Vergleich hinzuzufügen",
+  "productAddedToCompare": "Zum Vergleich hinzugefügt",
+  "productAddToCart": "In den Warenkorb",
+  "accountMoveToCart": "In den Warenkorb verschieben",
+  "productBuyNow": "Jetzt kaufen",
+  "productSelectOptionsFirst": "Bitte wählen Sie zuerst die Produktoptionen aus",
+  "productBookingBookTable": "Tisch reservieren *",
+  "productBookingSelectDateRequired": "Datum auswählen *",
+  "productBookingSelectSlotRequired": "Zeitfenster auswählen *",
+  "productBookingSpecialRequestNotesRequired": "Besondere Wünsche/Notizen *",
+  "productBookingBookAppointment": "Termin buchen *",
+  "productBookingDateFormatHint": "JJJJ-MM-TT",
+  "productBookingFrom": "Von",
+  "productBookingTo": "Bis",
+  "productBookingSelectDate": "Datum auswählen",
+  "productBookingLocation": "Standort",
+  "productBookingSlotDuration": "Dauer des Zeitfensters",
+  "productBookingAvailability": "Verfügbarkeit",
+  "productBookingStartDate": "Startdatum",
+  "productBookingEndDate": "Enddatum",
+  "productBookingDate": "Datum",
+  "productBookingViewOnMap": "Auf der Karte anzeigen",
+  "productBookingEventOn": "Veranstaltung am:",
+  "productBookingBookYourTicket": "Buchen Sie Ihr Ticket",
+  "productBookingSlotDurationLabel": "Dauer des Zeitfensters:",
+  "productBookingDurationMinutes": "{count} Minuten",
+  "@productBookingDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productBookingAvailableFrom": "Verfügbar ab",
+  "productBookingAvailableTo": "Verfügbar bis",
+  "productBookingSpecialRequestNotesHint": "Besondere Wünsche/Notizen",
+  "productBookingChooseRentOption": "Mietoption wählen *",
+  "productBookingDailyBasis": "Tagesbasis",
+  "productBookingHourlyBasis": "Stundenbasis",
+  "productBookingNoDatesAvailable": "Keine Termine für die Buchung verfügbar",
+  "productBookingSelectSlot": "Zeitfenster auswählen",
+  "productBookingSelectDateFirst": "Wählen Sie zuerst ein Datum aus",
+  "productBookingChooseDateFirstToSeeSlots": "Wählen Sie zuerst ein Datum aus, um verfügbare Zeitfenster zu sehen.",
+  "productBookingLoadingSlots": "Zeitfenster werden geladen...",
+  "productBookingSlotsLoadingForSelectedDate": "Verfügbare Zeitfenster für das ausgewählte Datum werden geladen.",
+  "productBookingUnableToLoadSlots": "Zeitfenster konnten nicht geladen werden",
+  "productBookingNoSlotsAvailable": "Keine Zeitfenster verfügbar",
+  "productBookingNoSlotsAvailableForSelectedDate": "Für das ausgewählte Datum sind keine Zeitfenster verfügbar.",
+  "productBookingSelectOneSlotToContinue": "Wählen Sie ein verfügbares Zeitfenster aus, um fortzufahren.",
+  "productBookingSpecialRequestNotesLowercase": "Besondere Wünsche/Notizen",
+  "productDownloadableLinks": "Links",
+  "productDownloadableSamples": "Beispiele",
+  "productDownloadSample": "Beispiel herunterladen",
+  "productDefaultName": "Produkt",
+  "categoryDefaultName": "Kategorien",
+  "categorySubCategories": "Unterkategorien",
+  "categorySomethingWentWrong": "Etwas ist schiefgelaufen",
+  "categoryUnknownError": "Unbekannter Fehler",
+  "categoryItemsFound": "{count} Artikel gefunden",
+  "@categoryItemsFound": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "categoryNoProductsFound": "Keine Produkte gefunden",
+  "categorySort": "Sortieren",
+  "categoryFilter": "Filtern",
+  "categoryFilters": "Filter",
+  "categoryNoFiltersAvailable": "Keine Filter verfügbar",
+  "categoryFiltersWillAppear": "Filter werden angezeigt, wenn sie für diese Kategorie verfügbar sind",
+  "categoryApplyFilters": "Filter anwenden",
+  "categoryApplyFiltersCount": "Filter anwenden ({count})",
+  "@categoryApplyFiltersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryClearAll": "Alle löschen",
+  "categoryTryAdjustingFilters": "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen",
+  "categoryError": "Fehler",
+  "categoryLoginToManageWishlist": "Bitte melden Sie sich an, um die Wunschliste zu verwalten",
+  "categoryAddedToWishlist": "Zur Wunschliste hinzugefügt",
+  "categoryRemovedFromWishlist": "Von der Wunschliste entfernt",
+  "categoryFailedToUpdateWishlist": "Wunschliste konnte nicht aktualisiert werden: {error}",
+  "@categoryFailedToUpdateWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cart": "Warenkorb",
+  "cartPleaseLoginWishlist": "Bitte melden Sie sich an, um die Wunschliste zu sehen",
+  "cartItemsInCart": "{count} {itemText} im Warenkorb",
+  "@cartItemsInCart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "itemText": {}
+    }
+  },
+  "cartYourCartEmpty": "Ihr Warenkorb ist leer",
+  "cartAddProductsHere": "Fügen Sie Produkte zum Warenkorb hinzu, um sie hier zu sehen",
+  "cartContinueShopping": "Weiter einkaufen",
+  "cartUnit": "Einheit",
+  "cartUnits": "Einheiten",
+  "cartPleaseLoginWishlistAdd": "Bitte melden Sie sich an, um zur Wunschliste hinzuzufügen",
+  "cartMovedToWishlist": "Zur Wunschliste verschoben",
+  "cartFailedMoveWishlist": "Verschieben zur Wunschliste fehlgeschlagen: {error}",
+  "@cartFailedMoveWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cartViewMore": "Mehr anzeigen",
+  "cartViewLess": "Weniger anzeigen",
+  "cartEmptyCartAction": "Warenkorb leeren",
+  "cartApplyCoupon": "Gutschein anwenden",
+  "cartCouponCode": "Gutscheincode",
+  "cartApply": "Anwenden",
+  "cartAppliedCoupon": "Gutschein angewendet",
+  "cartRemove": "Entfernen",
+  "cartPriceBreak": "Preisübersicht",
+  "cartSubTotal": "Zwischensumme",
+  "cartDiscount": "Rabatt",
+  "cartDeliveryCharges": "Versandkosten",
+  "cartTax": "Steuer",
+  "cartGrandTotal": "Gesamtsumme",
+  "cartAmountToBePaid": "Zu zahlender Betrag",
+  "cartPayNow": "Jetzt bezahlen",
+  "cartRemoveItem": "Artikel entfernen",
+  "cartRemoveItemConfirm": "Möchten Sie \"{productName}\" wirklich aus Ihrem Warenkorb entfernen?",
+  "@cartRemoveItemConfirm": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "cartCancel": "Abbrechen",
+  "cartEmptyCartTitle": "Warenkorb leeren",
+  "cartEmptyCartConfirm": "Möchten Sie wirklich alle Artikel aus Ihrem Warenkorb entfernen?",
+  "checkout": "Kasse",
+  "checkoutBillingTo": "Rechnungsadresse",
+  "checkoutDeliveredTo": "Geliefert an",
+  "checkoutChange": "Ändern",
+  "checkoutSelectBillingAddress": "Rechnungsadresse auswählen",
+  "checkoutSelectShippingAddress": "Lieferadresse auswählen",
+  "checkoutBillingAddress": "Rechnungsadresse",
+  "checkoutEnterAddress": "Adresse eingeben",
+  "checkoutFirstName": "Vorname",
+  "checkoutLastName": "Nachname",
+  "checkoutEmail": "E-Mail",
+  "checkoutPhone": "Telefon",
+  "checkoutStreetAddress": "Straßenadresse",
+  "checkoutCountry": "Land",
+  "checkoutState": "Bundesland",
+  "checkoutCity": "Stadt",
+  "checkoutPostcode": "Postleitzahl",
+  "checkoutCompanyOptional": "Firma (optional)",
+  "checkoutUseSameAddressShipping": "Dieselbe Adresse für den Versand verwenden?",
+  "checkoutPhoneValue": "Telefon: {phone}",
+  "@checkoutPhoneValue": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "checkoutAddressTypeOffice": "Büro",
+  "checkoutAddressTypeHome": "Zuhause",
+  "checkoutAddressTypeBilling": "Rechnung",
+  "checkoutAddressTypeShipping": "Versand",
+  "checkoutAddressTypeDefault": "Standard",
+  "checkoutFieldRequired": "{field} ist erforderlich",
+  "@checkoutFieldRequired": {
+    "placeholders": {
+      "field": {}
+    }
+  },
+  "checkoutSaveContinue": "Speichern und fortfahren",
+  "checkoutYourCartEmpty": "Ihr Warenkorb ist leer",
+  "checkoutSelectCountry": "Land auswählen",
+  "checkoutSelectState": "Bundesland auswählen",
+  "checkoutCountryRequired": "Land ist erforderlich",
+  "checkoutStateRequired": "Bundesland ist erforderlich",
+  "checkoutSelectCountryFirst": "Wählen Sie zuerst ein Land aus",
+  "checkoutShippingMethod": "Versandart",
+  "checkoutSaveAddressSeeShipping": "Speichern Sie Ihre Adresse, um Versandoptionen zu sehen",
+  "checkoutPaymentMethod": "Zahlungsmethode",
+  "checkoutSelectShippingMethodFirst": "Wählen Sie zuerst eine Versandart aus",
+  "checkoutEnterCouponCode": "Gutscheincode eingeben",
+  "checkoutDiscountCoupon": "Rabatt (Gutschein)",
+  "checkoutPlaceOrder": "Bestellung aufgeben",
+  "thankYouTitle": "Vielen Dank für Ihre Bestellung!",
+  "thankYouSubtitle": "Wir senden Ihnen die Bestelldetails und Tracking-Informationen per E-Mail",
+  "thankYouOrderNumber": "Ihre Bestellnummer: {orderNumber}",
+  "@thankYouOrderNumber": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "thankYouViewOrder": "Bestellung ansehen",
+  "thankYouContinueShopping": "Weiter einkaufen",
+  "accountPleaseTryAgainLater": "Bitte versuchen Sie es später erneut",
+  "accountUserFallback": "Benutzer",
+  "accountBack": "Zurück",
+  "accountSettings": "Einstellungen",
+  "accountMyOrders": "Meine Bestellungen",
+  "accountMyDownloadableProducts": "Meine herunterladbaren Produkte",
+  "accountWishlist": "Wunschliste",
+  "accountCompareProducts": "Produkte vergleichen",
+  "accountProductReview": "Produktbewertung",
+  "accountAddressBook": "Adressbuch",
+  "accountEditAccount": "Konto bearbeiten",
+  "accountLogout": "Abmelden",
+  "accountLogoutConfirmation": "Möchten Sie sich wirklich abmelden?",
+  "accountNoCountriesAvailable": "Keine Länder verfügbar. Bitte versuchen Sie es erneut.",
+  "accountPleaseSelectCountry": "Bitte wählen Sie ein Land aus",
+  "accountPleaseSelectOrEnterState": "Bitte wählen oder geben Sie ein Bundesland ein",
+  "accountAddressUpdatedSuccessfully": "Adresse erfolgreich aktualisiert",
+  "accountAddressAddedSuccessfully": "Adresse erfolgreich hinzugefügt",
+  "accountGoBack": "Zurück",
+  "accountEditAddress": "Adresse bearbeiten",
+  "accountAddNewAddress": "Neue Adresse hinzufügen",
+  "accountFirstNameRequired": "Vorname ist erforderlich",
+  "accountLastNameRequired": "Nachname ist erforderlich",
+  "accountEnterValidEmail": "Geben Sie eine gültige E-Mail ein",
+  "accountCompanyName": "Firmenname",
+  "accountVatId": "USt-IdNr.",
+  "accountStreetAddressRequired": "Straßenadresse ist erforderlich",
+  "accountCityRequired": "Stadt ist erforderlich",
+  "accountZipPostcode": "PLZ/Postleitzahl",
+  "accountZipPostcodeRequired": "PLZ/Postleitzahl ist erforderlich",
+  "accountTelephone": "Telefon",
+  "accountPhoneNumberRequired": "Telefonnummer ist erforderlich",
+  "accountChangeDefaultBillingAddress": "Standard-Rechnungsadresse ändern",
+  "accountChangeDefaultShippingAddress": "Standard-Lieferadresse ändern",
+  "accountUpdateAddress": "Adresse aktualisieren",
+  "accountSaveToAddressBook": "Im Adressbuch speichern",
+  "accountPleaseLoginToWriteReview": "Bitte melden Sie sich an, um eine Bewertung zu schreiben",
+  "accountPleaseSelectRating": "Bitte wählen Sie eine Bewertung aus",
+  "accountAddReview": "Bewertung hinzufügen",
+  "accountReviewSubmitted": "Bewertung gesendet!",
+  "accountNickName": "Spitzname",
+  "accountEnterYourName": "Geben Sie Ihren Namen ein",
+  "accountNameRequired": "Name ist erforderlich",
+  "accountSummary": "Zusammenfassung",
+  "accountReviewSummaryHint": "Kurze Zusammenfassung Ihrer Bewertung",
+  "accountSummaryRequired": "Zusammenfassung ist erforderlich",
+  "accountReview": "Bewertung",
+  "accountDetailedReviewHint": "Schreiben Sie hier Ihre ausführliche Bewertung",
+  "accountReviewRequired": "Bewertung ist erforderlich",
+  "accountRating": "Bewertung",
+  "accountSubmitReview": "Bewertung absenden",
+  "accountCouldNotLoadAddresses": "Adressen konnten nicht geladen werden",
+  "accountPleaseTryAgain": "Bitte versuchen Sie es erneut",
+  "accountNoAddressesSaved": "Keine Adressen gespeichert",
+  "accountAddAddressToGetStarted": "Fügen Sie eine neue Adresse hinzu, um zu beginnen",
+  "accountNoProductsToCompare": "Keine Produkte zum Vergleichen",
+  "accountAddProductsToCompareHint": "Fügen Sie Produkte von der Produktdetailseite zum Vergleich hinzu.",
+  "accountProducts": "Produkte",
+  "accountDescription": "Beschreibung",
+  "accountShortDescription": "Kurzbeschreibung",
+  "accountActivity": "Aktivität",
+  "accountSeller": "Verkäufer",
+  "accountNotAvailable": "Nicht verfügbar",
+  "accountMessageSentSuccessfully": "Nachricht erfolgreich gesendet!",
+  "accountAnErrorOccurred": "Ein Fehler ist aufgetreten",
+  "accountContactUs": "Kontaktieren Sie uns",
+  "accountName": "Name",
+  "accountEnterYourEmail": "Geben Sie Ihre E-Mail ein",
+  "accountContact": "Kontakt",
+  "accountEnterYourPhoneNumber": "Geben Sie Ihre Telefonnummer ein",
+  "accountMessage": "Nachricht",
+  "accountEnterYourMessage": "Geben Sie Ihre Nachricht ein",
+  "accountSendMessage": "Nachricht senden",
+  "accountNameFieldEmpty": "Namensfeld darf nicht leer sein",
+  "accountNameMinChars": "Name muss mindestens 2 Zeichen lang sein",
+  "accountEmailFieldEmpty": "E-Mail-Feld darf nicht leer sein",
+  "accountPleaseEnterValidEmailAddress": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+  "accountContactNumberEmpty": "Kontaktfeld darf nicht leer sein",
+  "accountPleaseEnterValidContactNumber": "Bitte geben Sie eine gültige Kontaktnummer ein",
+  "accountMessageFieldEmpty": "Nachrichtenfeld darf nicht leer sein",
+  "accountMessageMinChars": "Nachricht muss mindestens 10 Zeichen lang sein",
+  "accountDownloadableProducts": "Herunterladbare Produkte",
+  "accountNoDownloadsYet": "Noch keine Downloads",
+  "accountDownloadsEmptyDescription": "Ihre heruntergeladenen Produkte erscheinen hier.",
+  "accountProductsProgress": "{current} / {total} Produkte",
+  "@accountProductsProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "accountRemainingDownloadsLeft": "{value} verbleibend",
+  "@accountRemainingDownloadsLeft": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "accountDownload": "Herunterladen",
+  "accountFileName": "Datei: {fileName}",
+  "@accountFileName": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "accountDownloadWillStartShortly": "Ihr Download beginnt in Kürze. Prüfen Sie Ihren Download-Ordner.",
+  "accountClose": "Schließen",
+  "accountOrders": "Bestellungen",
+  "accountNoOrdersYet": "Noch keine Bestellungen",
+  "accountOrdersEmptyDescription": "Ihre Bestellungen erscheinen hier, sobald Sie einen Kauf tätigen.",
+  "accountOrderSingular": "Bestellung",
+  "accountOrderPlural": "Bestellungen",
+  "accountOrderTotalItems": "{total} (Artikel {count})",
+  "@accountOrderTotalItems": {
+    "placeholders": {
+      "total": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOrderAndReturn": "Bestellung und Rückgabe",
+  "accountTrackOrder": "Bestellung verfolgen",
+  "accountReturnPolicy": "Rückgaberichtlinie",
+  "accountReturnRequest": "Rückgabeanfrage",
+  "accountNotifications": "Benachrichtigungen",
+  "accountPrivacy": "Datenschutz",
+  "accountAccount": "Konto",
+  "accountPreferences": "Einstellungen",
+  "accountLanguage": "Sprache",
+  "accountNoLanguagesAvailable": "Keine Sprachen verfügbar",
+  "accountCurrency": "Währung",
+  "accountOthers": "Sonstiges",
+  "accountNoPagesAvailable": "Keine Seiten verfügbar",
+  "accountProductReviews": "Produktbewertungen",
+  "accountMyReviews": "Meine Bewertungen",
+  "accountNoReviewsYet": "Noch keine Bewertungen",
+  "accountReviewsEmptyDescription": "Ihre Produktbewertungen erscheinen hier.",
+  "accountReviewSingular": "Bewertung",
+  "accountReviewPlural": "Bewertungen",
+  "accountPostedOn": "Veröffentlicht am {date}",
+  "@accountPostedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountCloseSettings": "Einstellungen schließen",
+  "accountChangeTheme": "Design ändern",
+  "accountAllNotifications": "Alle Benachrichtigungen",
+  "accountOffers": "Angebote",
+  "accountOfflineData": "Offline-Daten",
+  "accountTrackRecentlyViewedProducts": "Zuletzt angesehene Produkte verfolgen und anzeigen",
+  "accountShowSearchTag": "Such-Tag anzeigen",
+  "accountTryAgain": "Erneut versuchen",
+  "accountYourWishlistEmpty": "Ihre Wunschliste ist leer",
+  "accountWishlistEmptyDescription": "Durchsuchen Sie Produkte und fügen Sie sie Ihrer Wunschliste hinzu",
+  "accountItemSingular": "Artikel",
+  "accountItemPlural": "Artikel",
+  "accountStartingAt": "Ab {price}",
+  "@accountStartingAt": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "accountAboutThisPage": "Über diese Seite",
+  "accountPageId": "Seiten-ID: {id}",
+  "@accountPageId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "mainTabHome": "Startseite",
+  "mainTabCategories": "Kategorien",
+  "mainTabCart": "Warenkorb",
+  "mainTabAccount": "Konto",
+  "authLoginSuccess": "Willkommen! Erfolgreich angemeldet.",
+  "authWelcomeBack": "Willkommen zurück!",
+  "authLoginToAccount": "Melden Sie sich bei Ihrem Konto an",
+  "authEmailAddress": "E-Mail-Adresse",
+  "authEnterYourEmail": "Geben Sie Ihre E-Mail ein",
+  "authPleaseEnterEmail": "Bitte geben Sie Ihre E-Mail ein",
+  "authPleaseEnterValidEmail": "Bitte geben Sie eine gültige E-Mail ein",
+  "authPassword": "Passwort",
+  "authEnterYourPassword": "Geben Sie Ihr Passwort ein",
+  "authPleaseEnterPassword": "Bitte geben Sie Ihr Passwort ein",
+  "authPasswordMinLength": "Passwort muss mindestens 6 Zeichen lang sein",
+  "authForgotPasswordTitle": "Passwort vergessen?",
+  "authLogin": "Anmelden",
+  "authNoAccountPrompt": "Sie haben kein Konto? ",
+  "authSignUp": "Registrieren",
+  "authAccountCreatedSuccess": "Konto erfolgreich erstellt!",
+  "authCreateAccount": "Konto erstellen",
+  "authSignupGetStarted": "Registrieren Sie sich, um loszulegen",
+  "authFirstNameHint": "Vorname",
+  "authLastNameHint": "Nachname",
+  "authRequired": "Erforderlich",
+  "authCreatePasswordHint": "Passwort erstellen",
+  "authConfirmPassword": "Passwort bestätigen",
+  "authConfirmPasswordHint": "Bestätigen Sie Ihr Passwort",
+  "authPleaseConfirmPassword": "Bitte bestätigen Sie Ihr Passwort",
+  "authPasswordsDoNotMatch": "Passwörter stimmen nicht überein",
+  "authAlreadyHaveAccountPrompt": "Sie haben bereits ein Konto? ",
+  "authForgotPasswordSubtitle": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+  "authSendResetLink": "Link zum Zurücksetzen senden",
+  "authBackToLogin": "Zurück zur Anmeldung",
+  "authNiceToSeeYouHere": "Schön, Sie hier zu sehen",
+  "accountEditTitle": "Konto bearbeiten",
+  "accountFirstNameRequiredLabel": "Vorname *",
+  "accountLastNameRequiredLabel": "Nachname *",
+  "accountChangeEmail": "E-Mail ändern",
+  "accountChangePassword": "Passwort ändern",
+  "accountDeleteAccount": "Konto löschen",
+  "accountGender": "Geschlecht",
+  "accountSelectGender": "Geschlecht auswählen",
+  "accountDob": "Geburtsdatum",
+  "monthJanShort": "Jan",
+  "monthFebShort": "Feb",
+  "monthMarShort": "Mär",
+  "monthAprShort": "Apr",
+  "monthMayShort": "Mai",
+  "monthJunShort": "Jun",
+  "monthJulShort": "Jul",
+  "monthAugShort": "Aug",
+  "monthSepShort": "Sep",
+  "monthOctShort": "Okt",
+  "monthNovShort": "Nov",
+  "monthDecShort": "Dez",
+  "accountSubscribeNewsletters": "Newsletter abonnieren",
+  "accountSaveProfile": "Profil speichern",
+  "accountNewEmail": "Neue E-Mail",
+  "accountEmailRequired": "E-Mail ist erforderlich",
+  "accountCurrentPassword": "Aktuelles Passwort",
+  "accountPasswordRequired": "Passwort ist erforderlich",
+  "accountChange": "Ändern",
+  "accountCurrentPasswordRequired": "Aktuelles Passwort ist erforderlich",
+  "accountNewPassword": "Neues Passwort",
+  "accountConfirmPassword": "Passwort bestätigen",
+  "accountDeleteWarning": "Diese Aktion ist dauerhaft und kann nicht rückgängig gemacht werden. Alle Ihre Daten werden gelöscht.",
+  "accountEnterYourPassword": "Geben Sie Ihr Passwort ein",
+  "accountDelete": "Löschen",
+  "accountGenderMale": "Männlich",
+  "accountGenderFemale": "Weiblich",
+  "accountGenderOther": "Andere",
+  "accountOrdersWithNumber": "Bestellungen {number}",
+  "@accountOrdersWithNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountReorderSuccessful": "Erneute Bestellung erfolgreich",
+  "accountReorderItemsAdded": "{message} \n\n{count} Artikel wurden Ihrem Warenkorb hinzugefügt.",
+  "@accountReorderItemsAdded": {
+    "placeholders": {
+      "message": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOk": "OK",
+  "accountGoToCart": "Zum Warenkorb",
+  "accountFailedToLoadOrderDetails": "Bestelldetails konnten nicht geladen werden",
+  "accountDetails": "Details",
+  "accountInvoices": "Rechnungen",
+  "accountShipments": "Sendungen",
+  "accountPlacedOn": "Bestellt am {date}",
+  "@accountPlacedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountItemsOrdered": "{count} Artikel bestellt",
+  "@accountItemsOrdered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountBillingAddress": "Rechnungsadresse",
+  "accountShippingAddress": "Lieferadresse",
+  "accountShippingMethod": "Versandart",
+  "accountPaymentMethod": "Zahlungsmethode",
+  "accountNoInvoicesForOrder": "Keine Rechnungen für diese Bestellung",
+  "accountInvoicedCount": "{count} in Rechnung gestellt",
+  "@accountInvoicedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoShipmentsForOrder": "Keine Sendungen für diese Bestellung",
+  "accountReorder": "Erneut bestellen",
+  "accountMoreInfo": "Mehr Infos",
+  "accountOrderedQty": "Bestellte Menge",
+  "accountShipped": "Versendet",
+  "accountInvoiced": "Berechnet",
+  "accountUnitPrice": "Stückpreis",
+  "accountSubTotalWithSpace": "Zwischensumme",
+  "accountTotalPaid": "Gesamt bezahlt",
+  "accountTotalRefunded": "Gesamt erstattet",
+  "accountTotalDue": "Gesamt fällig",
+  "accountInvoiceNumber": "Rechnung {number}",
+  "@accountInvoiceNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountShipmentNumber": "Sendung {number}",
+  "@accountShipmentNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountFailedToLoadInvoiceDetails": "Rechnungsdetails konnten nicht geladen werden",
+  "accountInvoiceStatus": "Rechnungsstatus",
+  "accountInvoiceDate": "Rechnungsdatum",
+  "accountOrderId": "Bestell-ID",
+  "accountOrderDate": "Bestelldatum",
+  "accountOrderStatus": "Bestellstatus",
+  "accountChannel": "Kanal",
+  "accountDefault": "Standard",
+  "accountStatusPaid": "Bezahlt",
+  "accountStatusPending": "Ausstehend",
+  "accountStatusPendingPayment": "Zahlung ausstehend",
+  "accountStatusOverdue": "Überfällig",
+  "accountStatusRefunded": "Erstattet",
+  "accountShippedQty": "Versendete Menge",
+  "accountInvoicedQty": "Berechnete Menge",
+  "accountUnitPriceWithColon": "Stückpreis:",
+  "accountSubTotalWithColon": "Zwischensumme:",
+  "accountDownloadInvoice": "Rechnung herunterladen",
+  "accountInvoice": "Rechnung",
+  "accountRecentOrders": "Letzte Bestellungen",
+  "accountNoRecentOrders": "Keine letzten Bestellungen",
+  "accountStatusProcessing": "In Bearbeitung",
+  "accountStatusCompleted": "Abgeschlossen",
+  "accountStatusCancelled": "Storniert",
+  "accountStatusClosed": "Geschlossen",
+  "accountStatusUnknown": "Unbekannt",
+  "accountWishlistItemsCount": "Wunschlistenartikel ({count})",
+  "@accountWishlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoWishlistItems": "Keine Wunschlistenartikel",
+  "accountDefaultAddresses": "Standardadressen",
+  "accountNoProductReviewsYet": "Noch keine Produktbewertungen",
+  "searchFailedTitle": "Suche fehlgeschlagen",
+  "searchHint": "Produkte suchen",
+  "searchImageSearch": "Bildersuche",
+  "searchRecentSearches": "Letzte Suchanfragen",
+  "searchClearAll": "Alles löschen",
+  "searchTopCategories": "Top-Kategorien",
+  "searchResultsFound": "{count} Ergebnisse gefunden",
+  "@searchResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDiscountOff": "{percent}% Rabatt",
+  "@searchDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "searchNoProductsFound": "Keine Produkte gefunden",
+  "searchTryDifferentTerm": "Versuchen Sie es mit einem anderen Suchbegriff",
+  "searchSpeechNotAvailable": "Spracherkennung ist nicht verfügbar",
+  "searchFailedToStartVoice": "Spracherfassung konnte nicht gestartet werden: {error}",
+  "@searchFailedToStartVoice": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "searchMicrophonePermissionDenied": "Mikrofonberechtigung verweigert",
+  "searchRetake": "Erneut aufnehmen",
+  "searchSearch": "Suchen",
+  "searchTryAgain": "Erneut versuchen",
+  "searchRecognizedObjects": "Erkannte Objekte",
+  "searchResult": "Ergebnis:",
+  "searchFailedToCaptureImage": "Bild konnte nicht aufgenommen werden",
+  "searchProcessing": "Verarbeitung... {progress}%",
+  "@searchProcessing": {
+    "placeholders": {
+      "progress": {
+        "type": "int"
+      }
+    }
+  },
+  "searchOpeningCamera": "Kamera wird geöffnet...",
+  "searchFailedToProcessImage": "Bild konnte nicht verarbeitet werden",
+  "homeRecentlyViewedProducts": "Kürzlich angesehene Produkte",
+  "accountItemsCount": "{count} Artikel",
+  "@accountItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountTrack": "Verfolgen",
+  "accountTrackingVia": "Sendungsverfolgung {trackNumber} über {carrier}",
+  "@accountTrackingVia": {
+    "placeholders": {
+      "trackNumber": {},
+      "carrier": {}
+    }
+  },
+  "accountUnknownCarrier": "Unbekannter Versanddienstleister",
+  "accountTrackingNumber": "Sendungsnummer",
+  "accountSkuValue": "Artikelnummer : {sku}",
+  "@accountSkuValue": {
+    "placeholders": {
+      "sku": {}
+    }
+  },
+  "accountShippedQtyValue": "Versendete Menge : {qty}",
+  "@accountShippedQtyValue": {
+    "placeholders": {
+      "qty": {
+        "type": "int"
+      }
+    }
+  },
+  "commonTimeoutError": "The server is taking too long to respond. Please check your connection and try again.",
+  "commonUnableToReachServer": "Unable to reach the server. Please check your internet connection and try again.",
+  "commonNetworkError": "A network error occurred. Please check your internet connection and try again.",
+  "commonProcessingError": "Something went wrong while processing the data. Please try again later.",
+  "commonMissingInformation": "Some required information is missing. Please fill in all required fields and try again.",
+  "commonTooManyRequests": "Too many requests. Please wait a moment and try again.",
+  "commonServerError": "The server encountered an error. Please try again later.",
+  "commonPermissionDenied": "You don't have permission to perform this action.",
+  "commonSecureConnectionError": "A secure connection could not be established. Please try again later.",
+  "commonCartSessionExpired": "Your cart session has expired. Please try again.",
+  "commonGenericError": "Something went wrong. Please try again.",
+  "commonGenericErrorWithContext": "Something went wrong while {context}. Please try again.",
+  "@commonGenericErrorWithContext": {
+    "placeholders": {
+      "context": {}
+    }
+  },
+  "commonEdit": "Edit",
+  "authInvalidCredentials": "The email or password you entered is incorrect. Please try again.",
+  "authSessionExpired": "Your session has expired. Please log in again.",
+  "authSessionInvalid": "Your session is no longer valid. Please log in again.",
+  "categorySortByTitle": "Sort By",
+  "categorySortAZ": "From A-Z",
+  "categorySortZA": "From Z-A",
+  "categorySortNewest": "Newest First",
+  "categorySortOldest": "Oldest First",
+  "categorySortCheapest": "Cheapest First",
+  "categorySortExpensive": "Expensive First",
+  "accountSelectAddress": "Select Address",
+  "accountSetAsDefault": "Set as Default",
+  "accountAddressTypeHome": "Home",
+  "accountAddressTypeOffice": "Office",
+  "accountAddressTypeCustomer": "Customer",
+  "cartAddedToCartSuccess": "Product added to cart successfully",
+  "productSelectDownloadLink": "Please select at least one link",
+  "wishlistItemRemoved": "Item removed from wishlist"
+}
