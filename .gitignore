@@ -12,3 +12,19 @@ venv/
 # Phase 0 outputs - baselines are committed deliberately, audits are not
 artifacts/audits/
 artifacts/scratch/
+
+# Mobile app (Flutter) lives under mobile-app/ - these guard against stray
+# generated/leftover copies appearing at repo root, not the tracked content
+# under mobile-app/ (anchored with leading "/" so mobile-app/* is unaffected).
+/android/
+/ios/
+/macos/
+/windows/
+/linux/
+/lib/
+/assets/
+/maestro/
+/bagisto-backend/
+.dart_tool/
+.flutter-plugins-dependencies
+.DS_Store

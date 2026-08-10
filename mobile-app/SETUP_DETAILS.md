@@ -5,13 +5,13 @@ Real Bagisto v2.4.8 store, running locally via Docker, used as the backend for t
 
 ## Location
 
-- Compose file: `bagisto-backend/docker-compose.yml` (relative to this repo's root)
-- App source (mounted into the app container): `bagisto-backend/bagisto/`
+- Compose file: `mobile-app/bagisto-backend/docker-compose.yml` (relative to this repo's root)
+- App source (mounted into the app container): `mobile-app/bagisto-backend/bagisto/`
 - MySQL data: Docker named volume `bagisto-backend_mysql-data`
 - The compose file pins `name: bagisto-backend` at the top level so the project name
   (and therefore the volume name) stays stable no matter where this folder lives on
   disk — this let the whole setup be moved into the repo without losing seeded data.
-- `bagisto-backend/bagisto/` and its `.env` are git-ignored (see repo `.gitignore`) —
+- `bagisto-backend/bagisto/` and its `.env` are git-ignored (see `mobile-app/.gitignore`) —
   it's ~680MB of vendor code/dependencies and disposable, not meant to be committed.
 
 ## Containers
@@ -63,7 +63,7 @@ APP_URL=http://10.0.2.2:8080
 
 ## Flutter app wiring
 
-`lib/core/constants/api_constants.dart` in the mobile app repo points at this backend:
+`mobile-app/lib/core/constants/api_constants.dart` in the mobile app repo points at this backend:
 
 ```dart
 const String bagistoEndpoint = 'http://10.0.2.2:8080/api/graphql';
@@ -95,13 +95,13 @@ else — not just this Mac's Android emulator — tunnel port 8080 with ngrok.
 **Each time you want a public URL:**
 
 ```bash
-cd bagisto-backend
+cd mobile-app/bagisto-backend
 ./start-ngrok.sh
 ```
 
 This refuses to start with a clear error while the authtoken is still the placeholder.
 Once running, it prints a forwarding URL like `https://abcd1234.ngrok-free.app`. Copy it
-into `lib/core/constants/api_constants.dart`:
+into `mobile-app/lib/core/constants/api_constants.dart`:
 
 ```dart
 const String bagistoEndpoint = 'https://abcd1234.ngrok-free.app/api/graphql';
@@ -121,7 +121,7 @@ Then rebuild the APK. Caveats:
 Start / stop the stack:
 
 ```bash
-cd bagisto-backend   # relative to this repo's root
+cd mobile-app/bagisto-backend   # relative to this repo's root
 docker compose up -d      # start mysql + app
 docker compose stop       # stop containers (keeps data)
 docker compose down       # stop and remove containers (keeps volumes/data)
@@ -148,7 +148,7 @@ docker exec bagisto-mysql mysql -ubagisto -pbagisto bagisto -e "SHOW TABLES;"
   rely on queued jobs won't fire unless one is started).
 - Data persists across container restarts (named volume) but is lost if you run
   `docker compose down -v`.
-- Stack must be running (`docker compose up -d` in `bagisto-backend/`) and Docker
+- Stack must be running (`docker compose up -d` in `mobile-app/bagisto-backend/`) and Docker
   Desktop must be open for the Flutter app to reach the backend.
 - `bagisto-backend/bagisto/` (the actual Bagisto app + vendor code) is git-ignored.
   If you clone this repo elsewhere, that folder won't exist — re-run the setup
