@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
 import 'package:equatable/equatable.dart';
+import '../../../../core/utils/image_url_helper.dart';
 
 /// Represents a theme customization entry from the Bagisto API.
 /// Each node defines a section of the homepage (image_carousel, product_carousel,
@@ -195,7 +196,7 @@ class HomeProduct extends Equatable {
       type: json['type'] as String? ?? 'simple',
       name: json['name'] as String? ?? '',
       urlKey: json['urlKey'] as String? ?? '',
-      baseImageUrl: json['baseImageUrl'] as String?,
+      baseImageUrl: resolveImageUrl(json['baseImageUrl'] as String?),
       price: _toDouble(json['price']),
       minimumPrice: json['minimumPrice'] != null ? _toDouble(json['minimumPrice']) : null,
       specialPrice: parsedSpecialPrice,

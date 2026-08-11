@@ -5,9 +5,9 @@ import '../constants/analytics_constants.dart';
 /// Thin wrapper around the UXCam SDK.
 ///
 /// Every call is a no-op until [initialize] actually starts a session, which
-/// happens only when a real [uxcamAppKey] has been configured and the app
-/// isn't pointed at a local/dev backend — this keeps placeholder builds and
-/// local testing sessions out of the UXCam dashboard.
+/// happens only when a real [uxcamAppKey] has been configured — this keeps
+/// placeholder builds out of the UXCam dashboard. Logging is allowed in
+/// every environment, including local/dev backends.
 class UxcamService {
   UxcamService._();
 
@@ -21,12 +21,6 @@ class UxcamService {
       debugPrint(
         '📊 UXCam disabled — uxcamAppKey is still a placeholder '
         '(set it in analytics_constants.dart).',
-      );
-      return;
-    }
-    if (isLocalDevBackend) {
-      debugPrint(
-        '📊 UXCam disabled — app is pointed at a local/dev backend.',
       );
       return;
     }

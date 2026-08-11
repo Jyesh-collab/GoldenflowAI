@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/currency/currency_formatter.dart';
+import '../../../../core/utils/image_url_helper.dart';
 
 final String _baseUrl = Uri.parse(bagistoEndpoint).origin;
 
@@ -384,7 +385,7 @@ class RecentOrder {
         final node = edges.first['node'] ?? edges.first;
         final product = node['product'];
         if (product is Map) {
-          imageUrl = product['baseImageUrl']?.toString();
+          imageUrl = resolveImageUrl(product['baseImageUrl']?.toString());
         }
       }
     }
@@ -527,7 +528,7 @@ class WishlistItem {
       }
     }
     if (imageUrl == null || imageUrl.isEmpty) {
-      imageUrl = product['baseImageUrl']?.toString();
+      imageUrl = resolveImageUrl(product['baseImageUrl']?.toString());
     }
 
     // Extract product numeric ID from product._id
@@ -613,7 +614,7 @@ class ProductReview {
       pId = _parseInt(product['_id']);
 
       // 1. Prefer baseImageUrl (full URL from API)
-      pImage = product['baseImageUrl']?.toString();
+      pImage = resolveImageUrl(product['baseImageUrl']?.toString());
 
       // 2. Fallback: images cursor connection (edges/node/path)
       if (pImage == null || pImage.isEmpty) {
@@ -624,7 +625,7 @@ class ProductReview {
             final path = (edges.first['node'] as Map?)?['path']?.toString();
             if (path != null && path.isNotEmpty) {
               pImage = path.startsWith('http')
-                  ? path
+                  ? resolveImageUrl(path)
                   : '$_baseUrl/storage/$path';
             }
           }
@@ -808,7 +809,7 @@ class CustomerOrder {
         final node = edges.first['node'] ?? edges.first;
         final product = node['product'];
         if (product is Map) {
-          imageUrl = product['baseImageUrl']?.toString();
+          imageUrl = resolveImageUrl(product['baseImageUrl']?.toString());
         }
       }
     }
@@ -1152,7 +1153,7 @@ class CompareItem {
       }
     }
     if (imageUrl == null || imageUrl.isEmpty) {
-      imageUrl = product['baseImageUrl']?.toString();
+      imageUrl = resolveImageUrl(product['baseImageUrl']?.toString());
     }
 
     // ── Average rating ──

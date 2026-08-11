@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
+import '../../../../core/utils/image_url_helper.dart';
 
 /// Product model matching Bagisto GraphQL schema
 /// Derived from: nextjs-commerce/src/graphql/catelog/fragments/Product.ts
@@ -470,7 +471,7 @@ class ProductModel {
       shortDescription: json['shortDescription'] as String?,
       price: _parseDouble(json['price']),
       formattedPrice: json['formattedPrice'] as String?,
-      baseImageUrl: json['baseImageUrl'] as String?,
+      baseImageUrl: resolveImageUrl(json['baseImageUrl'] as String?),
       minimumPrice: _parseDouble(json['minimumPrice']),
       formattedMinimumPrice: json['formattedMinimumPrice'] as String?,
       specialPrice: _parseSpecialPrice(json['specialPrice']),
@@ -1349,7 +1350,7 @@ class ProductVariant {
       formattedPrice: json['formattedPrice'] as String?,
       specialPrice: ProductModel._parseSpecialPrice(json['specialPrice']),
       formattedSpecialPrice: json['formattedSpecialPrice'] as String?,
-      baseImageUrl: json['baseImageUrl'] as String?,
+      baseImageUrl: resolveImageUrl(json['baseImageUrl'] as String?),
       isSaleable: json['isSaleable'] as String?,
       color: json['color'] as String? ?? attrMap['color'],
       size: json['size'] as String? ?? attrMap['size'],
@@ -1474,7 +1475,7 @@ class ProductImage {
       numericId: json['_id'] as int?,
       type: json['type'] as String?,
       path: json['path'] as String? ?? '',
-      publicPath: json['publicPath'] as String?,
+      publicPath: resolveImageUrl(json['publicPath'] as String?),
       position: json['position'] as String?,
     );
   }
