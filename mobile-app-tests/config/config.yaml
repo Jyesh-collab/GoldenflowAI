@@ -1,0 +1,18 @@
+# Appium/UiAutomator2 session config.
+# app_path is relative to the mobile-app-tests/ folder.
+
+platform_name: Android
+device_name: emulator-5554
+automation_name: UiAutomator2
+app_path: ../mobile-app/build/app/outputs/flutter-apk/app-debug-local.apk
+
+# Kept for reference / future use if we switch from the `app` capability
+# (fresh install each session) to targeting an already-installed app.
+app_package: com.webkul.bagisto.mobikul
+app_activity: com.bagisto.bagisto_flutter.MainActivity
+
+appium_server_url: http://127.0.0.1:4723
+
+new_command_timeout: 120
+implicit_wait: 0
+explicit_wait: 20
