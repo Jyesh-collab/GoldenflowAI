@@ -8,6 +8,7 @@ import yaml
 
 _CONFIG_DIR = Path(__file__).resolve().parent
 _CONFIG_FILE = _CONFIG_DIR / "config.yaml"
+_TEST_DATA_FILE = _CONFIG_DIR / "test_data.yaml"
 
 
 def load_config() -> dict:
@@ -18,3 +19,8 @@ def load_config() -> dict:
     config["app_path"] = str(app_path)
 
     return config
+
+
+def load_test_data() -> dict:
+    with open(_TEST_DATA_FILE, "r") as f:
+        return yaml.safe_load(f)

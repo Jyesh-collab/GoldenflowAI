@@ -17,3 +17,9 @@ class HomePage(BasePage):
 
     def is_loaded(self) -> bool:
         return self.is_displayed(self.HOME_TAB)
+
+    def open_categories(self):
+        self.click(self.CATEGORIES_TAB)
+
+    def open_cart(self):
+        self.click(self.CART_TAB)

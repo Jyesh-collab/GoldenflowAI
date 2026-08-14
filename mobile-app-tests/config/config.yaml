@@ -15,4 +15,9 @@ appium_server_url: http://127.0.0.1:4723
 
 new_command_timeout: 120
 implicit_wait: 0
-explicit_wait: 20
+# The backend's GraphQL calls have been observed taking 2-5s+ each (see
+# storage/logs/laravel.log on ../mobile-app/bagisto-backend/bagisto), and
+# screens like checkout chain several of them sequentially before they
+# finish rendering. 20s was too tight and caused flaky "element not found"
+# failures that were actually just slow page loads, not missing elements.
+explicit_wait: 45

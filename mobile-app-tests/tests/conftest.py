@@ -6,7 +6,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config.config_reader import load_config  # noqa: E402
+from config.config_reader import load_config, load_test_data  # noqa: E402
 from src.driver.driver_factory import create_driver  # noqa: E402
 from src.utils.logger import get_logger  # noqa: E402
 from src.utils.screenshot import save_screenshot  # noqa: E402
@@ -15,6 +15,11 @@ from src.utils.screenshot import save_screenshot  # noqa: E402
 @pytest.fixture(scope="session")
 def config():
     return load_config()
+
+
+@pytest.fixture(scope="session")
+def test_data():
+    return load_test_data()
 
 
 @pytest.fixture(scope="session")
