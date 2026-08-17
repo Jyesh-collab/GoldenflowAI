@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~   Webkul Software.
+  ~   @package Mobikul Application Code.
+  ~   @Category Mobikul
+  ~   @author Webkul <support@webkul.com>
+  ~   @Copyright (c) Webkul Software Private Limited (https://webkul.com)
+  ~   @license https://store.webkul.com/license.html
+  ~   @link https://store.webkul.com/license.html
+  -->
+
+<network-security-config>
+    <!-- 10.0.2.2 is the Android emulator's alias for the host machine's
+         localhost, used by the "local" build flavor (scripts/build_local.sh)
+         to reach the Bagisto backend over plain HTTP during development.
+         The "remote" flavor (scripts/build_remote.sh) uses an HTTPS ngrok
+         URL and needs no cleartext exception. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

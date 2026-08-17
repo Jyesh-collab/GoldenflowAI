@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "000000000000",
+    "project_id": "placeholder-firebase-project",
+    "storage_bucket": "placeholder-firebase-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:1234567890abcdef12345678",
+        "android_client_info": {
+          "package_name": "com.webkul.bagisto.mobikul"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "000000000000-dummyandroidclient.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webkul.bagisto.mobikul",
+            "certificate_hash": "0000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "client_id": "000000000000-dummywebclient.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "A12345678901234567890123456789012345678"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "000000000000-dummywebclient.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

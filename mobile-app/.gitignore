@@ -1,0 +1,77 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Local editor/agent connection configs
+.vscode/mcp.json
+.kilocode/mcp.json
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# YoYo AI version control directory
+.yoyo/
+
+# Local tooling, artifacts, and backups
+maestro_run_outputs/
+xcodebuild_log.txt
+test_maestro_mcp.sh
+*.bak
+*.jks
+*.keystore
+jks_details/
+
+# ML models - large files not needed in git
+assets/ml/
+# Images - ignore by default, but keep docs assets used in GitHub/README tracked
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.webp
+!Docs/features_images/
+!Docs/features_images/**
+# Google Services configuration files - ignore by default,
+# but keep the sanitized placeholder files tracked in this repo.
+# **/google-services.json
+# **/GoogleService-Info.plist
+# !android/app/google-services.json
+# !ios/Runner/GoogleService-Info.plist
+
+# Local Bagisto backend (Docker) used for dev/testing against a real API.
+# The Bagisto app source/vendor is large and disposable - not part of this repo's history.
+bagisto-backend/bagisto/
+bagisto-backend/*.env

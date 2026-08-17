@@ -1,0 +1,759 @@
+{
+  "@@locale": "ar",
+  "appTitle": "متجر باجيستو",
+  "homeFailedToLoad": "فشل تحميل الصفحة الرئيسية",
+  "commonUnknownError": "خطأ غير معروف",
+  "commonRetry": "إعادة المحاولة",
+  "commonTimeoutError": "الخادم يستغرق وقتاً طويلاً للاستجابة. يرجى التحقق من اتصالك بالإنترنت ثم المحاولة مرة أخرى.",
+  "commonUnableToReachServer": "يتعذر الوصول إلى الخادم. يرجى التحقق من اتصالك بالإنترنت ثم المحاولة مرة أخرى.",
+  "commonNetworkError": "حدث خطأ في الشبكة. يرجى التحقق من اتصالك بالإنترنت ثم المحاولة مرة أخرى.",
+  "commonProcessingError": "حدث خطأ أثناء معالجة البيانات. يرجى المحاولة لاحقاً.",
+  "commonMissingInformation": "بعض المعلومات المطلوبة مفقودة. يرجى تعبئة جميع الحقول المطلوبة ثم المحاولة مرة أخرى.",
+  "commonTooManyRequests": "عدد كبير من الطلبات. يرجى الانتظار قليلاً ثم المحاولة مرة أخرى.",
+  "commonServerError": "واجه الخادم خطأً. يرجى المحاولة لاحقاً.",
+  "commonPermissionDenied": "ليست لديك صلاحية لتنفيذ هذا الإجراء.",
+  "commonSecureConnectionError": "تعذر إنشاء اتصال آمن. يرجى المحاولة لاحقاً.",
+  "commonCartSessionExpired": "انتهت صلاحية جلسة السلة الخاصة بك. يرجى المحاولة مرة أخرى.",
+  "commonGenericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "commonGenericErrorWithContext": "حدث خطأ أثناء {context}. يرجى المحاولة مرة أخرى.",
+  "@commonGenericErrorWithContext": {
+    "placeholders": {
+      "context": {}
+    }
+  },
+  "commonEdit": "تعديل",
+  "authInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+  "authSessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+  "authSessionInvalid": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى.",
+  "homeFeaturedProducts": "منتجات مميزة",
+  "homeDefaultProducts": "المنتجات",
+  "homeBackToTop": "العودة إلى الأعلى",
+  "homeViewCart": "عرض السلة",
+  "homeAddedToCartMessage": "تمت إضافة {productName} إلى السلة",
+  "@homeAddedToCartMessage": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "homeLoginToManageWishlist": "يرجى تسجيل الدخول لإدارة قائمة الرغبات",
+  "homeAddedToWishlist": "تمت الإضافة إلى قائمة الرغبات",
+  "homeRemovedFromWishlist": "تمت الإزالة من قائمة الرغبات",
+  "homeViewAll": "عرض الكل",
+  "homeCollections": "المجموعات",
+  "homeCategorySemanticLabel": "فئة {categoryName}",
+  "@homeCategorySemanticLabel": {
+    "placeholders": {
+      "categoryName": {}
+    }
+  },
+  "homeDiscountOff": "خصم {percent}%",
+  "@homeDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productFailedToLoad": "فشل تحميل المنتج",
+  "productNotFound": "المنتج غير موجود",
+  "productDetail": "تفاصيل المنتج",
+  "productDetails": "التفاصيل",
+  "productShowLess": "عرض أقل",
+  "productLoadMore": "المزيد",
+  "productMoreInformations": "معلومات إضافية",
+  "productSku": "رمز المنتج",
+  "productType": "النوع",
+  "productBrand": "العلامة التجارية",
+  "productColor": "اللون",
+  "productSize": "المقاس",
+  "productReviews": "التقييمات",
+  "productNoReviewsYet": "لا توجد تقييمات بعد",
+  "productRating": "{count} تقييم",
+  "@productRating": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productReviewsCount": "{count} تقييمات",
+  "@productReviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productPostedOn": "نشر في {day} {month} {year}",
+  "@productPostedOn": {
+    "placeholders": {
+      "day": {},
+      "month": {},
+      "year": {}
+    }
+  },
+  "productReviewSubmitted": "تم تقديم تقييمك بنجاح!",
+  "productWriteReview": "اكتب تقييماً",
+  "productPleaseLoginForReviews": "يرجى تسجيل الدخول لعرض تقييماتك",
+  "productLoadMoreReviews": "المزيد من التقييمات",
+  "productRelatedProduct": "منتجات ذات صلة",
+  "productDiscountOff": "خصم {percent}%",
+  "@productDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productVeryGood": "ممتاز",
+  "productGood": "جيد",
+  "productAverage": "متوسط",
+  "productBad": "سيء",
+  "productVeryBad": "سيء جداً",
+  "productInStock": "متوفر",
+  "productOutOfStock": "غير متوفر",
+  "productQuantity": "الكمية",
+  "productWishlistAction": "قائمة الرغبات",
+  "productCompareAction": "المقارنة",
+  "productShareAction": "مشاركة",
+  "productLoginToCompare": "يرجى تسجيل الدخول للإضافة إلى المقارنة",
+  "productAddedToCompare": "تمت الإضافة إلى المقارنة",
+  "productAddToCart": "أضف إلى السلة",
+  "accountMoveToCart": "انقل إلى السلة",
+  "productBuyNow": "اشترِ الآن",
+  "productSelectOptionsFirst": "يرجى تحديد خيارات المنتج أولاً",
+  "productBookingBookTable": "احجز طاولة *",
+  "productBookingSelectDateRequired": "اختر التاريخ *",
+  "productBookingSelectSlotRequired": "اختر الفترة الزمنية *",
+  "productBookingSpecialRequestNotesRequired": "طلبات خاصة/ملاحظات *",
+  "productBookingBookAppointment": "احجز موعدًا *",
+  "productBookingDateFormatHint": "YYYY-MM-DD",
+  "productBookingFrom": "من",
+  "productBookingTo": "إلى",
+  "productBookingSelectDate": "اختر التاريخ",
+  "productBookingLocation": "الموقع",
+  "productBookingSlotDuration": "مدة الفترة الزمنية",
+  "productBookingAvailability": "التوفر",
+  "productBookingStartDate": "تاريخ البدء",
+  "productBookingEndDate": "تاريخ الانتهاء",
+  "productBookingDate": "التاريخ",
+  "productBookingViewOnMap": "عرض على الخريطة",
+  "productBookingEventOn": "الفعالية في:",
+  "productBookingBookYourTicket": "احجز تذكرتك",
+  "productBookingSlotDurationLabel": "مدة الفترة الزمنية:",
+  "productBookingDurationMinutes": "{count} دقيقة",
+  "@productBookingDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productBookingAvailableFrom": "متاح من",
+  "productBookingAvailableTo": "متاح حتى",
+  "productBookingSpecialRequestNotesHint": "طلبات خاصة/ملاحظات",
+  "productBookingChooseRentOption": "اختر خيار الإيجار *",
+  "productBookingDailyBasis": "يومي",
+  "productBookingHourlyBasis": "بالساعة",
+  "productBookingNoDatesAvailable": "لا توجد تواريخ متاحة للحجز",
+  "productBookingSelectSlot": "اختر الفترة الزمنية",
+  "productBookingSelectDateFirst": "اختر التاريخ أولاً",
+  "productBookingChooseDateFirstToSeeSlots": "اختر التاريخ أولاً لعرض الفترات الزمنية المتاحة.",
+  "productBookingLoadingSlots": "جارٍ تحميل الفترات الزمنية...",
+  "productBookingSlotsLoadingForSelectedDate": "جارٍ تحميل الفترات الزمنية المتاحة للتاريخ المحدد.",
+  "productBookingUnableToLoadSlots": "تعذر تحميل الفترات الزمنية",
+  "productBookingNoSlotsAvailable": "لا توجد فترات زمنية متاحة",
+  "productBookingNoSlotsAvailableForSelectedDate": "لا توجد فترات زمنية متاحة للتاريخ المحدد.",
+  "productBookingSelectOneSlotToContinue": "اختر فترة زمنية واحدة متاحة للمتابعة.",
+  "productBookingSpecialRequestNotesLowercase": "طلبات خاصة/ملاحظات",
+  "productDownloadableLinks": "الروابط",
+  "productDownloadableSamples": "العينات",
+  "productDownloadSample": "تنزيل العينة",
+  "productDefaultName": "منتج",
+  "categoryDefaultName": "الفئات",
+  "categorySubCategories": "الفئات الفرعية",
+  "categorySomethingWentWrong": "حدث خطأ ما",
+  "categoryUnknownError": "خطأ غير معروف",
+  "categoryItemsFound": "تم العثور على {count} عنصر",
+  "@categoryItemsFound": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "categoryNoProductsFound": "لم يتم العثور على منتجات",
+  "categorySort": "ترتيب",
+  "categorySortByTitle": "ترتيب حسب",
+  "categorySortAZ": "من A-Z",
+  "categorySortZA": "من Z-A",
+  "categorySortNewest": "الأحدث أولاً",
+  "categorySortOldest": "الأقدم أولاً",
+  "categorySortCheapest": "الأقل سعراً أولاً",
+  "categorySortExpensive": "الأغلى سعراً أولاً",
+  "categoryFilter": "تصفية",
+  "categoryFilters": "عوامل التصفية",
+  "categoryNoFiltersAvailable": "لا توجد عوامل تصفية متاحة",
+  "categoryFiltersWillAppear": "ستظهر عوامل التصفية عندما تكون متاحة لهذه الفئة",
+  "categoryApplyFilters": "تطبيق التصفية",
+  "categoryApplyFiltersCount": "تطبيق التصفية ({count})",
+  "@categoryApplyFiltersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryClearAll": "مسح الكل",
+  "categoryTryAdjustingFilters": "حاول تعديل عوامل التصفية أو معايير البحث",
+  "categoryError": "خطأ",
+  "categoryLoginToManageWishlist": "يرجى تسجيل الدخول لإدارة قائمة الرغبات",
+  "categoryAddedToWishlist": "تمت الإضافة إلى قائمة الرغبات",
+  "categoryRemovedFromWishlist": "تمت الإزالة من قائمة الرغبات",
+  "categoryFailedToUpdateWishlist": "فشل في تحديث قائمة الرغبات: {error}",
+  "@categoryFailedToUpdateWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "wishlistItemRemoved": "تمت إزالة العنصر من قائمة الرغبات",
+  "cart": "السلة",
+  "cartPleaseLoginWishlist": "يرجى تسجيل الدخول لعرض قائمة الرغبات",
+  "cartItemsInCart": "{count} {itemText} في السلة",
+  "@cartItemsInCart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "itemText": {}
+    }
+  },
+  "cartYourCartEmpty": "سلتك فارغة",
+  "cartAddProductsHere": "أضف منتجات إلى سلتك لرؤيتها هنا",
+  "cartContinueShopping": "متابعة التسوق",
+  "cartUnit": "وحدة",
+  "cartUnits": "وحدات",
+  "cartPleaseLoginWishlistAdd": "يرجى تسجيل الدخول لإضافة إلى قائمة الرغبات",
+  "cartMovedToWishlist": "تم النقل إلى قائمة الرغبات",
+  "cartFailedMoveWishlist": "فشل النقل إلى قائمة الرغبات: {error}",
+  "@cartFailedMoveWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cartAddedToCartSuccess": "تمت إضافة المنتج إلى السلة بنجاح",
+  "productSelectDownloadLink": "يرجى اختيار رابط واحد على الأقل",
+  "cartEmptyCartAction": "إفراغ السلة",
+  "cartApplyCoupon": "تطبيق الكوبون",
+  "cartCouponCode": "كود الكوبون",
+  "cartApply": "تطبيق",
+  "cartAppliedCoupon": "تم تطبيق الكوبون",
+  "cartRemove": "إزالة",
+  "cartPriceBreak": "تفصيل السعر",
+  "cartSubTotal": "المجموع الفرعي",
+  "cartDiscount": "الخصم",
+  "cartDeliveryCharges": "رسوم التوصيل",
+  "cartTax": "الضريبة",
+  "cartGrandTotal": "المجموع الكلي",
+  "cartAmountToBePaid": "المبلغ المطلوب دفعه",
+  "cartPayNow": "ادفع الآن",
+  "cartRemoveItem": "إزالة العنصر",
+  "cartRemoveItemConfirm": "هل أنت متأكد من أنك تريد إزالة \"{productName}\" من سلتك؟",
+  "@cartRemoveItemConfirm": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "cartCancel": "إلغاء",
+  "cartEmptyCartTitle": "إفراغ السلة",
+  "cartEmptyCartConfirm": "هل أنت متأكد من أنك تريد إزالة جميع العناصر من سلتك؟",
+  "checkout": "الدفع",
+  "checkoutBillingTo": "الفواتير إلى",
+  "checkoutDeliveredTo": "التسليم إلى",
+  "checkoutChange": "تغيير",
+  "checkoutSelectBillingAddress": "اختر عنوان الفوترة",
+  "checkoutSelectShippingAddress": "اختر عنوان الشحن",
+  "checkoutBillingAddress": "عنوان الفوترة",
+  "checkoutEnterAddress": "أدخل العنوان",
+  "checkoutFirstName": "الاسم الأول",
+  "checkoutLastName": "اسم العائلة",
+  "checkoutEmail": "البريد الإلكتروني",
+  "checkoutPhone": "الهاتف",
+  "checkoutStreetAddress": "عنوان الشارع",
+  "checkoutCountry": "البلد",
+  "checkoutState": "المنطقة",
+  "checkoutCity": "المدينة",
+  "checkoutPostcode": "الرمز البريدي",
+  "checkoutCompanyOptional": "الشركة (اختياري)",
+  "checkoutUseSameAddressShipping": "استخدام نفس العنوان للشحن؟",
+  "checkoutPhoneValue": "الهاتف: {phone}",
+  "@checkoutPhoneValue": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "checkoutAddressTypeOffice": "مكتب",
+  "checkoutAddressTypeHome": "المنزل",
+  "checkoutAddressTypeBilling": "الفوترة",
+  "checkoutAddressTypeShipping": "الشحن",
+  "checkoutAddressTypeDefault": "افتراضي",
+  "checkoutFieldRequired": "{field} مطلوب",
+  "@checkoutFieldRequired": {
+    "placeholders": {
+      "field": {}
+    }
+  },
+  "checkoutSaveContinue": "حفظ ومتابعة",
+  "checkoutYourCartEmpty": "سلتك فارغة",
+  "checkoutSelectCountry": "اختر الدولة",
+  "checkoutSelectState": "اختر الولاية",
+  "checkoutCountryRequired": "الدولة مطلوبة",
+  "checkoutStateRequired": "الولاية مطلوبة",
+  "checkoutSelectCountryFirst": "اختر الدولة أولاً",
+  "checkoutShippingMethod": "طريقة الشحن",
+  "checkoutSaveAddressSeeShipping": "احفظ عنوانك لرؤية خيارات الشحن",
+  "checkoutPaymentMethod": "طريقة الدفع",
+  "checkoutSelectShippingMethodFirst": "اختر طريقة الشحن أولاً",
+  "checkoutEnterCouponCode": "أدخل رمز القسيمة",
+  "checkoutDiscountCoupon": "الخصم (الكوبون)",
+  "checkoutPlaceOrder": "إتمام الطلب",
+  "thankYouTitle": "شكراً لطلبك!",
+  "thankYouSubtitle": "سنرسل لك تفاصيل الطلب ومعلومات التتبع عبر البريد الإلكتروني",
+  "thankYouOrderNumber": "رقم طلبك # {orderNumber}",
+  "@thankYouOrderNumber": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "thankYouViewOrder": "عرض الطلب",
+  "thankYouContinueShopping": "متابعة التسوق",
+  "accountPleaseTryAgainLater": "يرجى المحاولة مرة أخرى لاحقاً",
+  "accountUserFallback": "مستخدم",
+  "accountBack": "رجوع",
+  "accountSettings": "إعدادات الحساب",
+  "accountMyOrders": "طلباتي",
+  "accountMyDownloadableProducts": "منتجاتي القابلة للتنزيل",
+  "accountWishlist": "قائمة الرغبات",
+  "accountCompareProducts": "مقارنة المنتجات",
+  "accountProductReview": "تقييم المنتج",
+  "accountAddressBook": "دفتر العناوين",
+  "accountEditAccount": "تعديل الحساب",
+  "accountLogout": "تسجيل الخروج",
+  "accountLogoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "accountNoCountriesAvailable": "لا توجد دول متاحة. يرجى المحاولة مرة أخرى.",
+  "accountPleaseSelectCountry": "يرجى اختيار الدولة",
+  "accountPleaseSelectOrEnterState": "يرجى اختيار أو إدخال الولاية",
+  "accountAddressUpdatedSuccessfully": "تم تحديث العنوان بنجاح",
+  "accountAddressAddedSuccessfully": "تمت إضافة العنوان بنجاح",
+  "accountGoBack": "الرجوع",
+  "accountEditAddress": "تعديل العنوان",
+  "accountAddNewAddress": "إضافة عنوان جديد",
+  "accountFirstNameRequired": "الاسم الأول مطلوب",
+  "accountLastNameRequired": "اسم العائلة مطلوب",
+  "accountEnterValidEmail": "أدخل بريداً إلكترونياً صحيحاً",
+  "accountCompanyName": "اسم الشركة",
+  "accountVatId": "رقم الضريبة",
+  "accountStreetAddressRequired": "عنوان الشارع مطلوب",
+  "accountCityRequired": "المدينة مطلوبة",
+  "accountZipPostcode": "الرمز البريدي",
+  "accountZipPostcodeRequired": "الرمز البريدي مطلوب",
+  "accountTelephone": "الهاتف",
+  "accountPhoneNumberRequired": "رقم الهاتف مطلوب",
+  "accountChangeDefaultBillingAddress": "تغيير عنوان الفوترة الافتراضي",
+  "accountChangeDefaultShippingAddress": "تغيير عنوان الشحن الافتراضي",
+  "accountUpdateAddress": "تحديث العنوان",
+  "accountSaveToAddressBook": "حفظ في دفتر العناوين",
+  "accountPleaseLoginToWriteReview": "يرجى تسجيل الدخول لكتابة تقييم",
+  "accountPleaseSelectRating": "يرجى اختيار تقييم",
+  "accountAddReview": "إضافة تقييم",
+  "accountReviewSubmitted": "تم إرسال التقييم!",
+  "accountNickName": "الاسم المستعار",
+  "accountEnterYourName": "أدخل اسمك",
+  "accountNameRequired": "الاسم مطلوب",
+  "accountSummary": "الملخص",
+  "accountReviewSummaryHint": "ملخص قصير لتقييمك",
+  "accountSummaryRequired": "الملخص مطلوب",
+  "accountReview": "التقييم",
+  "accountDetailedReviewHint": "اكتب تقييمك التفصيلي هنا",
+  "accountReviewRequired": "التقييم مطلوب",
+  "accountRating": "التقييم",
+  "accountSubmitReview": "إرسال التقييم",
+  "accountCouldNotLoadAddresses": "تعذر تحميل العناوين",
+  "accountPleaseTryAgain": "يرجى المحاولة مرة أخرى",
+  "accountNoAddressesSaved": "لا توجد عناوين محفوظة",
+  "accountAddAddressToGetStarted": "أضف عنواناً جديداً للبدء",
+  "accountSelectAddress": "اختر العنوان",
+  "accountSetAsDefault": "تعيين كافتراضي",
+  "accountAddressTypeHome": "المنزل",
+  "accountAddressTypeOffice": "المكتب",
+  "accountAddressTypeCustomer": "العميل",
+  "accountNoProductsToCompare": "لا توجد منتجات للمقارنة",
+  "accountAddProductsToCompareHint": "أضف منتجات للمقارنة من صفحة تفاصيل المنتج.",
+  "accountProducts": "المنتجات",
+  "accountDescription": "الوصف",
+  "accountShortDescription": "وصف مختصر",
+  "accountActivity": "النشاط",
+  "accountSeller": "البائع",
+  "accountNotAvailable": "غير متوفر",
+  "accountMessageSentSuccessfully": "تم إرسال الرسالة بنجاح!",
+  "accountAnErrorOccurred": "حدث خطأ",
+  "accountContactUs": "اتصل بنا",
+  "accountName": "الاسم",
+  "accountEnterYourEmail": "أدخل بريدك الإلكتروني",
+  "accountContact": "رقم التواصل",
+  "accountEnterYourPhoneNumber": "أدخل رقم هاتفك",
+  "accountMessage": "الرسالة",
+  "accountEnterYourMessage": "أدخل رسالتك",
+  "accountSendMessage": "إرسال الرسالة",
+  "accountNameFieldEmpty": "حقل الاسم لا يمكن أن يكون فارغاً",
+  "accountNameMinChars": "يجب أن يكون الاسم حرفين على الأقل",
+  "accountEmailFieldEmpty": "حقل البريد الإلكتروني لا يمكن أن يكون فارغاً",
+  "accountPleaseEnterValidEmailAddress": "يرجى إدخال بريد إلكتروني صحيح",
+  "accountContactNumberEmpty": "رقم التواصل لا يمكن أن يكون فارغاً",
+  "accountPleaseEnterValidContactNumber": "يرجى إدخال رقم تواصل صحيح",
+  "accountMessageFieldEmpty": "حقل الرسالة لا يمكن أن يكون فارغاً",
+  "accountMessageMinChars": "يجب أن تكون الرسالة 10 أحرف على الأقل",
+  "accountDownloadableProducts": "المنتجات القابلة للتنزيل",
+  "accountNoDownloadsYet": "لا توجد تنزيلات بعد",
+  "accountDownloadsEmptyDescription": "ستظهر منتجاتك المنزلة هنا.",
+  "accountProductsProgress": "{current} / {total} منتجات",
+  "@accountProductsProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "accountRemainingDownloadsLeft": "المتبقي {value}",
+  "@accountRemainingDownloadsLeft": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "accountDownload": "تنزيل",
+  "accountFileName": "الملف: {fileName}",
+  "@accountFileName": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "accountDownloadWillStartShortly": "سيبدأ التنزيل قريباً. تحقق من مجلد التنزيلات.",
+  "accountClose": "إغلاق",
+  "accountOrders": "الطلبات",
+  "accountNoOrdersYet": "لا توجد طلبات بعد",
+  "accountOrdersEmptyDescription": "ستظهر طلباتك هنا بعد إتمام الشراء.",
+  "accountOrderSingular": "طلب",
+  "accountOrderPlural": "طلبات",
+  "accountOrderTotalItems": "{total} (العناصر {count})",
+  "@accountOrderTotalItems": {
+    "placeholders": {
+      "total": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOrderAndReturn": "الطلب والإرجاع",
+  "accountTrackOrder": "تتبع الطلب",
+  "accountReturnPolicy": "سياسة الإرجاع",
+  "accountReturnRequest": "طلب إرجاع",
+  "accountNotifications": "الإشعارات",
+  "accountPrivacy": "الخصوصية",
+  "accountAccount": "الحساب",
+  "accountPreferences": "التفضيلات",
+  "accountLanguage": "اللغة",
+  "accountNoLanguagesAvailable": "لا توجد لغات متاحة",
+  "accountCurrency": "العملة",
+  "accountOthers": "أخرى",
+  "accountNoPagesAvailable": "لا توجد صفحات متاحة",
+  "accountProductReviews": "تقييمات المنتجات",
+  "accountMyReviews": "تقييماتي",
+  "accountNoReviewsYet": "لا توجد تقييمات بعد",
+  "accountReviewsEmptyDescription": "ستظهر تقييمات منتجاتك هنا.",
+  "accountReviewSingular": "تقييم",
+  "accountReviewPlural": "تقييمات",
+  "accountPostedOn": "تم النشر في {date}",
+  "@accountPostedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountCloseSettings": "إغلاق الإعدادات",
+  "accountChangeTheme": "تغيير النمط",
+  "accountAllNotifications": "كل الإشعارات",
+  "accountOffers": "العروض",
+  "accountOfflineData": "البيانات دون اتصال",
+  "accountTrackRecentlyViewedProducts": "تتبع وإظهار المنتجات التي تمت مشاهدتها مؤخراً",
+  "accountShowSearchTag": "إظهار وسم البحث",
+  "accountTryAgain": "حاول مرة أخرى",
+  "accountYourWishlistEmpty": "قائمة رغباتك فارغة",
+  "accountWishlistEmptyDescription": "تصفح المنتجات وأضفها إلى قائمة رغباتك",
+  "accountItemSingular": "عنصر",
+  "accountItemPlural": "عناصر",
+  "accountStartingAt": "يبدأ من {price}",
+  "@accountStartingAt": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "accountAboutThisPage": "حول هذه الصفحة",
+  "accountPageId": "معرّف الصفحة: {id}",
+  "@accountPageId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "mainTabHome": "الرئيسية",
+  "mainTabCategories": "الفئات",
+  "mainTabCart": "السلة",
+  "mainTabAccount": "الحساب",
+  "authLoginSuccess": "مرحباً! تم تسجيل الدخول بنجاح.",
+  "authWelcomeBack": "مرحباً بعودتك!",
+  "authLoginToAccount": "سجّل الدخول إلى حسابك",
+  "authEmailAddress": "البريد الإلكتروني",
+  "authEnterYourEmail": "أدخل بريدك الإلكتروني",
+  "authPleaseEnterEmail": "يرجى إدخال بريدك الإلكتروني",
+  "authPleaseEnterValidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "authPassword": "كلمة المرور",
+  "authEnterYourPassword": "أدخل كلمة المرور",
+  "authPleaseEnterPassword": "يرجى إدخال كلمة المرور",
+  "authPasswordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+  "authForgotPasswordTitle": "نسيت كلمة المرور؟",
+  "authLogin": "تسجيل الدخول",
+  "authNoAccountPrompt": "ليس لديك حساب؟ ",
+  "authSignUp": "إنشاء حساب",
+  "authAccountCreatedSuccess": "تم إنشاء الحساب بنجاح!",
+  "authCreateAccount": "إنشاء حساب",
+  "authSignupGetStarted": "أنشئ حسابًا للبدء",
+  "authFirstNameHint": "الاسم الأول",
+  "authLastNameHint": "اسم العائلة",
+  "authRequired": "مطلوب",
+  "authCreatePasswordHint": "أنشئ كلمة مرور",
+  "authConfirmPassword": "تأكيد كلمة المرور",
+  "authConfirmPasswordHint": "أكد كلمة المرور",
+  "authPleaseConfirmPassword": "يرجى تأكيد كلمة المرور",
+  "authPasswordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+  "authAlreadyHaveAccountPrompt": "لديك حساب بالفعل؟ ",
+  "authForgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
+  "authSendResetLink": "إرسال رابط إعادة التعيين",
+  "authBackToLogin": "العودة لتسجيل الدخول",
+  "authNiceToSeeYouHere": "سعداء برؤيتك هنا",
+  "accountEditTitle": "تعديل الحساب",
+  "accountFirstNameRequiredLabel": "الاسم الأول *",
+  "accountLastNameRequiredLabel": "اسم العائلة *",
+  "accountChangeEmail": "تغيير البريد الإلكتروني",
+  "accountChangePassword": "تغيير كلمة المرور",
+  "accountDeleteAccount": "حذف الحساب",
+  "accountGender": "الجنس",
+  "accountSelectGender": "اختر الجنس",
+  "accountDob": "تاريخ الميلاد",
+  "monthJanShort": "ينا",
+  "monthFebShort": "فبر",
+  "monthMarShort": "مار",
+  "monthAprShort": "أبر",
+  "monthMayShort": "ماي",
+  "monthJunShort": "يون",
+  "monthJulShort": "يول",
+  "monthAugShort": "أغس",
+  "monthSepShort": "سبت",
+  "monthOctShort": "أكت",
+  "monthNovShort": "نوف",
+  "monthDecShort": "ديس",
+  "accountSubscribeNewsletters": "الاشتراك في النشرات البريدية",
+  "accountSaveProfile": "حفظ الملف الشخصي",
+  "accountNewEmail": "بريد إلكتروني جديد",
+  "accountEmailRequired": "البريد الإلكتروني مطلوب",
+  "accountCurrentPassword": "كلمة المرور الحالية",
+  "accountPasswordRequired": "كلمة المرور مطلوبة",
+  "accountChange": "تغيير",
+  "accountCurrentPasswordRequired": "كلمة المرور الحالية مطلوبة",
+  "accountNewPassword": "كلمة مرور جديدة",
+  "accountConfirmPassword": "تأكيد كلمة المرور",
+  "accountDeleteWarning": "هذا الإجراء دائم ولا يمكن التراجع عنه. سيتم حذف جميع بياناتك.",
+  "accountEnterYourPassword": "أدخل كلمة المرور",
+  "accountDelete": "حذف",
+  "accountGenderMale": "ذكر",
+  "accountGenderFemale": "أنثى",
+  "accountGenderOther": "آخر",
+  "accountOrdersWithNumber": "الطلبات {number}",
+  "@accountOrdersWithNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountReorderSuccessful": "تمت إعادة الطلب بنجاح",
+  "accountReorderItemsAdded": "{message} \n\nتمت إضافة {count} عناصر إلى سلتك.",
+  "@accountReorderItemsAdded": {
+    "placeholders": {
+      "message": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOk": "موافق",
+  "accountGoToCart": "اذهب إلى السلة",
+  "accountFailedToLoadOrderDetails": "فشل تحميل تفاصيل الطلب",
+  "accountDetails": "التفاصيل",
+  "accountInvoices": "الفواتير",
+  "accountShipments": "الشحنات",
+  "accountPlacedOn": "تم الطلب في {date}",
+  "@accountPlacedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountItemsOrdered": "تم طلب {count} عنصر",
+  "@accountItemsOrdered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountBillingAddress": "عنوان الفوترة",
+  "accountShippingAddress": "عنوان الشحن",
+  "accountShippingMethod": "طريقة الشحن",
+  "accountPaymentMethod": "طريقة الدفع",
+  "accountNoInvoicesForOrder": "لا توجد فواتير لهذا الطلب",
+  "accountInvoicedCount": "{count} مفوتر",
+  "@accountInvoicedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoShipmentsForOrder": "لا توجد شحنات لهذا الطلب",
+  "accountReorder": "إعادة الطلب",
+  "accountMoreInfo": "مزيد من المعلومات",
+  "accountOrderedQty": "الكمية المطلوبة",
+  "accountShipped": "تم الشحن",
+  "accountInvoiced": "تمت الفوترة",
+  "accountUnitPrice": "سعر الوحدة",
+  "accountSubTotalWithSpace": "المجموع الفرعي",
+  "accountTotalPaid": "إجمالي المدفوع",
+  "accountTotalRefunded": "إجمالي المسترد",
+  "accountTotalDue": "إجمالي المستحق",
+  "accountInvoiceNumber": "فاتورة {number}",
+  "@accountInvoiceNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountShipmentNumber": "شحنة {number}",
+  "@accountShipmentNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountFailedToLoadInvoiceDetails": "فشل تحميل تفاصيل الفاتورة",
+  "accountInvoiceStatus": "حالة الفاتورة",
+  "accountInvoiceDate": "تاريخ الفاتورة",
+  "accountOrderId": "رقم الطلب",
+  "accountOrderDate": "تاريخ الطلب",
+  "accountOrderStatus": "حالة الطلب",
+  "accountChannel": "القناة",
+  "accountDefault": "افتراضي",
+  "accountStatusPaid": "مدفوع",
+  "accountStatusPending": "قيد الانتظار",
+  "accountStatusPendingPayment": "بانتظار الدفع",
+  "accountStatusOverdue": "متأخر",
+  "accountStatusRefunded": "مسترد",
+  "accountShippedQty": "الكمية المشحونة",
+  "accountInvoicedQty": "الكمية المفوترة",
+  "accountUnitPriceWithColon": "سعر الوحدة:",
+  "accountSubTotalWithColon": "المجموع الفرعي:",
+  "accountDownloadInvoice": "تنزيل الفاتورة",
+  "accountInvoice": "فاتورة",
+  "accountRecentOrders": "الطلبات الأخيرة",
+  "accountNoRecentOrders": "لا توجد طلبات حديثة",
+  "accountStatusProcessing": "قيد المعالجة",
+  "accountStatusCompleted": "مكتمل",
+  "accountStatusCancelled": "ملغي",
+  "accountStatusClosed": "مغلق",
+  "accountStatusUnknown": "غير معروف",
+  "accountWishlistItemsCount": "عناصر قائمة الرغبات ({count})",
+  "@accountWishlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoWishlistItems": "لا توجد عناصر في قائمة الرغبات",
+  "accountDefaultAddresses": "العناوين الافتراضية",
+  "accountNoProductReviewsYet": "لا توجد تقييمات منتجات بعد",
+  "searchFailedTitle": "فشل البحث",
+  "searchHint": "ابحث عن المنتجات",
+  "searchImageSearch": "البحث بالصورة",
+  "searchRecentSearches": "عمليات البحث الأخيرة",
+  "searchClearAll": "مسح الكل",
+  "searchTopCategories": "أفضل الفئات",
+  "searchResultsFound": "تم العثور على {count} نتيجة",
+  "@searchResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDiscountOff": "خصم {percent}%",
+  "@searchDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "searchNoProductsFound": "لم يتم العثور على منتجات",
+  "searchTryDifferentTerm": "حاول البحث بكلمة مختلفة",
+  "searchSpeechNotAvailable": "التعرف الصوتي غير متاح",
+  "searchFailedToStartVoice": "تعذر بدء الإدخال الصوتي: {error}",
+  "@searchFailedToStartVoice": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "searchMicrophonePermissionDenied": "تم رفض إذن الميكروفون",
+  "searchRetake": "إعادة التقاط",
+  "searchSearch": "بحث",
+  "searchTryAgain": "حاول مرة أخرى",
+  "searchRecognizedObjects": "الكائنات المتعرف عليها",
+  "searchResult": "النتيجة:",
+  "searchFailedToCaptureImage": "فشل في التقاط الصورة",
+  "searchProcessing": "جارٍ المعالجة... {progress}%",
+  "@searchProcessing": {
+    "placeholders": {
+      "progress": {
+        "type": "int"
+      }
+    }
+  },
+  "searchOpeningCamera": "جارٍ فتح الكاميرا...",
+  "searchFailedToProcessImage": "فشل في معالجة الصورة",
+  "homeRecentlyViewedProducts": "المنتجات المشاهدة مؤخراً",
+  "accountItemsCount": "{count} عنصر",
+  "@accountItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountTrack": "تتبع",
+  "accountTrackingVia": "تتبع {trackNumber} عبر {carrier}",
+  "@accountTrackingVia": {
+    "placeholders": {
+      "trackNumber": {},
+      "carrier": {}
+    }
+  },
+  "accountUnknownCarrier": "شركة شحن غير معروفة",
+  "accountTrackingNumber": "رقم التتبع",
+  "accountSkuValue": "SKU : {sku}",
+  "@accountSkuValue": {
+    "placeholders": {
+      "sku": {}
+    }
+  },
+  "accountShippedQtyValue": "الكمية المشحونة : {qty}",
+  "@accountShippedQtyValue": {
+    "placeholders": {
+      "qty": {
+        "type": "int"
+      }
+    }
+  }
+}

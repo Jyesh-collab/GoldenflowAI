@@ -1,0 +1,2896 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import '../../../../core/analytics/uxcam_tracked_screen.dart';
+import '../../../../core/graphql/graphql_client.dart';
+import '../../../../core/currency/currency_formatter.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/widgets/selection_sheet.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../account/data/repository/account_repository.dart';
+import '../../../account/presentation/bloc/address_book_bloc.dart';
+import '../../../account/presentation/pages/add_address_page.dart';
+import '../../../cart/data/models/cart_model.dart';
+import '../../../cart/presentation/bloc/cart_bloc.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../data/models/checkout_model.dart';
+import '../../data/repository/checkout_repository.dart';
+import '../bloc/checkout_bloc.dart';
+import '../helpers/checkout_address_sheet_helpers.dart';
+import '../widgets/checkout_address_selection_sheet.dart';
+import '../widgets/checkout_interaction_blocker.dart';
+import 'thankyou_page.dart';
+
+class CheckoutPage extends StatelessWidget {
+  const CheckoutPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final cartState = context.read<CartBloc>().state;
+    final authState = context.read<AuthBloc>().state;
+
+    // Check if user is authenticated - check both AuthBloc state and AuthStorage
+    // This handles the case when app restarts and AuthBloc hasn't completed AuthCheckStatus yet
+    bool isUserLoggedIn(AuthState state) {
+      if (state is AuthAuthenticated && state.token.isNotEmpty) {
+        return true;
+      }
+      // Also check if token exists in storage (for app restart case)
+      final cartToken = cartState.cartToken;
+      if (cartToken != null && cartToken.isNotEmpty && !cartState.isGuest) {
+        return true;
+      }
+      return false;
+    }
+
+    final isGuest = !isUserLoggedIn(authState);
+
+    String? getLatestAuthToken() {
+      final currentAuthState = context.read<AuthBloc>().state;
+      final currentCartState = context.read<CartBloc>().state;
+      if (currentAuthState is AuthAuthenticated &&
+          currentAuthState.token.isNotEmpty) {
+        return currentAuthState.token;
+      }
+      if (currentCartState.cartToken != null &&
+          currentCartState.cartToken!.isNotEmpty) {
+        return currentCartState.cartToken;
+      }
+      return null;
+    }
+
+    final latestToken = getLatestAuthToken();
+    final repo = CheckoutRepository(
+      client: context.read<CartBloc>().repository.client,
+      initialToken: latestToken,
+    );
+
+    return UxcamTrackedScreen(
+      screenName: 'Checkout',
+      sensitive: true,
+      child: BlocProvider(
+        create: (_) => CheckoutBloc(
+          repository: repo,
+          getLatestAuthToken: getLatestAuthToken,
+          onCartRefreshRequested: () {
+            context.read<CartBloc>().add(LoadCart());
+          },
+        )..add(InitCheckout(cart: cartState.cart, isGuest: isGuest)),
+        child: const _CheckoutPageView(),
+      ),
+    );
+  }
+}
+
+class _CheckoutPageView extends StatefulWidget {
+  const _CheckoutPageView();
+
+  @override
+  State<_CheckoutPageView> createState() => _CheckoutPageViewState();
+}
+
+class _CheckoutPageViewState extends State<_CheckoutPageView> {
+  final TextEditingController _couponController = TextEditingController();
+  bool _saveToAddressBook = true;
+
+  bool _requiresShipping(CheckoutState state) => !state.isVirtualOnly;
+
+  bool _usesBillingAsShipping(CheckoutState state) =>
+      state.isVirtualOnly || state.useSameAddressForShipping;
+
+  bool _showsSeparateShippingForm(CheckoutState state) =>
+      _requiresShipping(state) && !state.useSameAddressForShipping;
+
+  bool _shouldOfferSaveToAddressBook(CheckoutState state) =>
+      !state.isGuest && state.addresses.isEmpty;
+
+  // Local selection state for immediate UI response
+  String? _selectedShippingMethod;
+  String? _selectedPaymentMethod;
+
+  // Guest billing address form controllers
+  final _billingFormKey = GlobalKey<FormState>();
+  final _billingFirstNameCtrl = TextEditingController();
+  final _billingLastNameCtrl = TextEditingController();
+  final _billingEmailCtrl = TextEditingController();
+  final _billingPhoneCtrl = TextEditingController();
+  final _billingAddressCtrl = TextEditingController();
+  final _billingCityCtrl = TextEditingController();
+  final _billingPostcodeCtrl = TextEditingController();
+  final _billingCompanyCtrl = TextEditingController();
+  String _billingCountry = '';
+  String _billingState = '';
+
+  // Display controllers for country/state bottom sheet selection
+  final _billingCountryDisplayCtrl = TextEditingController();
+  final _billingStateDisplayCtrl = TextEditingController();
+  BagistoCountry? _selectedBillingCountry;
+  BagistoCountryState? _selectedBillingState;
+
+  // Guest shipping address form controllers (when different from billing)
+  final _shippingFormKey = GlobalKey<FormState>();
+  final _shippingFirstNameCtrl = TextEditingController();
+  final _shippingLastNameCtrl = TextEditingController();
+  final _shippingEmailCtrl = TextEditingController();
+  final _shippingPhoneCtrl = TextEditingController();
+  final _shippingAddressCtrl = TextEditingController();
+  final _shippingCityCtrl = TextEditingController();
+  final _shippingPostcodeCtrl = TextEditingController();
+  final _shippingCompanyCtrl = TextEditingController();
+  String _shippingCountry = '';
+  String _shippingState = '';
+
+  // Display controllers for shipping country/state bottom sheet selection
+  final _shippingCountryDisplayCtrl = TextEditingController();
+  final _shippingStateDisplayCtrl = TextEditingController();
+  BagistoCountry? _selectedShippingCountry;
+  BagistoCountryState? _selectedShippingState;
+
+  // For logged-in address selection
+  CheckoutAddress? _selectedBillingAddress;
+  CheckoutAddress? _selectedShippingAddress;
+
+  bool _isGuestCheckout(BuildContext context, CartState cartState) {
+    final authState = context.read<AuthBloc>().state;
+    if (authState is AuthAuthenticated && authState.token.isNotEmpty) {
+      return false;
+    }
+    return cartState.isGuest;
+  }
+
+  CheckoutAddress? _currentBillingAddress(CheckoutState state) {
+    return _selectedBillingAddress ?? state.selectedAddress;
+  }
+
+  CheckoutAddress? _currentShippingAddress(CheckoutState state) {
+    if (state.addresses.isEmpty) return null;
+
+    return _selectedShippingAddress ??
+        state.selectedShippingAddress ??
+        (state.addresses.length > 1
+            ? state.addresses[1]
+            : state.addresses.first);
+  }
+
+  Future<List<CheckoutAddress>> _refreshSavedAddresses(
+    CheckoutBloc bloc,
+  ) async {
+    final completer = Completer<List<CheckoutAddress>>();
+    bloc.add(RefreshSavedAddresses(completer: completer));
+    return completer.future;
+  }
+
+  AccountRepository? _buildCheckoutAccountRepository(BuildContext context) {
+    final token = context.read<CheckoutBloc>().getLatestAuthToken?.call();
+    if (token == null || token.isEmpty) {
+      debugPrint(
+        '[CheckoutPage] Unable to open add-address flow: missing auth token',
+      );
+      return null;
+    }
+
+    final client = GraphQLClientProvider.authenticatedClient(token).value;
+    return AccountRepository(client: client);
+  }
+
+  Future<Set<String>?> _loadCustomerAddressIds(
+    AccountRepository repository,
+  ) async {
+    try {
+      final addresses = await repository.getCustomerAddresses(first: 100);
+      return addresses
+          .map((address) => address.id)
+          .whereType<String>()
+          .where((id) => id.isNotEmpty)
+          .toSet();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  void _applySavedAddressSelection(
+    CheckoutBloc bloc,
+    CheckoutState state, {
+    required CheckoutAddress address,
+    required bool isBilling,
+  }) {
+    setState(() {
+      if (isBilling) {
+        _selectedBillingAddress = address;
+      } else {
+        _selectedShippingAddress = address;
+      }
+    });
+
+    if (isBilling) {
+      final useForShipping = _usesBillingAsShipping(state);
+      final shippingAddress = useForShipping
+          ? null
+          : _currentShippingAddress(state);
+      bloc.add(
+        SelectSavedAddress(
+          address: address,
+          useForShipping: useForShipping,
+          shippingAddress: shippingAddress,
+        ),
+      );
+      return;
+    }
+
+    if (!state.addressConfirmed) {
+      return;
+    }
+
+    final billingAddress = _currentBillingAddress(state);
+    if (billingAddress == null) {
+      return;
+    }
+
+    bloc.add(
+      SelectSavedAddress(
+        address: billingAddress,
+        useForShipping: false,
+        shippingAddress: address,
+      ),
+    );
+  }
+
+  Future<void> _openAddAddressFromSheet({
+    required NavigatorState navigator,
+    required AccountRepository repository,
+    required CheckoutBloc checkoutBloc,
+    required bool isBilling,
+  }) async {
+    final existingCustomerIds = await _loadCustomerAddressIds(repository);
+    final created = await navigator.push<bool>(
+      MaterialPageRoute(
+        builder: (_) => RepositoryProvider.value(
+          value: repository,
+          child: BlocProvider(
+            create: (_) => AddressBookBloc(repository: repository),
+            child: const AddAddressPage(),
+          ),
+        ),
+      ),
+    );
+
+    if (!mounted || created != true) {
+      return;
+    }
+
+    try {
+      final refreshedAddresses = await _refreshSavedAddresses(checkoutBloc);
+      if (!mounted) return;
+
+      final refreshedCustomerIds = await _loadCustomerAddressIds(repository);
+      if (!mounted ||
+          existingCustomerIds == null ||
+          refreshedCustomerIds == null) {
+        return;
+      }
+
+      final newAddress = findNewlyAddedSelectableAddress(
+        previousCustomerIds: existingCustomerIds,
+        refreshedCustomerIds: refreshedCustomerIds,
+        refreshedAddresses: refreshedAddresses,
+      );
+
+      if (newAddress == null) {
+        return;
+      }
+
+      _applySavedAddressSelection(
+        checkoutBloc,
+        checkoutBloc.state,
+        address: newAddress,
+        isBilling: isBilling,
+      );
+    } catch (_) {
+      // CheckoutBloc emits the user-facing error state.
+    }
+  }
+
+  @override
+  void dispose() {
+    _couponController.dispose();
+    _billingFirstNameCtrl.dispose();
+    _billingLastNameCtrl.dispose();
+    _billingEmailCtrl.dispose();
+    _billingPhoneCtrl.dispose();
+    _billingAddressCtrl.dispose();
+    _billingCityCtrl.dispose();
+    _billingPostcodeCtrl.dispose();
+    _billingCompanyCtrl.dispose();
+    _billingCountryDisplayCtrl.dispose();
+    _billingStateDisplayCtrl.dispose();
+    _shippingFirstNameCtrl.dispose();
+    _shippingLastNameCtrl.dispose();
+    _shippingEmailCtrl.dispose();
+    _shippingPhoneCtrl.dispose();
+    _shippingAddressCtrl.dispose();
+    _shippingCityCtrl.dispose();
+    _shippingPostcodeCtrl.dispose();
+    _shippingCompanyCtrl.dispose();
+    _shippingCountryDisplayCtrl.dispose();
+    _shippingStateDisplayCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<CartBloc, CartState>(
+          listenWhen: (previous, current) =>
+              previous.cart != current.cart &&
+              current.status == CartStatus.loaded,
+          listener: (context, cartState) {
+            final checkoutBloc = context.read<CheckoutBloc>();
+            final checkoutState = checkoutBloc.state;
+            if (checkoutState.cart == cartState.cart) return;
+
+            checkoutBloc.add(
+              SyncCheckoutCart(
+                cart: cartState.cart,
+                isGuest: _isGuestCheckout(context, cartState),
+              ),
+            );
+          },
+        ),
+      ],
+      child: BlocConsumer<CheckoutBloc, CheckoutState>(
+        listener: (context, state) {
+          if (state.errorMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage!),
+                backgroundColor: Colors.red,
+              ),
+            );
+            _couponController.clear();
+            context.read<CheckoutBloc>().add(ClearCheckoutMessage());
+          }
+          if (state.successMessage != null &&
+              state.status == CheckoutStatus.orderPlaced) {
+            // Reload cart after successful order
+            context.read<CartBloc>().add(LoadCart());
+            // Navigate to Thank You page (replaces checkout in the stack)
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (_) => ThankyouPage(
+                  orderId: state.orderResponse?.orderId,
+                  orderIncrementId: state.orderResponse?.orderIncrementId,
+                ),
+              ),
+            );
+          }
+          // Sync local address selections with bloc state
+          if (state.selectedAddress != null &&
+              _selectedBillingAddress == null) {
+            _selectedBillingAddress = state.selectedAddress;
+          }
+          if (state.selectedShippingAddress != null &&
+              _selectedShippingAddress?.id !=
+                  state.selectedShippingAddress?.id) {
+            _selectedShippingAddress = state.selectedShippingAddress;
+          }
+          // Reset local selections when bloc resets downstream state
+          if (!state.addressConfirmed) {
+            _selectedShippingMethod = null;
+            _selectedPaymentMethod = null;
+          }
+          // Sync local shipping method selection with bloc state (for auto-select)
+          if (state.selectedShippingMethod != null &&
+              _selectedShippingMethod == null) {
+            _selectedShippingMethod = state.selectedShippingMethod;
+          }
+          // Sync local payment method selection with bloc state
+          if (state.selectedPaymentMethod != null &&
+              _selectedPaymentMethod == null) {
+            _selectedPaymentMethod = state.selectedPaymentMethod;
+          }
+          if (state.selectedShippingMethod == null) {
+            _selectedShippingMethod = null;
+          }
+          if (state.selectedPaymentMethod == null) {
+            _selectedPaymentMethod = null;
+          }
+        },
+        builder: (context, state) {
+          final isDark = Theme.of(context).brightness == Brightness.dark;
+          final cart = state.cart;
+          return CheckoutInteractionBlocker(
+            isBlocking: state.isPlacingOrder,
+            child: Scaffold(
+              backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
+              body: SafeArea(
+                bottom: false,
+                child: Column(
+                  children: [
+                    _buildAppBar(context),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 16),
+                            // Billing Address
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: _buildBillingSection(context, state),
+                            ),
+                            const SizedBox(height: 16),
+                            // Shipping Address (only when NOT using same address and NOT virtual only)
+                            if (_showsSeparateShippingForm(state)) ...[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                ),
+                                child: _buildShippingAddressSection(
+                                  context,
+                                  state,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                            // Cart Items
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: _buildCartItemsSection(context, cart),
+                            ),
+                            const SizedBox(height: 16),
+                            // Shipping Method (only when NOT virtual only)
+                            if (!state.isVirtualOnly) ...[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                ),
+                                child: _buildShippingMethodSection(
+                                  context,
+                                  state,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                            ],
+                            // Payment Method
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: _buildPaymentMethodSection(context, state),
+                            ),
+                            const SizedBox(height: 32),
+                            // Coupon
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: _buildCouponSection(context, state),
+                            ),
+                            const SizedBox(height: 32),
+                            // Price Break
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: _buildPriceBreakSection(context, cart),
+                            ),
+                            const SizedBox(height: 100),
+                          ],
+                        ),
+                      ),
+                    ),
+                    _buildBottomBar(context, cart, state),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // =====================================================================
+  // APP BAR
+  // =====================================================================
+
+  Widget _buildAppBar(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      color: isDark ? AppColors.neutral900 : AppColors.white,
+      height: 48,
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Row(
+        children: [
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => Navigator.of(context).pop(),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Icon(
+                  Icons.arrow_back,
+                  color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+                  size: 24,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(
+                AppLocalizations.of(context)!.checkout,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: isDark ? AppColors.neutral100 : Colors.black,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // =====================================================================
+  // BILLING SECTION  (Figma node 204:6679)
+  // =====================================================================
+
+  Widget _buildBillingSection(BuildContext context, CheckoutState state) {
+    // Loading
+    if (state.isLoading && state.status == CheckoutStatus.loading) {
+      return _buildLoadingCard();
+    }
+
+    // Address confirmed → Figma-exact card
+    final billingAddress = _currentBillingAddress(state);
+    if (state.addressConfirmed && billingAddress != null) {
+      return _buildAddressCard(
+        context: context,
+        state: state,
+        label: AppLocalizations.of(context)!.checkoutBillingTo,
+        address: billingAddress,
+        onChangePressed: () =>
+            _showChangeAddressFlow(context, state, isBilling: true),
+        showSameAddressCheckbox: !state.isVirtualOnly,
+      );
+    }
+
+    // Guest → form
+    if (state.isGuest) {
+      return _buildGuestBillingForm(context, state);
+    }
+
+    // Logged-in with saved addresses (not yet confirmed)
+    if (state.addresses.isNotEmpty) {
+      if (billingAddress != null) {
+        return _buildAddressCardWithConfirm(
+          context: context,
+          state: state,
+          label: AppLocalizations.of(context)!.checkoutBillingTo,
+          address: billingAddress,
+          onChangePressed: () =>
+              _showAddressSelectionSheet(context, state, isBilling: true),
+          showSameAddressCheckbox: !state.isVirtualOnly,
+        );
+      }
+      return _buildSelectAddressPrompt(
+        context,
+        state,
+        label: AppLocalizations.of(context)!.checkoutSelectBillingAddress,
+        onTap: () =>
+            _showAddressSelectionSheet(context, state, isBilling: true),
+      );
+    }
+
+    // Logged-in but no saved addresses
+    return _buildGuestBillingForm(context, state);
+  }
+
+  // =====================================================================
+  // SHIPPING ADDRESS SECTION  (Figma node 204:6694)
+  // =====================================================================
+
+  Widget _buildShippingAddressSection(
+    BuildContext context,
+    CheckoutState state,
+  ) {
+    if (state.isGuest) {
+      return _buildGuestShippingForm(context, state);
+    }
+    final shippingAddress = _currentShippingAddress(state);
+    if (shippingAddress != null) {
+      return _buildAddressCard(
+        context: context,
+        state: state,
+        label: AppLocalizations.of(context)!.checkoutDeliveredTo,
+        address: shippingAddress,
+        onChangePressed: () => _showShippingChangeAddressFlow(context, state),
+        showSameAddressCheckbox: false,
+      );
+    }
+    return _buildGuestShippingForm(context, state);
+  }
+
+  // =====================================================================
+  // FIGMA-EXACT ADDRESS CARD
+  // =====================================================================
+
+  Widget _buildAddressCard({
+    required BuildContext context,
+    required CheckoutState state,
+    required String label,
+    required CheckoutAddress address,
+    required VoidCallback onChangePressed,
+    required bool showSameAddressCheckbox,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildAddressTitleRow(label, onChangePressed, isDark),
+          const SizedBox(height: 6),
+          Text(
+            address.displayName,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+              color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            address.fullAddress,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: isDark ? AppColors.neutral300 : AppColors.neutral900,
+            ),
+          ),
+          if (showSameAddressCheckbox) ...[
+            const SizedBox(height: 10),
+            Container(
+              height: 1,
+              color: isDark ? AppColors.neutral700 : AppColors.white,
+            ),
+            const SizedBox(height: 10),
+            _buildSameAddressCheckbox(context),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAddressCardWithConfirm({
+    required BuildContext context,
+    required CheckoutState state,
+    required String label,
+    required CheckoutAddress address,
+    required VoidCallback onChangePressed,
+    required bool showSameAddressCheckbox,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildAddressTitleRow(label, onChangePressed, isDark),
+          const SizedBox(height: 6),
+          Text(
+            address.displayName,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+              color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            address.fullAddress,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: isDark ? AppColors.neutral300 : AppColors.neutral900,
+            ),
+          ),
+          if (address.phone != null && address.phone!.isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              AppLocalizations.of(context)!.checkoutPhoneValue(address.phone!),
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 13,
+                color: isDark ? AppColors.neutral400 : AppColors.neutral800,
+              ),
+            ),
+          ],
+          if (showSameAddressCheckbox) ...[
+            const SizedBox(height: 10),
+            Container(
+              height: 1,
+              color: isDark ? AppColors.neutral700 : AppColors.white,
+            ),
+            const SizedBox(height: 10),
+            _buildSameAddressCheckbox(context),
+          ],
+          const SizedBox(height: 16),
+          _buildSaveAddressButton(context, state),
+        ],
+      ),
+    );
+  }
+
+  /// Title row: label + "Change"
+  Widget _buildAddressTitleRow(
+    String label,
+    VoidCallback onChangePressed,
+    bool isDark,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            color: isDark ? AppColors.neutral300 : AppColors.neutral900,
+          ),
+        ),
+        GestureDetector(
+          onTap: onChangePressed,
+          child: Text(
+            AppLocalizations.of(context)!.checkoutChange,
+            style: const TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              color: Color(0xFF155DFC),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSelectAddressPrompt(
+    BuildContext context,
+    CheckoutState state, {
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.location_on_outlined,
+              color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+              size: 24,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // ADDRESS SELECTION BOTTOM SHEET (logged-in users)
+  // =====================================================================
+
+  void _showAddressSelectionSheet(
+    BuildContext context,
+    CheckoutState state, {
+    required bool isBilling,
+    List<CheckoutAddress>? addressesOverride,
+  }) {
+    final pageContext = context;
+    final addresses = addressesOverride ?? state.addresses;
+    if (addresses.isEmpty) return;
+
+    final isDark = Theme.of(pageContext).brightness == Brightness.dark;
+    final checkoutBloc = pageContext.read<CheckoutBloc>();
+    final pageNavigator = Navigator.of(pageContext);
+
+    showModalBottomSheet(
+      context: pageContext,
+      isScrollControlled: true,
+      backgroundColor: isDark ? AppColors.neutral900 : AppColors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (ctx) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.5,
+          maxChildSize: 0.85,
+          minChildSize: 0.3,
+          expand: false,
+          builder: (sheetContext, scrollController) {
+            return CheckoutAddressSelectionSheet(
+              title: isBilling
+                  ? AppLocalizations.of(
+                      pageContext,
+                    )!.checkoutSelectBillingAddress
+                  : AppLocalizations.of(
+                      pageContext,
+                    )!.checkoutSelectShippingAddress,
+              addButtonLabel: AppLocalizations.of(
+                pageContext,
+              )!.accountAddNewAddress,
+              addresses: addresses,
+              selectedAddressId: isBilling
+                  ? _currentBillingAddress(state)?.id
+                  : _currentShippingAddress(state)?.id,
+              scrollController: scrollController,
+              phoneLabelBuilder: AppLocalizations.of(
+                pageContext,
+              )!.checkoutPhoneValue,
+              onAddressSelected: (address) {
+                Navigator.pop(ctx);
+                _applySavedAddressSelection(
+                  checkoutBloc,
+                  state,
+                  address: address,
+                  isBilling: isBilling,
+                );
+              },
+              onAddNewAddress: () async {
+                final repository = _buildCheckoutAccountRepository(pageContext);
+                if (repository == null) return;
+                Navigator.pop(ctx);
+                await Future<void>.delayed(Duration.zero);
+                if (!mounted) return;
+                await _openAddAddressFromSheet(
+                  navigator: pageNavigator,
+                  repository: repository,
+                  checkoutBloc: checkoutBloc,
+                  isBilling: isBilling,
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _showChangeAddressFlow(
+    BuildContext context,
+    CheckoutState state, {
+    required bool isBilling,
+  }) async {
+    if (!shouldRefreshAddressesBeforeShowingChangeSheet(
+      isGuest: state.isGuest,
+      addressConfirmed: state.addressConfirmed,
+    )) {
+      if (state.isGuest) {
+        // Guest checkout still returns to the form.
+        context.read<CheckoutBloc>().add(ResetAddressConfirmation());
+        return;
+      }
+
+      _showAddressSelectionSheet(context, state, isBilling: isBilling);
+      return;
+    }
+
+    final checkoutBloc = context.read<CheckoutBloc>();
+    final addresses = await loadChangeAddressSheetAddresses(
+      isGuest: state.isGuest,
+      currentAddresses: state.addresses,
+      refreshAddresses: () => _refreshSavedAddresses(checkoutBloc),
+    );
+
+    if (!context.mounted) return;
+
+    _showAddressSelectionSheet(
+      context,
+      checkoutBloc.state,
+      isBilling: isBilling,
+      addressesOverride: addresses,
+    );
+  }
+
+  Future<void> _showShippingChangeAddressFlow(
+    BuildContext context,
+    CheckoutState state,
+  ) {
+    return _showChangeAddressFlow(context, state, isBilling: false);
+  }
+
+  // =====================================================================
+  // GUEST BILLING FORM
+  // =====================================================================
+
+  Widget _buildGuestBillingForm(BuildContext context, CheckoutState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Form(
+        key: _billingFormKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              state.isGuest
+                  ? AppLocalizations.of(context)!.checkoutBillingAddress
+                  : AppLocalizations.of(context)!.checkoutEnterAddress,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildTextField(
+                    _billingFirstNameCtrl,
+                    AppLocalizations.of(context)!.checkoutFirstName,
+                    required: true,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _buildTextField(
+                    _billingLastNameCtrl,
+                    AppLocalizations.of(context)!.checkoutLastName,
+                    required: true,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _billingEmailCtrl,
+              AppLocalizations.of(context)!.checkoutEmail,
+              keyboardType: TextInputType.emailAddress,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _billingPhoneCtrl,
+              AppLocalizations.of(context)!.checkoutPhone,
+              keyboardType: TextInputType.phone,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _billingAddressCtrl,
+              AppLocalizations.of(context)!.checkoutStreetAddress,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            // Country dropdown (searchable bottom sheet)
+            _buildCountrySelector(
+              displayCtrl: _billingCountryDisplayCtrl,
+              selectedCountry: _selectedBillingCountry,
+              countries: state.countries,
+              isLoading: state.countries.isEmpty,
+              onSelected: (country) {
+                setState(() {
+                  _selectedBillingCountry = country;
+                  _billingCountryDisplayCtrl.text = country.name;
+                  _billingCountry = country.code;
+                  _billingState = '';
+                  _selectedBillingState = null;
+                  _billingStateDisplayCtrl.clear();
+                });
+                if (country.numericId > 0 || country.code.isNotEmpty) {
+                  context.read<CheckoutBloc>().add(
+                    FetchCountryStates(
+                      countryId: country.numericId,
+                      countryCode: country.code,
+                      formType: 'billing',
+                    ),
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 12),
+            // State dropdown (searchable bottom sheet, dynamic based on country)
+            _buildStateSelector(
+              displayCtrl: _billingStateDisplayCtrl,
+              selectedState: _selectedBillingState,
+              states: state.billingStates,
+              hasCountry: _selectedBillingCountry != null,
+              isLoading: state.billingStatesLoading,
+              onSelected: (stateObj) {
+                setState(() {
+                  _selectedBillingState = stateObj;
+                  _billingStateDisplayCtrl.text = stateObj.defaultName;
+                  _billingState = stateObj.code ?? stateObj.defaultName;
+                });
+              },
+              onManualChanged: (text) {
+                _selectedBillingState = null;
+                _billingState = text;
+              },
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildTextField(
+                    _billingCityCtrl,
+                    AppLocalizations.of(context)!.checkoutCity,
+                    required: true,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _buildTextField(
+                    _billingPostcodeCtrl,
+                    AppLocalizations.of(context)!.checkoutPostcode,
+                    required: true,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _billingCompanyCtrl,
+              AppLocalizations.of(context)!.checkoutCompanyOptional,
+            ),
+            const SizedBox(height: 12),
+            if (_shouldOfferSaveToAddressBook(state)) ...[
+              _buildSaveToAddressBookCheckbox(context),
+              const SizedBox(height: 12),
+            ],
+            if (_requiresShipping(state)) _buildSameAddressCheckbox(context),
+            // Only show Save button here if using same address for shipping.
+            // For virtual/downloadable/booking carts there is no shipping form,
+            // so the button must stay here as well.
+            if (_usesBillingAsShipping(state)) ...[
+              const SizedBox(height: 16),
+              _buildSaveAddressButton(context, state),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // GUEST SHIPPING FORM
+  // =====================================================================
+
+  Widget _buildGuestShippingForm(BuildContext context, CheckoutState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Form(
+        key: _shippingFormKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.checkoutDeliveredTo,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: isDark ? AppColors.neutral300 : AppColors.neutral900,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildTextField(
+                    _shippingFirstNameCtrl,
+                    AppLocalizations.of(context)!.checkoutFirstName,
+                    required: true,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _buildTextField(
+                    _shippingLastNameCtrl,
+                    AppLocalizations.of(context)!.checkoutLastName,
+                    required: true,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _shippingEmailCtrl,
+              AppLocalizations.of(context)!.checkoutEmail,
+              keyboardType: TextInputType.emailAddress,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _shippingPhoneCtrl,
+              AppLocalizations.of(context)!.checkoutPhone,
+              keyboardType: TextInputType.phone,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _shippingAddressCtrl,
+              AppLocalizations.of(context)!.checkoutStreetAddress,
+              required: true,
+            ),
+            const SizedBox(height: 12),
+            // Country dropdown (searchable bottom sheet)
+            _buildCountrySelector(
+              displayCtrl: _shippingCountryDisplayCtrl,
+              selectedCountry: _selectedShippingCountry,
+              countries: state.countries,
+              isLoading: state.countries.isEmpty,
+              onSelected: (country) {
+                setState(() {
+                  _selectedShippingCountry = country;
+                  _shippingCountryDisplayCtrl.text = country.name;
+                  _shippingCountry = country.code;
+                  _shippingState = '';
+                  _selectedShippingState = null;
+                  _shippingStateDisplayCtrl.clear();
+                });
+                if (country.numericId > 0 || country.code.isNotEmpty) {
+                  context.read<CheckoutBloc>().add(
+                    FetchCountryStates(
+                      countryId: country.numericId,
+                      countryCode: country.code,
+                      formType: 'shipping',
+                    ),
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 12),
+            // State dropdown (searchable bottom sheet, dynamic based on country)
+            _buildStateSelector(
+              displayCtrl: _shippingStateDisplayCtrl,
+              selectedState: _selectedShippingState,
+              states: state.shippingStates,
+              hasCountry: _selectedShippingCountry != null,
+              isLoading: state.shippingStatesLoading,
+              onSelected: (stateObj) {
+                setState(() {
+                  _selectedShippingState = stateObj;
+                  _shippingStateDisplayCtrl.text = stateObj.defaultName;
+                  _shippingState = stateObj.code ?? stateObj.defaultName;
+                });
+              },
+              onManualChanged: (text) {
+                _selectedShippingState = null;
+                _shippingState = text;
+              },
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildTextField(
+                    _shippingCityCtrl,
+                    AppLocalizations.of(context)!.checkoutCity,
+                    required: true,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _buildTextField(
+                    _shippingPostcodeCtrl,
+                    AppLocalizations.of(context)!.checkoutPostcode,
+                    required: true,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              _shippingCompanyCtrl,
+              AppLocalizations.of(context)!.checkoutCompanyOptional,
+            ),
+            const SizedBox(height: 16),
+            _buildSaveAddressButton(context, state),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // FORM WIDGETS
+  // =====================================================================
+
+  Widget _buildTextField(
+    TextEditingController ctrl,
+    String label, {
+    TextInputType keyboardType = TextInputType.text,
+    bool required = false,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return TextFormField(
+      controller: ctrl,
+      keyboardType: keyboardType,
+      validator: required
+          ? (v) => (v == null || v.trim().isEmpty)
+                ? AppLocalizations.of(context)!.checkoutFieldRequired(label)
+                : null
+          : null,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(
+          fontFamily: 'Roboto',
+          fontSize: 14,
+          color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+        ),
+        filled: true,
+        fillColor: isDark ? AppColors.neutral800 : AppColors.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: AppColors.primary500),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 12,
+        ),
+        isDense: true,
+      ),
+      style: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+      ),
+    );
+  }
+
+  Widget _buildCountrySelector({
+    required TextEditingController displayCtrl,
+    required BagistoCountry? selectedCountry,
+    required List<BagistoCountry> countries,
+    required bool isLoading,
+    required void Function(BagistoCountry) onSelected,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return GestureDetector(
+      onTap: isLoading || countries.isEmpty
+          ? null
+          : () async {
+              final selected = await SelectionSheet.show<BagistoCountry>(
+                context: context,
+                title: AppLocalizations.of(context)!.checkoutSelectCountry,
+                items: countries,
+                selectedItem: selectedCountry,
+                itemLabel: (c) => c.name,
+              );
+              if (!mounted || selected == null) return;
+              // Wait for bottom sheet dismiss animation
+              await WidgetsBinding.instance.endOfFrame;
+              await WidgetsBinding.instance.endOfFrame;
+              if (!mounted) return;
+              onSelected(selected);
+            },
+      child: AbsorbPointer(
+        child: TextFormField(
+          controller: displayCtrl,
+          readOnly: true,
+          validator: (v) => (v == null || v.trim().isEmpty)
+              ? AppLocalizations.of(context)!.checkoutCountryRequired
+              : null,
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context)!.checkoutCountry,
+            labelStyle: TextStyle(
+              fontFamily: 'Roboto',
+              fontSize: 14,
+              color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+            ),
+            filled: true,
+            fillColor: isDark ? AppColors.neutral800 : AppColors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(color: AppColors.primary500),
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 12,
+            ),
+            isDense: true,
+            suffixIcon: isLoading
+                ? const Padding(
+                    padding: EdgeInsets.all(12),
+                    child: SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  )
+                : Icon(
+                    Icons.keyboard_arrow_down,
+                    color: isDark ? AppColors.neutral500 : AppColors.neutral800,
+                  ),
+          ),
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 14,
+            color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStateSelector({
+    required TextEditingController displayCtrl,
+    required BagistoCountryState? selectedState,
+    required List<BagistoCountryState> states,
+    required bool hasCountry,
+    required bool isLoading,
+    required void Function(BagistoCountryState) onSelected,
+    required void Function(String) onManualChanged,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final hasStates = states.isNotEmpty;
+
+    if (!hasStates) {
+      return TextFormField(
+        controller: displayCtrl,
+        readOnly: !hasCountry || isLoading,
+        enabled: hasCountry,
+        onChanged: onManualChanged,
+        validator: (v) => (v == null || v.trim().isEmpty)
+            ? AppLocalizations.of(context)!.checkoutStateRequired
+            : null,
+        decoration: InputDecoration(
+          labelText: AppLocalizations.of(context)!.checkoutState,
+          labelStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 14,
+            color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+          ),
+          hintText: !hasCountry
+              ? AppLocalizations.of(context)!.checkoutSelectCountryFirst
+              : null,
+          hintStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 14,
+            color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+          ),
+          filled: true,
+          fillColor: isDark ? AppColors.neutral800 : AppColors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: AppColors.primary500),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+            ),
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 12,
+          ),
+          isDense: true,
+          suffixIcon: isLoading
+              ? const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: AppColors.primary500,
+                    ),
+                  ),
+                )
+              : null,
+        ),
+        style: TextStyle(
+          fontFamily: 'Roboto',
+          fontSize: 14,
+          color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+        ),
+      );
+    }
+
+    return GestureDetector(
+      onTap: (!hasCountry || isLoading)
+          ? null
+          : () async {
+              final selected = await SelectionSheet.show<BagistoCountryState>(
+                context: context,
+                title: AppLocalizations.of(context)!.checkoutSelectState,
+                items: states,
+                selectedItem: selectedState,
+                itemLabel: (s) => s.defaultName,
+              );
+              if (!mounted || selected == null) return;
+              // Wait for bottom sheet dismiss animation
+              await WidgetsBinding.instance.endOfFrame;
+              await WidgetsBinding.instance.endOfFrame;
+              if (!mounted) return;
+              onSelected(selected);
+            },
+      child: AbsorbPointer(
+        child: Stack(
+          alignment: Alignment.centerRight,
+          children: [
+            TextFormField(
+              controller: displayCtrl,
+              readOnly: true,
+              enabled: hasCountry && !isLoading,
+              validator: (v) => (v == null || v.trim().isEmpty)
+                  ? AppLocalizations.of(context)!.checkoutStateRequired
+                  : null,
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.checkoutState,
+                labelStyle: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 14,
+                  color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+                ),
+                hintText: !hasCountry
+                    ? AppLocalizations.of(context)!.checkoutSelectCountryFirst
+                    : null,
+                hintStyle: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 14,
+                  color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+                ),
+                filled: true,
+                fillColor: isDark ? AppColors.neutral800 : AppColors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: AppColors.primary500),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                  ),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 12,
+                ),
+                isDense: true,
+                suffixIcon: isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.all(12),
+                        child: SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.primary500,
+                          ),
+                        ),
+                      )
+                    : Icon(
+                        Icons.keyboard_arrow_down,
+                        color: isDark
+                            ? AppColors.neutral500
+                            : AppColors.neutral800,
+                      ),
+              ),
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 14,
+                color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Checkbox: "Use same address for shipping?"  (Figma node 204:6691)
+  Widget _buildSameAddressCheckbox(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final useSameAddress = context.select(
+      (CheckoutBloc bloc) => bloc.state.useSameAddressForShipping,
+    );
+    return GestureDetector(
+      onTap: () {
+        context.read<CheckoutBloc>().add(ToggleSameAddress());
+      },
+      child: SizedBox(
+        height: 24,
+        child: Row(
+          children: [
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: useSameAddress
+                  ? Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.primary500,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Icon(
+                        Icons.check,
+                        size: 18,
+                        color: AppColors.white,
+                      ),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: isDark
+                              ? AppColors.neutral500
+                              : AppColors.neutral400,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              ' ${AppLocalizations.of(context)!.checkoutUseSameAddressShipping} ',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral800,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSaveToAddressBookCheckbox(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return GestureDetector(
+      onTap: () {
+        setState(() => _saveToAddressBook = !_saveToAddressBook);
+      },
+      child: SizedBox(
+        height: 24,
+        child: Row(
+          children: [
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: _saveToAddressBook
+                  ? Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.primary500,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Icon(
+                        Icons.check,
+                        size: 18,
+                        color: AppColors.white,
+                      ),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: isDark
+                              ? AppColors.neutral500
+                              : AppColors.neutral400,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              ' ${AppLocalizations.of(context)!.accountSaveToAddressBook} ',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral800,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSaveAddressButton(BuildContext context, CheckoutState state) {
+    return GestureDetector(
+      onTap: state.isLoading ? null : () => _onSaveAddress(context, state),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        decoration: BoxDecoration(
+          color: state.isLoading ? AppColors.neutral400 : AppColors.primary500,
+          borderRadius: BorderRadius.circular(54),
+        ),
+        child: Center(
+          child: state.isLoading
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: AppColors.white,
+                  ),
+                )
+              : Text(
+                  AppLocalizations.of(context)!.checkoutSaveContinue,
+                  style: const TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: AppColors.white,
+                  ),
+                ),
+        ),
+      ),
+    );
+  }
+
+  void _onSaveAddress(BuildContext context, CheckoutState state) {
+    Map<String, dynamic> input;
+    final useSameAddressForShipping = _usesBillingAsShipping(state);
+
+    if (state.isGuest || state.selectedAddress == null) {
+      if (_billingFormKey.currentState == null ||
+          !_billingFormKey.currentState!.validate()) {
+        return;
+      }
+
+      input = {
+        'billingFirstName': _billingFirstNameCtrl.text.trim(),
+        'billingLastName': _billingLastNameCtrl.text.trim(),
+        'billingEmail': _billingEmailCtrl.text.trim(),
+        'billingCompanyName': _billingCompanyCtrl.text.trim(),
+        'billingAddress': _billingAddressCtrl.text.trim(),
+        'billingCity': _billingCityCtrl.text.trim(),
+        'billingCountry': _billingCountry,
+        'billingState': _billingState,
+        'billingPostcode': _billingPostcodeCtrl.text.trim(),
+        'billingPhoneNumber': _billingPhoneCtrl.text.trim(),
+        'useForShipping': useSameAddressForShipping,
+      };
+
+      if (!useSameAddressForShipping) {
+        if (_shippingFormKey.currentState == null ||
+            !_shippingFormKey.currentState!.validate()) {
+          return;
+        }
+        input.addAll({
+          'shippingFirstName': _shippingFirstNameCtrl.text.trim(),
+          'shippingLastName': _shippingLastNameCtrl.text.trim(),
+          'shippingEmail': _shippingEmailCtrl.text.trim(),
+          'shippingCompanyName': _shippingCompanyCtrl.text.trim(),
+          'shippingAddress': _shippingAddressCtrl.text.trim(),
+          'shippingCity': _shippingCityCtrl.text.trim(),
+          'shippingCountry': _shippingCountry,
+          'shippingState': _shippingState,
+          'shippingPostcode': _shippingPostcodeCtrl.text.trim(),
+          'shippingPhoneNumber': _shippingPhoneCtrl.text.trim(),
+        });
+      }
+    } else {
+      input = state.selectedAddress!.toBillingInput(
+        useForShipping: useSameAddressForShipping,
+      );
+
+      if (!useSameAddressForShipping && _selectedShippingAddress != null) {
+        final sa = _selectedShippingAddress!;
+        input.addAll({
+          'shippingFirstName': sa.firstName,
+          'shippingLastName': sa.lastName,
+          'shippingEmail': sa.email ?? '',
+          'shippingCompanyName': sa.companyName ?? '',
+          'shippingAddress': sa.address,
+          'shippingCity': sa.city,
+          'shippingCountry': sa.country ?? '',
+          'shippingState': sa.state ?? '',
+          'shippingPostcode': sa.postcode ?? '',
+          'shippingPhoneNumber': sa.phone ?? '',
+        });
+      }
+    }
+
+    context.read<CheckoutBloc>().add(
+      SaveCheckoutAddressEvent(
+        input: input,
+        saveToAddressBook:
+            _shouldOfferSaveToAddressBook(state) && _saveToAddressBook,
+      ),
+    );
+  }
+
+  // =====================================================================
+  // CART ITEMS
+  // =====================================================================
+
+  Widget _buildCartItemsSection(BuildContext context, CartModel cart) {
+    final items = cart.items;
+    if (items.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: Text(
+            AppLocalizations.of(context)!.checkoutYourCartEmpty,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontSize: 14,
+              color: AppColors.neutral400,
+            ),
+          ),
+        ),
+      );
+    }
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.cartItemsInCart(
+            items.length,
+            items.length == 1
+                ? AppLocalizations.of(context)!.cartUnit
+                : AppLocalizations.of(context)!.cartUnits,
+          ),
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+            color: isDark ? AppColors.neutral200 : Colors.black,
+          ),
+        ),
+        ...items.asMap().entries.map((entry) {
+          final idx = entry.key;
+          final item = entry.value;
+          return _buildCartItemWidget(
+            imageUrl: item.imageUrl,
+            name: item.name,
+            pricePerUnit: item.displayPrice,
+            quantity: item.quantity,
+            isBooking: item.isBooking,
+            totalPrice: item.displayTotal,
+            showBorder: idx < items.length - 1,
+          );
+        }),
+      ],
+    );
+  }
+
+  Widget _buildCartItemWidget({
+    String? imageUrl,
+    required String name,
+    required String pricePerUnit,
+    required int quantity,
+    required bool isBooking,
+    required String totalPrice,
+    required bool showBorder,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      decoration: BoxDecoration(
+        border: showBorder
+            ? Border(
+                bottom: BorderSide(
+                  color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                  width: 1,
+                ),
+              )
+            : null,
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              width: 62,
+              height: 62,
+              child: imageUrl != null && imageUrl.isNotEmpty
+                  ? CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: isDark
+                            ? AppColors.neutral700
+                            : AppColors.neutral200,
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: isDark
+                            ? AppColors.neutral700
+                            : AppColors.neutral200,
+                        child: Icon(
+                          Icons.image,
+                          color: isDark
+                              ? AppColors.neutral500
+                              : AppColors.neutral400,
+                        ),
+                      ),
+                    )
+                  : Container(
+                      color: isDark
+                          ? AppColors.neutral700
+                          : AppColors.neutral200,
+                      child: Icon(
+                        Icons.image,
+                        color: isDark
+                            ? AppColors.neutral500
+                            : AppColors.neutral400,
+                        size: 30,
+                      ),
+                    ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: isDark ? AppColors.neutral100 : AppColors.neutral900,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      isBooking
+                          ? '$pricePerUnit x N/A'
+                          : '$pricePerUnit x $quantity ${quantity == 1 ? AppLocalizations.of(context)!.cartUnit : AppLocalizations.of(context)!.cartUnits}',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: isDark
+                            ? AppColors.neutral300
+                            : AppColors.neutral900,
+                      ),
+                    ),
+                    Text(
+                      totalPrice,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: isDark
+                            ? AppColors.neutral100
+                            : AppColors.neutral900,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // =====================================================================
+  // SHIPPING METHOD  (Figma node 204:6800)
+  // =====================================================================
+
+  Widget _buildShippingMethodSection(
+    BuildContext context,
+    CheckoutState state,
+  ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    if (!state.addressConfirmed) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.checkoutShippingMethod,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: isDark ? AppColors.neutral900 : AppColors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline,
+                    size: 18,
+                    color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(
+                        context,
+                      )!.checkoutSaveAddressSeeShipping,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 13,
+                        color: isDark
+                            ? AppColors.neutral500
+                            : AppColors.neutral400,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    final rates = state.shippingRates;
+    if (rates.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.checkoutShippingMethod,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+              ),
+            ),
+            const SizedBox(height: 12),
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.checkoutShippingMethod,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+                ),
+              ),
+              const SizedBox(),
+            ],
+          ),
+          const SizedBox(height: 6),
+          ...rates.asMap().entries.map((entry) {
+            final rate = entry.value;
+            final isSelected =
+                (_selectedShippingMethod ?? rates.first.code) == rate.code;
+            return _buildRadioOption(
+              isSelected: isSelected,
+              title: rate.displayPrice,
+              subtitle: rate.displayLabel,
+              onTap: () {
+                setState(() => _selectedShippingMethod = rate.code);
+                context.read<CheckoutBloc>().add(
+                  SelectShippingMethod(shippingMethodCode: rate.method),
+                );
+              },
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  // =====================================================================
+  // PAYMENT METHOD  (Figma node 204:6819)
+  // =====================================================================
+
+  Widget _buildPaymentMethodSection(BuildContext context, CheckoutState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    if (!state.isVirtualOnly && state.selectedShippingMethod == null) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.checkoutPaymentMethod,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: isDark ? AppColors.neutral900 : AppColors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isDark ? AppColors.neutral700 : AppColors.neutral200,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline,
+                    size: 18,
+                    color: isDark ? AppColors.neutral500 : AppColors.neutral400,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    AppLocalizations.of(
+                      context,
+                    )!.checkoutSelectShippingMethodFirst,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 13,
+                      color: isDark
+                          ? AppColors.neutral500
+                          : AppColors.neutral400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    final methods = state.paymentMethods;
+    if (methods.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.checkoutPaymentMethod,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+              ),
+            ),
+            const SizedBox(height: 12),
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.checkoutPaymentMethod,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: isDark ? AppColors.neutral200 : AppColors.neutral900,
+                ),
+              ),
+              const SizedBox(),
+            ],
+          ),
+          const SizedBox(height: 6),
+          ...methods.map((method) {
+            final isSelected = (_selectedPaymentMethod ?? '') == method.method;
+            return _buildPaymentOptionRow(
+              isSelected: isSelected,
+              title: method.title,
+              subtitle: method.description ?? '',
+              paymentCode: method.method,
+              onTap: () {
+                setState(() => _selectedPaymentMethod = method.method);
+                context.read<CheckoutBloc>().add(
+                  SelectPaymentMethod(paymentMethodCode: method.method),
+                );
+              },
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  // =====================================================================
+  // PAYMENT ICON HELPER
+  // =====================================================================
+
+  Widget _getPaymentIcon(String code) {
+    IconData iconData;
+    Color bgColor;
+    Color iconColor;
+
+    switch (code) {
+      case 'paypal_smart_button':
+        iconData = Icons.paypal_outlined;
+        bgColor = const Color(0xFFE8F0FE);
+        iconColor = const Color(0xFF003087);
+        break;
+      case 'cashondelivery':
+        iconData = Icons.local_atm;
+        bgColor = const Color(0xFFE8F5E9);
+        iconColor = const Color(0xFF2E7D32);
+        break;
+      case 'moneytransfer':
+        iconData = Icons.account_balance;
+        bgColor = const Color(0xFFE3F2FD);
+        iconColor = const Color(0xFF1565C0);
+        break;
+      case 'paypal_standard':
+        iconData = Icons.paypal;
+        bgColor = const Color(0xFFFFF3E0);
+        iconColor = const Color(0xFF003087);
+        break;
+      default:
+        iconData = Icons.payment;
+        bgColor = AppColors.white;
+        iconColor = AppColors.neutral800;
+    }
+
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Icon(iconData, size: 22, color: iconColor),
+    );
+  }
+
+  Widget _buildPaymentOptionRow({
+    required bool isSelected,
+    required String title,
+    required String subtitle,
+    required String paymentCode,
+    required VoidCallback onTap,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 52),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: isSelected
+                      ? _buildFilledRadio()
+                      : _buildEmptyRadio(isDark: isDark),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: isDark
+                              ? AppColors.neutral100
+                              : AppColors.neutral900,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: isDark
+                              ? AppColors.neutral300
+                              : AppColors.neutral900,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                _getPaymentIcon(paymentCode),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // RADIO BUTTONS
+  // =====================================================================
+
+  Widget _buildRadioOption({
+    required bool isSelected,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 52),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: isSelected
+                      ? _buildFilledRadio()
+                      : _buildEmptyRadio(isDark: isDark),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: isDark
+                              ? AppColors.neutral100
+                              : AppColors.neutral900,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: isDark
+                              ? AppColors.neutral300
+                              : AppColors.neutral900,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilledRadio() {
+    return Container(
+      width: 24,
+      height: 24,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: AppColors.primary500, width: 2),
+      ),
+      child: Center(
+        child: Container(
+          width: 12,
+          height: 12,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.primary500,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyRadio({bool isDark = false}) {
+    return Container(
+      width: 24,
+      height: 24,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: isDark ? AppColors.neutral600 : AppColors.neutral400,
+          width: 2,
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // COUPON  (Figma node 204:6832)
+  // =====================================================================
+
+  Widget _buildCouponSection(BuildContext context, CheckoutState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.cartApplyCoupon,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            color: isDark ? AppColors.neutral100 : Colors.black,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 14,
+                    ),
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.neutral800 : AppColors.white,
+                      border: Border.all(
+                        color: isDark
+                            ? AppColors.neutral700
+                            : AppColors.neutral200,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: _couponController,
+                            decoration: InputDecoration(
+                              hintText: AppLocalizations.of(
+                                context,
+                              )!.checkoutEnterCouponCode,
+                              hintStyle: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: isDark
+                                    ? AppColors.neutral500
+                                    : AppColors.neutral400,
+                              ),
+                              border: InputBorder.none,
+                              isDense: true,
+                              contentPadding: EdgeInsets.zero,
+                            ),
+                            style: TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 16,
+                              color: isDark
+                                  ? AppColors.neutral100
+                                  : AppColors.neutral900,
+                            ),
+                            onChanged: (_) => setState(() {}),
+                          ),
+                        ),
+                        if (_couponController.text.isNotEmpty)
+                          GestureDetector(
+                            onTap: () {
+                              _couponController.clear();
+                              if (state.couponCode != null &&
+                                  state.couponCode!.isNotEmpty) {
+                                context.read<CheckoutBloc>().add(
+                                  RemoveCheckoutCoupon(),
+                                );
+                              }
+                              setState(() {});
+                            },
+                            child: SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: Icon(
+                                Icons.close,
+                                size: 20,
+                                color: isDark
+                                    ? AppColors.neutral300
+                                    : AppColors.neutral900,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    left: 9,
+                    top: -10,
+                    child: Container(
+                      color: isDark ? AppColors.neutral900 : AppColors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: Text(
+                        AppLocalizations.of(context)!.cartCouponCode,
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: isDark
+                              ? AppColors.neutral400
+                              : AppColors.neutral800,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 6),
+            GestureDetector(
+              onTap: () {
+                final code = _couponController.text.trim();
+                if (code.isNotEmpty) {
+                  context.read<CheckoutBloc>().add(
+                    ApplyCheckoutCoupon(couponCode: code),
+                  );
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.primary500,
+                  borderRadius: BorderRadius.circular(54),
+                ),
+                child: Text(
+                  AppLocalizations.of(context)!.cartApplyCoupon,
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  // =====================================================================
+  // PRICE BREAK  (Figma node 204:6838)
+  // =====================================================================
+
+  Widget _buildPriceBreakSection(BuildContext context, CartModel cart) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final subtotal = cart.subtotal > 0
+        ? (cart.formattedSubtotal ??
+              CurrencyFormatter.formatAmount(cart.subtotal))
+        : CurrencyFormatter.formatAmount(0);
+    final discount = cart.discountAmount > 0
+        ? '-${cart.formattedDiscountAmount ?? CurrencyFormatter.formatAmount(cart.discountAmount)}'
+        : CurrencyFormatter.formatAmount(0);
+    final shipping = cart.shippingAmount > 0
+        ? (cart.formattedShippingAmount ??
+              CurrencyFormatter.formatAmount(cart.shippingAmount))
+        : CurrencyFormatter.formatAmount(0);
+    final tax = cart.taxAmount > 0
+        ? (cart.formattedTaxAmount ??
+              CurrencyFormatter.formatAmount(cart.taxAmount))
+        : CurrencyFormatter.formatAmount(0);
+    final grandTotal = cart.grandTotal > 0
+        ? (cart.formattedGrandTotal ??
+              CurrencyFormatter.formatAmount(cart.grandTotal))
+        : CurrencyFormatter.formatAmount(0);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.cartPriceBreak,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            color: isDark ? AppColors.neutral100 : Colors.black,
+          ),
+        ),
+        const SizedBox(height: 16),
+        _buildPriceRow(
+          AppLocalizations.of(context)!.cartSubTotal,
+          subtotal,
+          isDark: isDark,
+        ),
+        const SizedBox(height: 8),
+        _buildPriceRow(
+          AppLocalizations.of(context)!.checkoutDiscountCoupon,
+          discount,
+          isDark: isDark,
+        ),
+        const SizedBox(height: 8),
+        _buildPriceRow(
+          AppLocalizations.of(context)!.cartDeliveryCharges,
+          shipping,
+          isDark: isDark,
+        ),
+        const SizedBox(height: 8),
+        _buildPriceRow(
+          AppLocalizations.of(context)!.cartTax,
+          tax,
+          isDark: isDark,
+        ),
+        const SizedBox(height: 8),
+        _buildPriceRow(
+          AppLocalizations.of(context)!.cartGrandTotal,
+          grandTotal,
+          isDark: isDark,
+          isBold: true,
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+
+  Widget _buildPriceRow(
+    String label,
+    String value, {
+    bool isDark = false,
+    bool isBold = false,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            color: isDark ? AppColors.neutral300 : AppColors.neutral800,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: isBold ? FontWeight.w600 : FontWeight.w400,
+            fontSize: 14,
+            color: isDark ? AppColors.neutral100 : AppColors.neutral800,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // =====================================================================
+  // BOTTOM BAR  (Figma node 204:6857)
+  // =====================================================================
+
+  Widget _buildBottomBar(
+    BuildContext context,
+    CartModel cart,
+    CheckoutState state,
+  ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final grandTotal = cart.grandTotal > 0
+        ? (cart.formattedGrandTotal ??
+              CurrencyFormatter.formatAmount(cart.grandTotal))
+        : CurrencyFormatter.formatAmount(0);
+    final canPlace = state.canPlaceOrder;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral900 : AppColors.neutral50,
+      ),
+      child: SafeArea(
+        top: false,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    grandTotal,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: isDark
+                          ? AppColors.neutral100
+                          : AppColors.neutral800,
+                    ),
+                  ),
+                  Text(
+                    AppLocalizations.of(context)!.cartAmountToBePaid,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: isDark
+                          ? AppColors.neutral400
+                          : AppColors.neutral800,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 16),
+            GestureDetector(
+              onTap: (!canPlace || state.isPlacingOrder)
+                  ? null
+                  : () => context.read<CheckoutBloc>().add(PlaceOrder()),
+              child: Container(
+                width: 131,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: BoxDecoration(
+                  color: canPlace ? AppColors.primary500 : AppColors.neutral400,
+                  borderRadius: BorderRadius.circular(54),
+                ),
+                child: Center(
+                  child: state.isPlacingOrder
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.white,
+                          ),
+                        )
+                      : Text(
+                          AppLocalizations.of(context)!.checkoutPlaceOrder,
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: AppColors.white,
+                          ),
+                        ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // =====================================================================
+  // HELPERS
+  // =====================================================================
+
+  Widget _buildLoadingCard() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.neutral800 : AppColors.neutral100,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: const Center(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
+
+  // _showOrderSuccessDialog removed — navigation to ThankyouPage is
+  // handled directly in the BlocConsumer listener above.
+}

@@ -1,0 +1,761 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Bagisto Mağazası",
+  "homeFailedToLoad": "Ana sayfa yüklenemedi",
+  "commonUnknownError": "Bilinmeyen hata",
+  "commonRetry": "Tekrar dene",
+  "homeFeaturedProducts": "Öne Çıkan Ürünler",
+  "homeDefaultProducts": "Ürünler",
+  "homeBackToTop": "Yukarı Dön",
+  "homeViewCart": "SEPETİ GÖRÜNTÜLE",
+  "homeAddedToCartMessage": "{productName} sepete eklendi",
+  "@homeAddedToCartMessage": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "homeLoginToManageWishlist": "İstek listesini yönetmek için giriş yapın",
+  "homeAddedToWishlist": "İstek listesine eklendi",
+  "homeRemovedFromWishlist": "İstek listesinden kaldırıldı",
+  "homeViewAll": "Tümünü Gör",
+  "homeCollections": "Koleksiyonlar",
+  "homeCategorySemanticLabel": "{categoryName} kategorisi",
+  "@homeCategorySemanticLabel": {
+    "placeholders": {
+      "categoryName": {}
+    }
+  },
+  "homeDiscountOff": "%{percent} indirim",
+  "@homeDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productFailedToLoad": "Ürün yüklenemedi",
+  "productNotFound": "Ürün bulunamadı",
+  "productDetail": "Ürün Detayı",
+  "productDetails": "Detaylar",
+  "productShowLess": "Daha Az Göster",
+  "productLoadMore": "Daha Fazla Yükle",
+  "productMoreInformations": "Daha Fazla Bilgi",
+  "productSku": "SKU",
+  "productType": "Tür",
+  "productBrand": "Marka",
+  "productColor": "Renk",
+  "productSize": "Beden",
+  "productReviews": "Yorumlar",
+  "productNoReviewsYet": "Henüz yorum yok",
+  "productRating": "{count} puan",
+  "@productRating": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productReviewsCount": "{count} yorum",
+  "@productReviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "productPostedOn": "{day} {month} {year} tarihinde yayınlandı",
+  "@productPostedOn": {
+    "placeholders": {
+      "day": {},
+      "month": {},
+      "year": {}
+    }
+  },
+  "productReviewSubmitted": "Yorumunuz gönderildi!",
+  "productWriteReview": "Yorum Yaz",
+  "productPleaseLoginForReviews": "Yorumlarınızı görmek için giriş yapın",
+  "productLoadMoreReviews": "Daha Fazla Yorum Yükle",
+  "productRelatedProduct": "İlgili Ürün",
+  "productDiscountOff": "%{percent} indirim",
+  "@productDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "productVeryGood": "Çok iyi",
+  "productGood": "İyi",
+  "productAverage": "Orta",
+  "productBad": "Kötü",
+  "productVeryBad": "Çok kötü",
+  "productInStock": "Stokta var",
+  "productOutOfStock": "Stokta yok",
+  "productQuantity": "Adet",
+  "productWishlistAction": "İstek Listesi",
+  "productCompareAction": "Karşılaştır",
+  "productShareAction": "Paylaş",
+  "productLoginToCompare": "Karşılaştırmaya eklemek için giriş yapın",
+  "productAddedToCompare": "Karşılaştırmaya eklendi",
+  "productAddToCart": "Sepete Ekle",
+  "accountMoveToCart": "Sepete Taşı",
+  "productBuyNow": "Şimdi Satın Al",
+  "productSelectOptionsFirst": "Lütfen önce ürün seçeneklerini seçin",
+  "productBookingBookTable": "Masa Rezervasyonu Yap *",
+  "productBookingSelectDateRequired": "Tarih seçin *",
+  "productBookingSelectSlotRequired": "Zaman aralığı seçin *",
+  "productBookingSpecialRequestNotesRequired": "Özel İstekler/Notlar *",
+  "productBookingBookAppointment": "Randevu Al *",
+  "productBookingDateFormatHint": "YYYY-AA-GG",
+  "productBookingFrom": "Başlangıç",
+  "productBookingTo": "Bitiş",
+  "productBookingSelectDate": "Tarih seçin",
+  "productBookingLocation": "Konum",
+  "productBookingSlotDuration": "Zaman Aralığı Süresi",
+  "productBookingAvailability": "Uygunluk",
+  "productBookingStartDate": "Başlangıç Tarihi",
+  "productBookingEndDate": "Bitiş Tarihi",
+  "productBookingDate": "Tarih",
+  "productBookingViewOnMap": "Haritada Gör",
+  "productBookingEventOn": "Etkinlik tarihi:",
+  "productBookingBookYourTicket": "Biletinizi Ayırtın",
+  "productBookingSlotDurationLabel": "Zaman Aralığı Süresi:",
+  "productBookingDurationMinutes": "{count} dakika",
+  "@productBookingDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productBookingAvailableFrom": "Başlangıç",
+  "productBookingAvailableTo": "Bitiş",
+  "productBookingSpecialRequestNotesHint": "Özel İstekler/Notlar",
+  "productBookingChooseRentOption": "Kiralama Seçeneğini Belirleyin *",
+  "productBookingDailyBasis": "Günlük",
+  "productBookingHourlyBasis": "Saatlik",
+  "productBookingNoDatesAvailable": "Rezervasyon için uygun tarih yok",
+  "productBookingSelectSlot": "Zaman aralığı seçin",
+  "productBookingSelectDateFirst": "Önce tarih seçin",
+  "productBookingChooseDateFirstToSeeSlots": "Uygun zaman aralıklarını görmek için önce tarih seçin.",
+  "productBookingLoadingSlots": "Zaman aralıkları yükleniyor...",
+  "productBookingSlotsLoadingForSelectedDate": "Seçilen tarih için uygun zaman aralıkları yükleniyor.",
+  "productBookingUnableToLoadSlots": "Zaman aralıkları yüklenemedi",
+  "productBookingNoSlotsAvailable": "Uygun zaman aralığı yok",
+  "productBookingNoSlotsAvailableForSelectedDate": "Seçilen tarih için uygun zaman aralığı yok.",
+  "productBookingSelectOneSlotToContinue": "Devam etmek için uygun bir zaman aralığı seçin.",
+  "productBookingSpecialRequestNotesLowercase": "Özel istekler/notlar",
+  "productDownloadableLinks": "Bağlantılar",
+  "productDownloadableSamples": "Örnekler",
+  "productDownloadSample": "Örneği indir",
+  "productDefaultName": "Ürün",
+  "categoryDefaultName": "Kategoriler",
+  "categorySubCategories": "Alt Kategoriler",
+  "categorySomethingWentWrong": "Bir şeyler yanlış gitti",
+  "categoryUnknownError": "Bilinmeyen hata",
+  "categoryItemsFound": "{count} ürün bulundu",
+  "@categoryItemsFound": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "categoryNoProductsFound": "Ürün bulunamadı",
+  "categorySort": "Sırala",
+  "categoryFilter": "Filtrele",
+  "categoryFilters": "Filtreler",
+  "categoryNoFiltersAvailable": "Filtre mevcut değil",
+  "categoryFiltersWillAppear": "Bu kategori için mevcut olduğunda filtreler görünecektir",
+  "categoryApplyFilters": "Filtreleri uygula",
+  "categoryApplyFiltersCount": "Filtreleri uygula ({count})",
+  "@categoryApplyFiltersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryClearAll": "Tümünü temizle",
+  "categoryTryAdjustingFilters": "Filtrelerinizi veya arama kriterlerinizi değiştirmeyi deneyin",
+  "categoryError": "Hata",
+  "categoryLoginToManageWishlist": "İstek listesini yönetmek için giriş yapın",
+  "categoryAddedToWishlist": "İstek listesine eklendi",
+  "categoryRemovedFromWishlist": "İstek listesinden kaldırıldı",
+  "categoryFailedToUpdateWishlist": "İstek listesi güncellenemedi: {error}",
+  "@categoryFailedToUpdateWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cart": "Sepet",
+  "cartPleaseLoginWishlist": "İstek listesini görmek için giriş yapın",
+  "cartItemsInCart": "Sepette {count} {itemText}",
+  "@cartItemsInCart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "itemText": {}
+    }
+  },
+  "cartYourCartEmpty": "Sepetiniz boş",
+  "cartAddProductsHere": "Burada görmek için sepetinize ürün ekleyin",
+  "cartContinueShopping": "Alışverişe Devam Et",
+  "cartUnit": "Birim",
+  "cartUnits": "Birim",
+  "cartPleaseLoginWishlistAdd": "İstek listesine eklemek için giriş yapın",
+  "cartMovedToWishlist": "İstek listesine taşındı",
+  "cartFailedMoveWishlist": "İstek listesine taşınamadı: {error}",
+  "@cartFailedMoveWishlist": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cartViewMore": "Daha Fazla Gör",
+  "cartViewLess": "Daha Az Gör",
+  "cartEmptyCartAction": "Sepeti Boşalt",
+  "cartApplyCoupon": "Kupon Uygula",
+  "cartCouponCode": "Kupon Kodu",
+  "cartApply": "Uygula",
+  "cartAppliedCoupon": "Kupon uygulandı",
+  "cartRemove": "Kaldır",
+  "cartPriceBreak": "Fiyat Dökümü",
+  "cartSubTotal": "Ara Toplam",
+  "cartDiscount": "İndirim",
+  "cartDeliveryCharges": "Teslimat Ücreti",
+  "cartTax": "Vergi",
+  "cartGrandTotal": "Genel Toplam",
+  "cartAmountToBePaid": "Ödenecek Tutar",
+  "cartPayNow": "Şimdi Öde",
+  "cartRemoveItem": "Ürünü Kaldır",
+  "cartRemoveItemConfirm": "\"{productName}\" ürününü sepetinizden kaldırmak istediğinize emin misiniz?",
+  "@cartRemoveItemConfirm": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "cartCancel": "İptal",
+  "cartEmptyCartTitle": "Sepeti Boşalt",
+  "cartEmptyCartConfirm": "Sepetinizdeki tüm ürünleri kaldırmak istediğinize emin misiniz?",
+  "checkout": "Ödeme",
+  "checkoutBillingTo": "Fatura adresi",
+  "checkoutDeliveredTo": "Teslimat adresi",
+  "checkoutChange": "Değiştir",
+  "checkoutSelectBillingAddress": "Fatura adresi seçin",
+  "checkoutSelectShippingAddress": "Teslimat adresi seçin",
+  "checkoutBillingAddress": "Fatura Adresi",
+  "checkoutEnterAddress": "Adres Girin",
+  "checkoutFirstName": "Ad",
+  "checkoutLastName": "Soyad",
+  "checkoutEmail": "E-posta",
+  "checkoutPhone": "Telefon",
+  "checkoutStreetAddress": "Sokak Adresi",
+  "checkoutCountry": "Ülke",
+  "checkoutState": "İl",
+  "checkoutCity": "Şehir",
+  "checkoutPostcode": "Posta Kodu",
+  "checkoutCompanyOptional": "Şirket (İsteğe bağlı)",
+  "checkoutUseSameAddressShipping": "Teslimat için aynı adres kullanılsın mı?",
+  "checkoutPhoneValue": "Telefon: {phone}",
+  "@checkoutPhoneValue": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "checkoutAddressTypeOffice": "Ofis",
+  "checkoutAddressTypeHome": "Ev",
+  "checkoutAddressTypeBilling": "Faturalama",
+  "checkoutAddressTypeShipping": "Teslimat",
+  "checkoutAddressTypeDefault": "Varsayılan",
+  "checkoutFieldRequired": "{field} zorunludur",
+  "@checkoutFieldRequired": {
+    "placeholders": {
+      "field": {}
+    }
+  },
+  "checkoutSaveContinue": "Kaydet ve Devam Et",
+  "checkoutYourCartEmpty": "Sepetiniz boş",
+  "checkoutSelectCountry": "Ülke Seçin",
+  "checkoutSelectState": "İl Seçin",
+  "checkoutCountryRequired": "Ülke zorunludur",
+  "checkoutStateRequired": "İl zorunludur",
+  "checkoutSelectCountryFirst": "Önce ülke seçin",
+  "checkoutShippingMethod": "Teslimat Yöntemi",
+  "checkoutSaveAddressSeeShipping": "Teslimat seçeneklerini görmek için adresinizi kaydedin",
+  "checkoutPaymentMethod": "Ödeme Yöntemi",
+  "checkoutSelectShippingMethodFirst": "Önce bir teslimat yöntemi seçin",
+  "checkoutEnterCouponCode": "Kupon kodunuzu girin",
+  "checkoutDiscountCoupon": "İndirim (Kupon)",
+  "checkoutPlaceOrder": "Sipariş Ver",
+  "thankYouTitle": "Siparişiniz için teşekkür ederiz!",
+  "thankYouSubtitle": "Sipariş detaylarınızı ve takip bilgilerinizi e-posta ile göndereceğiz",
+  "thankYouOrderNumber": "Sipariş Numaranız #{orderNumber}",
+  "@thankYouOrderNumber": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "thankYouViewOrder": "Siparişi Görüntüle",
+  "thankYouContinueShopping": "Alışverişe Devam Et",
+  "accountPleaseTryAgainLater": "Lütfen daha sonra tekrar deneyin",
+  "accountUserFallback": "Kullanıcı",
+  "accountBack": "Geri",
+  "accountSettings": "Ayarlar",
+  "accountMyOrders": "Siparişlerim",
+  "accountMyDownloadableProducts": "İndirilebilir Ürünlerim",
+  "accountWishlist": "İstek Listem",
+  "accountCompareProducts": "Ürünleri Karşılaştır",
+  "accountProductReview": "Ürün Yorumu",
+  "accountAddressBook": "Adres Defteri",
+  "accountEditAccount": "Hesabı Düzenle",
+  "accountLogout": "Çıkış Yap",
+  "accountLogoutConfirmation": "Çıkış yapmak istediğinize emin misiniz?",
+  "accountNoCountriesAvailable": "Ülke yok. Lütfen tekrar deneyin.",
+  "accountPleaseSelectCountry": "Lütfen bir ülke seçin",
+  "accountPleaseSelectOrEnterState": "Lütfen bir il seçin veya girin",
+  "accountAddressUpdatedSuccessfully": "Adres başarıyla güncellendi",
+  "accountAddressAddedSuccessfully": "Adres başarıyla eklendi",
+  "accountGoBack": "Geri Git",
+  "accountEditAddress": "Adresi Düzenle",
+  "accountAddNewAddress": "Yeni Adres Ekle",
+  "accountFirstNameRequired": "Ad zorunludur",
+  "accountLastNameRequired": "Soyad zorunludur",
+  "accountEnterValidEmail": "Geçerli bir e-posta girin",
+  "accountCompanyName": "Şirket Adı",
+  "accountVatId": "Vergi No",
+  "accountStreetAddressRequired": "Sokak adresi zorunludur",
+  "accountCityRequired": "Şehir zorunludur",
+  "accountZipPostcode": "Posta Kodu",
+  "accountZipPostcodeRequired": "Posta kodu zorunludur",
+  "accountTelephone": "Telefon",
+  "accountPhoneNumberRequired": "Telefon numarası zorunludur",
+  "accountChangeDefaultBillingAddress": "Varsayılan fatura adresini değiştir",
+  "accountChangeDefaultShippingAddress": "Varsayılan teslimat adresini değiştir",
+  "accountUpdateAddress": "Adresi Güncelle",
+  "accountSaveToAddressBook": "Adres Defterine Kaydet",
+  "accountPleaseLoginToWriteReview": "Yorum yazmak için giriş yapın",
+  "accountPleaseSelectRating": "Lütfen bir puan seçin",
+  "accountAddReview": "Yorum Ekle",
+  "accountReviewSubmitted": "Yorum gönderildi!",
+  "accountNickName": "Takma Ad",
+  "accountEnterYourName": "Adınızı girin",
+  "accountNameRequired": "Ad zorunludur",
+  "accountSummary": "Özet",
+  "accountReviewSummaryHint": "Yorumunuzun kısa özeti",
+  "accountSummaryRequired": "Özet zorunludur",
+  "accountReview": "Yorum",
+  "accountDetailedReviewHint": "Detaylı yorumunuzu buraya yazın",
+  "accountReviewRequired": "Yorum zorunludur",
+  "accountRating": "Puan",
+  "accountSubmitReview": "Yorumu Gönder",
+  "accountCouldNotLoadAddresses": "Adresler yüklenemedi",
+  "accountPleaseTryAgain": "Lütfen tekrar deneyin",
+  "accountNoAddressesSaved": "Kayıtlı adres yok",
+  "accountAddAddressToGetStarted": "Başlamak için yeni bir adres ekleyin",
+  "accountNoProductsToCompare": "Karşılaştırılacak ürün yok",
+  "accountAddProductsToCompareHint": "Ürün detay sayfasından karşılaştırmak için ürün ekleyin.",
+  "accountProducts": "Ürünler",
+  "accountDescription": "Açıklama",
+  "accountShortDescription": "Kısa Açıklama",
+  "accountActivity": "Etkinlik",
+  "accountSeller": "Satıcı",
+  "accountNotAvailable": "Yok",
+  "accountMessageSentSuccessfully": "Mesaj başarıyla gönderildi!",
+  "accountAnErrorOccurred": "Bir hata oluştu",
+  "accountContactUs": "Bize Ulaşın",
+  "accountName": "Ad",
+  "accountEnterYourEmail": "E-postanızı girin",
+  "accountContact": "İletişim",
+  "accountEnterYourPhoneNumber": "Telefon numaranızı girin",
+  "accountMessage": "Mesaj",
+  "accountEnterYourMessage": "Mesajınızı girin",
+  "accountSendMessage": "Mesaj Gönder",
+  "accountNameFieldEmpty": "Ad alanı boş bırakılamaz",
+  "accountNameMinChars": "Ad en az 2 karakter olmalıdır",
+  "accountEmailFieldEmpty": "E-posta alanı boş bırakılamaz",
+  "accountPleaseEnterValidEmailAddress": "Lütfen geçerli bir e-posta adresi girin",
+  "accountContactNumberEmpty": "İletişim numarası boş bırakılamaz",
+  "accountPleaseEnterValidContactNumber": "Lütfen geçerli bir iletişim numarası girin",
+  "accountMessageFieldEmpty": "Mesaj alanı boş bırakılamaz",
+  "accountMessageMinChars": "Mesaj en az 10 karakter olmalıdır",
+  "accountDownloadableProducts": "İndirilebilir Ürünler",
+  "accountNoDownloadsYet": "Henüz indirme yok",
+  "accountDownloadsEmptyDescription": "İndirdiğiniz ürünler burada görünecek.",
+  "accountProductsProgress": "{current} / {total} Ürün",
+  "@accountProductsProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "accountRemainingDownloadsLeft": "{value} kaldı",
+  "@accountRemainingDownloadsLeft": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "accountDownload": "İndir",
+  "accountFileName": "Dosya: {fileName}",
+  "@accountFileName": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "accountDownloadWillStartShortly": "İndirmeniz kısa süre içinde başlayacak. İndirilenler klasörünü kontrol edin.",
+  "accountClose": "Kapat",
+  "accountOrders": "Siparişler",
+  "accountNoOrdersYet": "Henüz sipariş yok",
+  "accountOrdersEmptyDescription": "Bir satın alma yaptığınızda siparişleriniz burada görünecek.",
+  "accountOrderSingular": "Sipariş",
+  "accountOrderPlural": "Siparişler",
+  "accountOrderTotalItems": "{total} (Ürün {count})",
+  "@accountOrderTotalItems": {
+    "placeholders": {
+      "total": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOrderAndReturn": "Sipariş ve İade",
+  "accountTrackOrder": "Siparişi Takip Et",
+  "accountReturnPolicy": "İade Politikası",
+  "accountReturnRequest": "İade Talebi",
+  "accountNotifications": "Bildirimler",
+  "accountPrivacy": "Gizlilik",
+  "accountAccount": "Hesap",
+  "accountPreferences": "Tercihler",
+  "accountLanguage": "Dil",
+  "accountNoLanguagesAvailable": "Dil yok",
+  "accountCurrency": "Para Birimi",
+  "accountOthers": "Diğer",
+  "accountNoPagesAvailable": "Sayfa yok",
+  "accountProductReviews": "Ürün Yorumları",
+  "accountMyReviews": "Yorumlarım",
+  "accountNoReviewsYet": "Henüz yorum yok",
+  "accountReviewsEmptyDescription": "Ürün yorumlarınız burada görünecek.",
+  "accountReviewSingular": "Yorum",
+  "accountReviewPlural": "Yorumlar",
+  "accountPostedOn": "{date} tarihinde yayınlandı",
+  "@accountPostedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountCloseSettings": "Ayarları kapat",
+  "accountChangeTheme": "Temayı Değiştir",
+  "accountAllNotifications": "Tüm Bildirimler",
+  "accountOffers": "Fırsatlar",
+  "accountOfflineData": "Çevrimdışı Veriler",
+  "accountTrackRecentlyViewedProducts": "Son görüntülenen ürünleri takip et ve göster",
+  "accountShowSearchTag": "Arama Etiketini Göster",
+  "accountTryAgain": "Tekrar Dene",
+  "accountYourWishlistEmpty": "İstek listeniz boş",
+  "accountWishlistEmptyDescription": "Ürünlere göz atın ve istek listenize ekleyin",
+  "accountItemSingular": "Ürün",
+  "accountItemPlural": "Ürünler",
+  "accountStartingAt": "{price} fiyatından başlayan",
+  "@accountStartingAt": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "accountAboutThisPage": "Bu sayfa hakkında",
+  "accountPageId": "Sayfa ID: {id}",
+  "@accountPageId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "mainTabHome": "Ana Sayfa",
+  "mainTabCategories": "Kategoriler",
+  "mainTabCart": "Sepet",
+  "mainTabAccount": "Hesap",
+  "authLoginSuccess": "Hoş geldiniz! Başarıyla giriş yapıldı.",
+  "authWelcomeBack": "Tekrar hoş geldiniz!",
+  "authLoginToAccount": "Hesabınıza giriş yapın",
+  "authEmailAddress": "E-posta Adresi",
+  "authEnterYourEmail": "E-postanızı girin",
+  "authPleaseEnterEmail": "Lütfen e-postanızı girin",
+  "authPleaseEnterValidEmail": "Lütfen geçerli bir e-posta girin",
+  "authPassword": "Şifre",
+  "authEnterYourPassword": "Şifrenizi girin",
+  "authPleaseEnterPassword": "Lütfen şifrenizi girin",
+  "authPasswordMinLength": "Şifre en az 6 karakter olmalıdır",
+  "authForgotPasswordTitle": "Şifrenizi mi unuttunuz?",
+  "authLogin": "Giriş Yap",
+  "authNoAccountPrompt": "Hesabınız yok mu? ",
+  "authSignUp": "Kayıt Ol",
+  "authAccountCreatedSuccess": "Hesap başarıyla oluşturuldu!",
+  "authCreateAccount": "Hesap Oluştur",
+  "authSignupGetStarted": "Başlamak için kaydolun",
+  "authFirstNameHint": "Ad",
+  "authLastNameHint": "Soyad",
+  "authRequired": "Zorunlu",
+  "authCreatePasswordHint": "Bir şifre oluşturun",
+  "authConfirmPassword": "Şifreyi Onayla",
+  "authConfirmPasswordHint": "Şifrenizi onaylayın",
+  "authPleaseConfirmPassword": "Lütfen şifrenizi onaylayın",
+  "authPasswordsDoNotMatch": "Şifreler eşleşmiyor",
+  "authAlreadyHaveAccountPrompt": "Zaten bir hesabınız var mı? ",
+  "authForgotPasswordSubtitle": "E-posta adresinizi girin, size şifrenizi sıfırlamanız için bir bağlantı gönderelim.",
+  "authSendResetLink": "Sıfırlama Bağlantısı Gönder",
+  "authBackToLogin": "Girişe Dön",
+  "authNiceToSeeYouHere": "Sizi burada görmek güzel",
+  "accountEditTitle": "Hesabı Düzenle",
+  "accountFirstNameRequiredLabel": "Ad *",
+  "accountLastNameRequiredLabel": "Soyad *",
+  "accountChangeEmail": "E-postayı Değiştir",
+  "accountChangePassword": "Şifreyi Değiştir",
+  "accountDeleteAccount": "Hesabı Sil",
+  "accountGender": "Cinsiyet",
+  "accountSelectGender": "Cinsiyet Seçin",
+  "accountDob": "Doğum Tarihi",
+  "monthJanShort": "Oca",
+  "monthFebShort": "Şub",
+  "monthMarShort": "Mar",
+  "monthAprShort": "Nis",
+  "monthMayShort": "May",
+  "monthJunShort": "Haz",
+  "monthJulShort": "Tem",
+  "monthAugShort": "Ağu",
+  "monthSepShort": "Eyl",
+  "monthOctShort": "Eki",
+  "monthNovShort": "Kas",
+  "monthDecShort": "Ara",
+  "accountSubscribeNewsletters": "Bültenlere abone ol",
+  "accountSaveProfile": "Profili Kaydet",
+  "accountNewEmail": "Yeni E-posta",
+  "accountEmailRequired": "E-posta zorunludur",
+  "accountCurrentPassword": "Mevcut Şifre",
+  "accountPasswordRequired": "Şifre zorunludur",
+  "accountChange": "Değiştir",
+  "accountCurrentPasswordRequired": "Mevcut şifre zorunludur",
+  "accountNewPassword": "Yeni Şifre",
+  "accountConfirmPassword": "Şifreyi Onayla",
+  "accountDeleteWarning": "Bu işlem kalıcıdır ve geri alınamaz. Tüm verileriniz silinecektir.",
+  "accountEnterYourPassword": "Şifrenizi girin",
+  "accountDelete": "Sil",
+  "accountGenderMale": "Erkek",
+  "accountGenderFemale": "Kadın",
+  "accountGenderOther": "Diğer",
+  "accountOrdersWithNumber": "Siparişler {number}",
+  "@accountOrdersWithNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountReorderSuccessful": "Tekrar sipariş başarılı",
+  "accountReorderItemsAdded": "{message} \n\n{count} ürün sepetinize eklendi.",
+  "@accountReorderItemsAdded": {
+    "placeholders": {
+      "message": {},
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountOk": "Tamam",
+  "accountGoToCart": "Sepete Git",
+  "accountFailedToLoadOrderDetails": "Sipariş detayları yüklenemedi",
+  "accountDetails": "Detaylar",
+  "accountInvoices": "Faturalar",
+  "accountShipments": "Gönderiler",
+  "accountPlacedOn": "{date} tarihinde verildi",
+  "@accountPlacedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "accountItemsOrdered": "{count} ürün sipariş edildi",
+  "@accountItemsOrdered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountBillingAddress": "Fatura Adresi",
+  "accountShippingAddress": "Teslimat Adresi",
+  "accountShippingMethod": "Teslimat Yöntemi",
+  "accountPaymentMethod": "Ödeme Yöntemi",
+  "accountNoInvoicesForOrder": "Bu sipariş için fatura yok",
+  "accountInvoicedCount": "{count} faturalandı",
+  "@accountInvoicedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoShipmentsForOrder": "Bu sipariş için gönderi yok",
+  "accountReorder": "Tekrar Sipariş Ver",
+  "accountMoreInfo": "Daha fazla bilgi",
+  "accountOrderedQty": "Sipariş Adedi",
+  "accountShipped": "Gönderildi",
+  "accountInvoiced": "Faturalandı",
+  "accountUnitPrice": "Birim Fiyat",
+  "accountSubTotalWithSpace": "Ara Toplam",
+  "accountTotalPaid": "Toplam Ödenen",
+  "accountTotalRefunded": "Toplam İade",
+  "accountTotalDue": "Toplam Borç",
+  "accountInvoiceNumber": "Fatura {number}",
+  "@accountInvoiceNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountShipmentNumber": "Gönderi {number}",
+  "@accountShipmentNumber": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "accountFailedToLoadInvoiceDetails": "Fatura detayları yüklenemedi",
+  "accountInvoiceStatus": "Fatura Durumu",
+  "accountInvoiceDate": "Fatura Tarihi",
+  "accountOrderId": "Sipariş ID",
+  "accountOrderDate": "Sipariş Tarihi",
+  "accountOrderStatus": "Sipariş Durumu",
+  "accountChannel": "Kanal",
+  "accountDefault": "Varsayılan",
+  "accountStatusPaid": "Ödendi",
+  "accountStatusPending": "Beklemede",
+  "accountStatusPendingPayment": "Ödeme Bekleniyor",
+  "accountStatusOverdue": "Süresi Geçti",
+  "accountStatusRefunded": "İade Edildi",
+  "accountShippedQty": "Gönderilen Adet",
+  "accountInvoicedQty": "Faturalanan Adet",
+  "accountUnitPriceWithColon": "Birim Fiyat:",
+  "accountSubTotalWithColon": "Ara Toplam:",
+  "accountDownloadInvoice": "Faturayı İndir",
+  "accountInvoice": "Fatura",
+  "accountRecentOrders": "Son Siparişler",
+  "accountNoRecentOrders": "Son sipariş yok",
+  "accountStatusProcessing": "İşleniyor",
+  "accountStatusCompleted": "Tamamlandı",
+  "accountStatusCancelled": "İptal Edildi",
+  "accountStatusClosed": "Kapalı",
+  "accountStatusUnknown": "Bilinmiyor",
+  "accountWishlistItemsCount": "İstek Listesi Ürünleri ({count})",
+  "@accountWishlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountNoWishlistItems": "İstek listesinde ürün yok",
+  "accountDefaultAddresses": "Varsayılan Adresler",
+  "accountNoProductReviewsYet": "Henüz ürün yorumu yok",
+  "searchFailedTitle": "Arama başarısız",
+  "searchHint": "Ürün ara",
+  "searchImageSearch": "Görselle Ara",
+  "searchRecentSearches": "Son Aramalar",
+  "searchClearAll": "Tümünü Temizle",
+  "searchTopCategories": "Öne Çıkan Kategoriler",
+  "searchResultsFound": "{count} sonuç bulundu",
+  "@searchResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDiscountOff": "%{percent} indirim",
+  "@searchDiscountOff": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "searchNoProductsFound": "Ürün bulunamadı",
+  "searchTryDifferentTerm": "Farklı bir terimle aramayı deneyin",
+  "searchSpeechNotAvailable": "Sesli tanıma kullanılamıyor",
+  "searchFailedToStartVoice": "Sesli giriş başlatılamadı: {error}",
+  "@searchFailedToStartVoice": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "searchMicrophonePermissionDenied": "Mikrofon izni reddedildi",
+  "searchRetake": "Yeniden çek",
+  "searchSearch": "Ara",
+  "searchTryAgain": "Tekrar dene",
+  "searchRecognizedObjects": "Tanınan Nesneler",
+  "searchResult": "Sonuç:",
+  "searchFailedToCaptureImage": "Görüntü yakalanamadı",
+  "searchProcessing": "İşleniyor... {progress}%",
+  "@searchProcessing": {
+    "placeholders": {
+      "progress": {
+        "type": "int"
+      }
+    }
+  },
+  "searchOpeningCamera": "Kamera açılıyor...",
+  "searchFailedToProcessImage": "Görüntü işlenemedi",
+  "homeRecentlyViewedProducts": "Son görüntülenen ürünler",
+  "accountItemsCount": "{count} ürün",
+  "@accountItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountTrack": "Takip Et",
+  "accountTrackingVia": "{carrier} ile {trackNumber} takip",
+  "@accountTrackingVia": {
+    "placeholders": {
+      "trackNumber": {},
+      "carrier": {}
+    }
+  },
+  "accountUnknownCarrier": "Bilinmeyen kargo",
+  "accountTrackingNumber": "Takip Numarası",
+  "accountSkuValue": "SKU : {sku}",
+  "@accountSkuValue": {
+    "placeholders": {
+      "sku": {}
+    }
+  },
+  "accountShippedQtyValue": "Gönderilen Adet : {qty}",
+  "@accountShippedQtyValue": {
+    "placeholders": {
+      "qty": {
+        "type": "int"
+      }
+    }
+  },
+  "commonTimeoutError": "The server is taking too long to respond. Please check your connection and try again.",
+  "commonUnableToReachServer": "Unable to reach the server. Please check your internet connection and try again.",
+  "commonNetworkError": "A network error occurred. Please check your internet connection and try again.",
+  "commonProcessingError": "Something went wrong while processing the data. Please try again later.",
+  "commonMissingInformation": "Some required information is missing. Please fill in all required fields and try again.",
+  "commonTooManyRequests": "Too many requests. Please wait a moment and try again.",
+  "commonServerError": "The server encountered an error. Please try again later.",
+  "commonPermissionDenied": "You don't have permission to perform this action.",
+  "commonSecureConnectionError": "A secure connection could not be established. Please try again later.",
+  "commonCartSessionExpired": "Your cart session has expired. Please try again.",
+  "commonGenericError": "Something went wrong. Please try again.",
+  "commonGenericErrorWithContext": "Something went wrong while {context}. Please try again.",
+  "@commonGenericErrorWithContext": {
+    "placeholders": {
+      "context": {}
+    }
+  },
+  "commonEdit": "Edit",
+  "authInvalidCredentials": "The email or password you entered is incorrect. Please try again.",
+  "authSessionExpired": "Your session has expired. Please log in again.",
+  "authSessionInvalid": "Your session is no longer valid. Please log in again.",
+  "categorySortByTitle": "Sort By",
+  "categorySortAZ": "From A-Z",
+  "categorySortZA": "From Z-A",
+  "categorySortNewest": "Newest First",
+  "categorySortOldest": "Oldest First",
+  "categorySortCheapest": "Cheapest First",
+  "categorySortExpensive": "Expensive First",
+  "accountSelectAddress": "Select Address",
+  "accountSetAsDefault": "Set as Default",
+  "accountAddressTypeHome": "Home",
+  "accountAddressTypeOffice": "Office",
+  "accountAddressTypeCustomer": "Customer",
+  "cartAddedToCartSuccess": "Product added to cart successfully",
+  "productSelectDownloadLink": "Please select at least one link",
+  "wishlistItemRemoved": "Item removed from wishlist"
+}
