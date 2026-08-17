@@ -1,0 +1,26 @@
+# Sample data for the checkout end-to-end test (tests/test_checkout_flow.py).
+#
+# `product` is a simple product seeded by Bagisto's default demo data
+# (packages/Webkul/Installer/src/Data/demo-products.json, sku "el-air-fryer"),
+# so it exists on any fresh install of ../mobile-app/bagisto-backend without
+# extra setup. It's a plain "simple" product with no configurable/bundle/
+# customizable options, so "Add to Cart" needs no prior option selection.
+#
+# `guest_checkout` is fake customer data for the guest checkout form. State
+# must be a valid subdivision of `country` (seeded by Bagisto's standard
+# countries/states tables).
+product:
+  category: "Household"
+  name: "Digital Air Fryer with Touch Controls – 4.5L"
+  price: "$122.50"
+
+guest_checkout:
+  first_name: "Manoj"
+  last_name: "Tester"
+  email: "manoj.test.acc+checkout@gmail.com"
+  phone: "+15551234567"
+  street_address: "221B Test Street"
+  country: "United States"
+  state: "California"
+  city: "Los Angeles"
+  postcode: "90001"

@@ -28,3 +28,11 @@ artifacts/scratch/
 .dart_tool/
 .flutter-plugins-dependencies
 .DS_Store
+
+# mobile-app-tests/ (Python + Pytest + Appium test framework) - .venv/,
+# __pycache__/, *.log, and .pytest_cache/ above already cover most of its
+# generated output; these are the framework-specific extras. No nested
+# .gitignore in mobile-app-tests/ - this root file is the single source
+# of truth for what stays out of the repo.
+/mobile-app-tests/reports/
+/mobile-app-tests/logs/
